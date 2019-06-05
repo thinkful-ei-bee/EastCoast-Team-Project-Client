@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
@@ -10,6 +11,7 @@ export default class Dashboard extends React.Component{
         </div>
 
         <div>
+          <Link>Events</Link>
           <p>Post a date event</p>
         </div>
       </div>

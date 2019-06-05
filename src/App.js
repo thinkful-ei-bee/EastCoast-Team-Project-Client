@@ -1,16 +1,17 @@
 import React from 'react';
 import {Route} from 'react-router-dom'
-import Dashboard from './Dashboard/Dashboard'
-import Nav from './Nav/Nav'
-import Profile from './Profile/Profile'
+import LandingPage from './Components/LandingPage/LandingPage'
+import Dashboard from './Components/Dashboard/Dashboard'
+import Nav from './Components/Nav/Nav'
+import Profile from './Components/Profile/Profile'
 
 function App() {
   return (
     <div className="App">
       <Nav />
-
-      <Route path='/dashboard' component={Dashboard}/>
-      <Route path='/profile' component={Profile} />
+      <Route exact path={'/'} component={LandingPage}/>
+      <Route path={'/dashboard'} component={Dashboard}/>
+      <Route path={'/profile'} component={Profile} />
     </div>
   );
 }
