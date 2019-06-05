@@ -1,0 +1,13 @@
+.event-picture {
+    border: 1px solid black;
+    margin-top: 100px;
+    width: 40%;
+    height: 350px;
+}
+
+.events-page {
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}

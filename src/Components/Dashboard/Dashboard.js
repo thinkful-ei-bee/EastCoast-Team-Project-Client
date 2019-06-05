@@ -11,7 +11,7 @@ export default class Dashboard extends React.Component{
         </div>
 
         <div>
-          <Link>Events</Link>
+          <Link to='/events'>Events</Link>
           <p>Post a date event</p>
         </div>
       </div>
