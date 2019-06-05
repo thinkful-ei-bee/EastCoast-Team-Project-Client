@@ -5,6 +5,7 @@ import Dashboard from './Components/Dashboard/Dashboard'
 import Nav from './Components/Nav/Nav'
 import Profile from './Components/Profile/Profile'
 import EventsPage from './Components/Events/EventsPage';
+import RegistrationRoute from './Components/RegistrationRouter/RegistrationRoute';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path={'/dashboard'} component={Dashboard}/>
       <Route path={'/events'} component={EventsPage} />
       <Route path={'/profile'} component={Profile} />
+      <Route path={'/signup'} component={RegistrationRoute} />
     </div>
   );
 }
