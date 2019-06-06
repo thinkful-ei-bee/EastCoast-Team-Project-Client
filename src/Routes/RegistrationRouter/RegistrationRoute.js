@@ -1,5 +1,5 @@
 import React from 'react'
-import RegistrationForm from '../RegistrationForm/RegistrationForm';
+import RegistrationForm from '../../Components/RegistrationForm/RegistrationForm';
 
 export default function RegistrationRoute() {
   return(

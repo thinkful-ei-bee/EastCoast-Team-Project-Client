@@ -11,8 +11,8 @@ export default class RegistrationForm extends React.Component{
           <label htmlFor="registration">Full Name</label>
           <input type="text" id="full-name" name="full-name" required/>
 
-          <label htmlFor="username">User Name</label>
-          <input type="text" id="username" name="username" required/>
+          <label htmlFor="email">Email</label>
+          <input type="text" id="email" name="email" required/>
 
           <label htmlFor="Password">Password</label>
           <input type="text" id="password" name="password" required/> 
