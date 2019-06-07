@@ -1,5 +1,6 @@
 import React from 'react'
 import AuthApiService from '../../Services/auth-api-service'
+import { Link } from 'react-router-dom'
 import './RegistrationForm.css'
 
 export default class RegistrationForm extends React.Component{
@@ -47,18 +48,45 @@ export default class RegistrationForm extends React.Component{
             </div>
             
             <label htmlFor="registration">Full Name</label>
-            <input type="text" id="full-name" name="full-name" required/>
+            <input 
+              className="registration-input" 
+              ref={this.firstInput}
+              id="registration-name-input"
+              type="text"
+              name="full-name" 
+              placeholder="Enter full name"
+              required/>
 
             <label htmlFor="email">Email</label>
-            <input type="text" id="email" name="email" required/>
+            <input 
+              className="registration-input" 
+              type="text" 
+              id="registration-email-input" 
+              name="email" 
+              placeholder="Enter Email"
+              required/>
 
             <label htmlFor="Password">Password</label>
-            <input type="text" id="password" name="password" required/> 
+            <input 
+              className="registration-input" 
+              type="text" 
+              id="registration-password-input" 
+              name="password" 
+              placeholder="Enter password"
+              required/> 
             
             <label htmlFor="comfirmPassword">Confirm Password</label>
-            <input type="text" id="comfirm-password" name="confirm-password" required/>
+            <input 
+              className="registration-input" 
+              type="text" 
+              id="registration-confirm-password-input" 
+              name="confirm-password" 
+              placeholder="Confirm password"
+              required/>
 
-            <button type="submit">Sign up!</button>       
+            <button type="submit" className="btn">Sign up!</button> 
+            {' '}<br></br>
+            <Link to='/login'>Already have an account?</Link>      
           </form>
         </fieldset>
         </div>
