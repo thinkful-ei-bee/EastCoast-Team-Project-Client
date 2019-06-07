@@ -1,11 +1,11 @@
 import React from 'react';
 import {Route} from 'react-router-dom'
-import LandingPage from './Components/LandingPage/LandingPage'
-import Dashboard from './Components/Dashboard/Dashboard'
+import LandingPage from './Routes/LandingPageRoute/LandingPage'
+import Dashboard from './Routes/DashboardRoute/Dashboard'
 import Nav from './Components/Nav/Nav'
-import Profile from './Components/Profile/Profile'
-import EventsPage from './Components/Events/EventsPage';
-import RegistrationRoute from './Components/RegistrationRouter/RegistrationRoute';
+import Profile from './Routes/ProfileRoute/Profile'
+import EventsPage from './Routes/EventsRoute/EventsPage';
+import RegistrationRoute from './Routes/RegistrationRouter/RegistrationRoute';
 
 function App() {
   return (
