@@ -14,16 +14,20 @@ export default class RegistrationForm extends React.Component{
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { name, email, password} = e.target
+    const { full_name, user_name, email, password, gender } = e.target
     AuthApiService.postUser({
-      name: name.value,
+      full_name: full_name.value,
+      user_name: user_name.value,
       email: email.value, 
-      password: password.value
+      password: password.value,
+      gender: gender.value
     })
     .then(user => {
-      name.value = ''
+      full_name.value = ''
+      user_name.value = ''
       email.value = ''
       password.value = ''
+      gender.value = ''
       this.props.registrationSuccess()
     })
     .catch(res => {
@@ -51,7 +55,7 @@ export default class RegistrationForm extends React.Component{
             <input 
               className="registration-input" 
               ref={this.firstInput}
-              id="registration-name-input"
+              id="full_name"
               type="text"
               name="full-name" 
               placeholder="Enter full name"
@@ -61,28 +65,37 @@ export default class RegistrationForm extends React.Component{
             <input 
               className="registration-input" 
               type="text" 
-              id="registration-email-input" 
+              id="email" 
               name="email" 
               placeholder="Enter Email"
+              required/>
+
+            <label htmlFor="email">Username</label>
+            <input 
+              className="registration-input" 
+              type="text" 
+              id="user_name" 
+              name="username" 
+              placeholder="Enter username"
               required/>
 
             <label htmlFor="Password">Password</label>
             <input 
               className="registration-input" 
-              type="text" 
-              id="registration-password-input" 
+              type="password" 
+              id="password" 
               name="password" 
               placeholder="Enter password"
-              required/> 
-            
-            <label htmlFor="comfirmPassword">Confirm Password</label>
+              required/>
+
+            <label htmlFor="email">Gender</label>
             <input 
               className="registration-input" 
               type="text" 
-              id="registration-confirm-password-input" 
-              name="confirm-password" 
-              placeholder="Confirm password"
-              required/>
+              id="gender" 
+              name="gender" 
+              placeholder="Enter gender"
+              required/> 
 
             <button type="submit" className="btn">Sign up!</button> 
             {' '}<br></br>
