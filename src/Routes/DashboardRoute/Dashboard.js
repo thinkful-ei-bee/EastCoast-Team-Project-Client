@@ -11,6 +11,7 @@ export default class Dashboard extends React.Component{
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
+        console.log.log(profile)
         this.setState({
 
         })
