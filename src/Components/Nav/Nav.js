@@ -1,31 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import UserContext from '../../Contexts/UserContext'
 import './Nav.css'
 import TokenService from '../../Services/token-service';
 
 export default class Nav extends React.Component{
-  static contextType = UserContext
-  
   handleLogoutClick = () => {
-    this.context.processLogout()
+    TokenService.clearAuthToken();
   }
 
   renderLogoutLink() {
     return (
-      <div>
-        <span>
-          {this.context.user.name}
-        </span>
-        <nav className="header-menu-link" role="navigation">
-          <Link
-            onClick={this.handleLogoutClick}
-            to='/login'>
-            Logout
-          </Link>
-        </nav>
+      <div className='Header__logged-in'>
+        <Link
+          onClick={this.handleLogoutClick}
+          to='/'>
+          Logout
+        </Link>
       </div>
-    )
+    );
   }
 
   renderLoginLink() {

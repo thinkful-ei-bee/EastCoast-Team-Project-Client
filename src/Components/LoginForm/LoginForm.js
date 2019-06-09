@@ -1,5 +1,5 @@
 import React from 'react'
-import UserContext from '../../Contexts/UserContext'
+import TokenService from '../../Services/token-service'
 import AuthApiService from '../../Services/auth-api-service'
 
 export default class LoginForm extends React.Component{
@@ -7,35 +7,40 @@ export default class LoginForm extends React.Component{
     onLoginSuccess: () => { }
   }
 
-  static contextType = UserContext
-
   state = { error: null }
 
-  firstInput = React.createRef()
+  handleSubmitBasicAuth = ev => {
+    ev.preventDefault();
+    const { user_name, password } = ev.target;
 
-  handleSubmit = ev => {
-    ev.preventDefault()
-    const { user_name, password } = ev.target
+    TokenService.saveAuthToken(
+      TokenService.makeBasicAuthToken(user_name.value, password.value)
+    );
 
-    this.setState({ error: null })
+    user_name.value = '';
+    password.value = '';
+    this.props.onLoginSuccess();
+  }
 
+  handleSubmitJwtAuth = ev => {
+    ev.preventDefault();
+    this.setState({ error: null });
+    const { user_name, password } = ev.target;
+    
     AuthApiService.postLogin({
       user_name: user_name.value,
       password: password.value,
     })
       .then(res => {
-        user_name.value = ''
-        password.value = ''
-        this.context.processLogin(res.authToken)
-        this.props.onLoginSuccess()
+        user_name.value = '';
+        password.value = '';
+        TokenService.saveAuthToken(res.authToken);
+        console.log(res.authToken)
+        this.props.onLoginSuccess();
       })
       .catch(res => {
-        this.setState({ error: res.error })
-      })
-  }
-
-  componentDidMount() {
-    this.firstInput.current.focus()
+        this.setState({ error: res.error });
+      });
   }
 
 
@@ -44,7 +49,7 @@ export default class LoginForm extends React.Component{
     return(
       <section>
         <div className="login-form">
-        <form className='LoginForm' onSubmit={this.handleSubmit}>
+        <form className='LoginForm' onSubmit={this.handleSubmitJwtAuth}>
 
         <div role='alert'>
           {error && <p>{error}</p>}

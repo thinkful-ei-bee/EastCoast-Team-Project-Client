@@ -29,10 +29,7 @@ class App extends React.Component{
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
           <PublicOnlyRoute exact path={'/landingPage'} component={LandingPage}/>
         </Switch>
-        {/* <Route exact path={'/'}
-            component={Dashboard}/>
-        <Route exact path={'/profile'}
-        component={Profile}/> */}
+ 
 
       </main>
     </div>
