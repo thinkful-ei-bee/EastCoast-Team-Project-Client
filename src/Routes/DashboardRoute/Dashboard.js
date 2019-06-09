@@ -7,13 +7,10 @@ export default class Dashboard extends React.Component{
     return(
       <div className="dashboard">
         <div className="event-carousel">
-          <h3>Events carousel</h3>
+          <h3>Random potential dates</h3>
         </div>
-
-        <div>
-          <Link to='/events'>Events</Link>
-          <p>Post a date event</p>
-        </div>
+        <button type="click">Eventify Her</button>
+        <button type="click">Create an event</button>
       </div>
     )
   }

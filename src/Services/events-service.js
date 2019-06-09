@@ -1,12 +1,8 @@
 import config from '../config'
 
-const RendezvousService = {
+const EventsService = {
   getEvents() {
     return fetch(`${config.API_ENDPOINT}/events`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-      },
     })
       .then(res =>
         (!res.ok)
@@ -38,4 +34,4 @@ const RendezvousService = {
   // }
 }
 
-module.exports = RendezvousService;
+export default EventsService;
