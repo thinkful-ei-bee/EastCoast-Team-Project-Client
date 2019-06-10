@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
 import './Dashboard.css'
 
@@ -11,7 +11,7 @@ export default class Dashboard extends React.Component{
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
-        console.log.log(profile)
+        console.log(profile)
         this.setState({
 
         })

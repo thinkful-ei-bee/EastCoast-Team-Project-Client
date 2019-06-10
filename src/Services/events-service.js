@@ -1,7 +1,7 @@
 import config from '../config'
 
 const EventsService = {
-  getEvents() {
+  getEvents(){
     return fetch(`${config.API_ENDPOINT}/events`, {
     })
       .then(res =>
