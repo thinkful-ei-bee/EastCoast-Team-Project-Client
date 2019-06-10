@@ -1,32 +1,27 @@
 import React from 'react';
-//import {Link} from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
+import EventService from '../../Services/events-service'
+import EventForm from '../../Routes/EventsRoute/EventForm'
 import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
   state = {
     userPictures: [],
-    currentImageIndex: 0
+    currentImageIndex: 0,
+    showEventifyForm: false,
+    selectValue: false
   }
 
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
-        console.log(profile)
+        const userProfilePictures = profile.map(pic => pic.profile_picture)
         this.setState({
-          // userPictures: userProfilePictures
+          userPictures: userProfilePictures
         })
       })
   }
-
-  // renderUserPictures() {
-  //   const userPics = (!this.state.userPictures) ? []
-  //   : <div>
-  //        <img src={this.state.userPictures[0]} alt='profile'/>
-  //     </div>
-
-  //   return userPics;
-  // }
 
   prevPicture = () => {
     // find index of last image in the array
@@ -56,6 +51,39 @@ export default class Dashboard extends React.Component{
     })
   }
 
+  handleEventifyButton = () => {
+    this.setState({ showEventifyForm: true })
+  }
+
+  handleAddEvent = (e) => {
+    e.preventDefault()
+    const { event_name, event_date, event_time, event_type, is_private, event_location, event_details } = e.target;
+
+
+    EventService.postEvents({
+      event_name: event_name.value,
+      event_date: event_date.value,
+      event_time: event_time.value, 
+      event_type: event_type.value,
+      is_private: is_private.value,
+      event_location: event_location.value,
+      event_details: event_details.value
+    }) 
+      .then(response => {
+        event_name.value =''
+        event_date.value = ''
+        event_time.value = ''
+        event_type.value = ''
+        is_private.value = ''
+        event_location.value = ''
+        event_details.value = ''
+      })
+  }
+
+  handleMenuChange = (selectValue) => {
+    this.setState({ selectValue })
+  }
+
   render(){
     // get current image index
     const index = this.state.currentImageIndex;
@@ -68,6 +96,10 @@ export default class Dashboard extends React.Component{
       firstImage = firstImage.concat(this.state.userPictures.slice(0, 1-firstImage.length))
     }
 
+    const showForm = <EventForm addEvent={this.handleAddEvent} handleChange={this.handleMenuChange} selectValue={this.state.selectValue}/>
+
+    console.log(this.state.selectValue)
+
     return(
       <div className="dashboard">
           <button className="btn" onClick={this.prevPicture}>{'<'}</button>
@@ -78,8 +110,19 @@ export default class Dashboard extends React.Component{
           </div>
           <button className="btn" onClick={this.nextPicture}>{'>'}</button>
         
-        <button type="click" className="btn">Eventify Her</button>
-        <button type="click" className="btn">Create an event</button>
+        <button type="click" className="btn" >Eventify Her</button>
+        {/* <Popup
+          trigger={open => (
+            <button className="btn"></button>
+          )}
+          >
+        </Popup> */}
+        {/* <button type="click" className="btn" onClick={this.handleEventifyButton}>Create an event</button> */}
+        {/* {showForm} */}
+        <Route exact path="/createEvent" render={() => (
+          <EventForm addEvent={this.handleAddEvent} handleChange={this.handleMenuChange} selectValue={this.state.selectValue}/>
+      )} />
+      <Link to="/createEvent">Create Event</Link>
       </div>
     )
   }
