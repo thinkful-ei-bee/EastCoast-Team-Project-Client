@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import Popup from "reactjs-popup"; 
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
 import EventForm from '../../Components/EventForm/EventForm'

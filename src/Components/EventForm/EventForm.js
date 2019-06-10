@@ -1,7 +1,6 @@
 import React from 'react'
 import { Input, Label } from '../Form/Form'
 import Button from '../Button/Button'
-import Select from 'react-select';
 import './EventForm.css'
 
 export default class EventForm extends React.Component{
