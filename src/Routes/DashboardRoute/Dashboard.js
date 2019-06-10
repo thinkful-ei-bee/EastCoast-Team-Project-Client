@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import Popup from "reactjs-popup"; 
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
 import EventForm from '../../Components/EventForm/EventForm'
@@ -98,7 +97,12 @@ export default class Dashboard extends React.Component{
       firstImage = firstImage.concat(this.state.userPictures.slice(0, 1-firstImage.length))
     }
 
-    const showForm = (!this.state.showEventifyForm) ? '' : <EventForm addEvent={this.handleAddEvent} handleChange={this.handleMenuChange} selectValue={this.state.selectValue}/>
+    // const showForm = (!this.state.showEventifyForm) ? '' : <EventForm addEvent={this.handleAddEvent} handleChange={this.handleMenuChange} selectValue={this.state.selectValue}/>
+
+    const showForm = (!this.state.showEventifyForm) ? '' :
+    <EventForm>
+          <h2>Hello modal</h2>
+    </EventForm>
 
     console.log(this.state.selectValue)
 
@@ -121,6 +125,7 @@ export default class Dashboard extends React.Component{
         </Popup> */}
         <button type="click" className="btn" onClick={this.handleEventifyButton}>Create an event</button>
         {showForm}
+      
       </div>
     )
   }
