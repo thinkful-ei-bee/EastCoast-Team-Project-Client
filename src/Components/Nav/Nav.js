@@ -39,7 +39,7 @@ export default class Nav extends React.Component{
         <div className='nav_link'>
         <Link to='/login'>Login</Link>
         {' '}
-        <Link to='/register'>Sign up</Link>
+        <Link to='/signup'>Sign up</Link>
         </div>
       </nav>
     )
