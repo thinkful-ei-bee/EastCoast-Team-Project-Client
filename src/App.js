@@ -11,12 +11,15 @@ import PrivateRoute from './Routes/PrivateOnlyRoute/PrivateOnlyRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
 
 class App extends React.Component{
-  state = { hasError: false }
+  state = { 
+    hasError: false
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
     return { hasError: true }
   }
+
   render() {
     return (
     <div className="App">
