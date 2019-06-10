@@ -28,7 +28,6 @@ export default class EventForm extends React.Component{
       event_details: event_details.value
     }) 
       .then(response => {
-        console.log(response)
         event_name.value =''
         event_date.value = ''
         event_time.value = ''
@@ -37,6 +36,7 @@ export default class EventForm extends React.Component{
         event_location.value = ''
         event_details.value = ''
       })
+      this.props.history.push('/');
   }
 
   render(){
