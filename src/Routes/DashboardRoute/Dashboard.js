@@ -55,35 +55,6 @@ export default class Dashboard extends React.Component{
     this.setState({ showEventifyForm: true })
   }
 
-  handleAddEvent = (e) => {
-    e.preventDefault()
-    const { event_name, event_date, event_time, event_type, is_private, event_location, event_details } = e.target;
-
-
-    EventService.postEvents({
-      event_name: event_name.value,
-      event_date: event_date.value,
-      event_time: event_time.value, 
-      event_type: event_type.value,
-      is_private: is_private.value,
-      event_location: event_location.value,
-      event_details: event_details.value
-    }) 
-      .then(response => {
-        event_name.value =''
-        event_date.value = ''
-        event_time.value = ''
-        event_type.value = ''
-        is_private.value = ''
-        event_location.value = ''
-        event_details.value = ''
-      })
-  }
-
-  handleMenuChange = (selectValue) => {
-    this.setState({ selectValue })
-  }
-
   render(){
     // get current image index
     const index = this.state.currentImageIndex;
@@ -96,32 +67,18 @@ export default class Dashboard extends React.Component{
       firstImage = firstImage.concat(this.state.userPictures.slice(0, 1-firstImage.length))
     }
 
-    const showForm = <EventForm addEvent={this.handleAddEvent} handleChange={this.handleMenuChange} selectValue={this.state.selectValue}/>
-
-    console.log(this.state.selectValue)
-
     return(
       <div className="dashboard">
-          <button className="btn" onClick={this.prevPicture}>{'<'}</button>
-          <div className="picture-carousel">
-          {firstImage.map((pic, index) => 
-            <img key={index} src={pic} alt=''/>
-            )}
-          </div>
-          <button className="btn" onClick={this.nextPicture}>{'>'}</button>
-        
-        <button type="click" className="btn" >Eventify Her</button>
-        {/* <Popup
-          trigger={open => (
-            <button className="btn"></button>
+        <button className="btn" onClick={this.prevPicture}>{'<'}</button>
+        <div className="picture-carousel">
+        {firstImage.map((pic, index) => 
+          <img key={index} src={pic} alt=''/>
           )}
-          >
-        </Popup> */}
-        {/* <button type="click" className="btn" onClick={this.handleEventifyButton}>Create an event</button> */}
-        {/* {showForm} */}
-        <Route exact path="/createEvent" render={() => (
-          <EventForm addEvent={this.handleAddEvent} handleChange={this.handleMenuChange} selectValue={this.state.selectValue}/>
-      )} />
+        </div>
+        <button className="btn" onClick={this.nextPicture}>{'>'}</button>
+      
+        <button type="click" className="btn" >Eventify Her</button>
+
       <Link to="/createEvent">Create Event</Link>
       </div>
     )

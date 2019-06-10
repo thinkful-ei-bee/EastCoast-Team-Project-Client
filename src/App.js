@@ -9,6 +9,7 @@ import RegistrationRoute from './Routes/RegistrationRouter/RegistrationRoute';
 import LoginRoute from './Routes/LoginRoute/LoginRoute'
 import PrivateRoute from './Routes/PrivateOnlyRoute/PrivateOnlyRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
+import EventForm from './Routes/EventsRoute/EventForm';
 
 class App extends React.Component{
   state = { 
@@ -34,6 +35,7 @@ class App extends React.Component{
           />
           <PrivateRoute path={'/events'} component={EventsPage} />
           <PrivateRoute path={'/profile'} component={Profile} />
+          <PrivateRoute path={'/createEvent'} component={EventForm}/>
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />

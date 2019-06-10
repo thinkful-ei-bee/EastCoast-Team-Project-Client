@@ -1,17 +1,50 @@
 import React from 'react'
 import { Input, Label } from '../../Components/Form/Form'
 import Button from '../../Components/Button/Button'
+import EventService from '../../Services/events-service'
 //import './EventForm.css'
 
 export default class EventForm extends React.Component{
-  render(){
-    console.log('hi')
-    return(
+  state = {
+    selectValue: false
+  }
 
+  handleMenuChange = (selectValue) => {
+    this.setState({ selectValue })
+  }
+
+  handleAddEvent = (e) => {
+    e.preventDefault()
+    const { event_name, event_date, event_time, event_type, is_private, event_location, event_details } = e.target;
+
+
+    EventService.postEvents({
+      event_name: event_name.value,
+      event_date: event_date.value,
+      event_time: event_time.value, 
+      event_type: event_type.value,
+      is_private: is_private.value,
+      event_location: event_location.value,
+      event_details: event_details.value
+    }) 
+      .then(response => {
+        console.log(response)
+        event_name.value =''
+        event_date.value = ''
+        event_time.value = ''
+        event_type.value = ''
+        is_private.value = ''
+        event_location.value = ''
+        event_details.value = ''
+      })
+  }
+
+  render(){
+    return(
       <section>
         <div className="event-form">
         <fieldset>
-          <form onSubmit={this.props.addEvent}>
+          <form onSubmit={this.handleAddEvent}>
             <h3>Create an event:</h3>
 
             <Label htmlFor="name">Name of event</Label>
@@ -28,7 +61,7 @@ export default class EventForm extends React.Component{
 
             {/* <Label>Group or Private</Label> */}
             {/* <Select id="isPrivate" name="isPrivate" onChange={e => this.props.handleChange(e.target.value)} options={ isPrivate } value={ this.props.selectValue }/> */}
-            <select id="is_private" name="is_private" onChange={e => this.props.handleChange(e.target.value)} value={ this.props.selectValue }>
+            <select id="is_private" name="is_private" onChange={e => this.handleMenuChange(e.target.value)} value={ this.props.selectValue }>
               <option value="false">Group</option>
               <option value="true">Private</option>
             </select>
