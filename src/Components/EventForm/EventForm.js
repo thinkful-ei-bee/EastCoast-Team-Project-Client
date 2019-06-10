@@ -1,35 +1,48 @@
 import React from 'react'
+import { Input, Label } from '../Form/Form'
+import Button from '../Button/Button'
+import Select from 'react-select';
+import './EventForm.css'
 
 export default class EventForm extends React.Component{
   render(){
+    const isPrivate = [
+      { label: 'Group', value: false},
+      { label: 'Private', value: true}
+    ]
     return(
       <section>
         <div className="event-form">
         <fieldset>
-          <form >
+          <form onSubmit={this.props.addEvent}>
+            <h3>Create an event:</h3>
 
-            <label htmlFor="name">Name of event</label>
-            <input type="text" id="name" name="name" placeholder="Name of event" required/>
+            <Label htmlFor="name">Name of event</Label>
+            <Input type="text" id="event_name" name="event_name" placeholder="Name of event" required/>
 
-            <label htmlFor="date">Date</label>
-            <input type="text" id="date" name="date" placeholder="Date" required/> 
+            <Label htmlFor="date">Date</Label>
+            <Input type="text" id="event_date" name="event_date" placeholder="Date" required/> 
 
-            <label htmlFor="time">Time</label>
-            <input type="text" id="time" name="time" placeholder="time" required/> 
+            <Label htmlFor="time">Time</Label>
+            <Input type="text" id="event_time" name="event_time" placeholder="time" required/> 
 
-            <label htmlFor="type">Type</label>
-            <input type="text" id="type" name="type" placeholder="Type" required/> 
+            <Label htmlFor="type">Type</Label>
+            <Input type="text" id="event_type" name="event_type" placeholder="Type" required/> 
 
-            <label htmlFor="group-or-private">Group or private date event</label>
-            <input type="text" id="group-or-private" name="group-or-private" placeholder="group or private date event" required/> 
+            {/* <Label>Group or Private</Label> */}
+            {/* <Select id="isPrivate" name="isPrivate" onChange={e => this.props.handleChange(e.target.value)} options={ isPrivate } value={ this.props.selectValue }/> */}
+            <select id="is_private" name="is_private" onChange={e => this.props.handleChange(e.target.value)} value={ this.props.selectValue }>
+              <option value="false">Group</option>
+              <option value="true">Private</option>
+            </select>
 
-            <label htmlFor="locatio">Locatio</label>
-            <input type="text" id="locatio" name="location" placeholder="Location" required/> 
+            <Label htmlFor="locatio">Location</Label>
+            <Input type="text" id="event_location" name="event_location" placeholder="Location" required/> 
 
-            <label htmlFor="details">Details</label>
-            <input type="text" id="date" name="date" placeholder="Event details" required/> 
+            <Label htmlFor="details">Details</Label>
+            <Input type="text" id="event_details" name="event_details" placeholder="Event details" required/> 
 
-            <button type="submit">Login</button>       
+            <Button type="submit">Create Event</Button>       
           </form>
         </fieldset>
         </div>
