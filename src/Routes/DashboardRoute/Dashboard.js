@@ -12,15 +12,9 @@ export default class Dashboard extends React.Component{
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
-<<<<<<< HEAD
         console.log(profile)
-||||||| merged common ancestors
-        console.log.log(profile)
-=======
-        const userProfilePictures = profile.map(pic => pic.profile_picture)
->>>>>>> 2af7768b1f93e89c9e9e65df5f9e687029d06c98
         this.setState({
-          userPictures: userProfilePictures
+          // userPictures: userProfilePictures
         })
       })
   }
