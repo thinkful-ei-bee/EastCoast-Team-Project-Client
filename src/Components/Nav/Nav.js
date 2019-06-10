@@ -50,7 +50,7 @@ export default class Nav extends React.Component{
       <header>
       <h1>
         <Link to='/'>
-          Spaced repetition
+          Rendezvous
         </Link>
       </h1>
       {TokenService.hasAuthToken()
