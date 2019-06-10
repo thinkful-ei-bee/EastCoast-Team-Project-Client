@@ -1,8 +1,12 @@
 import config from '../config'
+import TokenService from './token-service';
 
 const EventsService = {
   getEvents(){
     return fetch(`${config.API_ENDPOINT}/events`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      }
     })
       .then(res =>
         (!res.ok)
@@ -15,6 +19,7 @@ const EventsService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(eventName, eventDate, eventTime, eventLocation, eventDetails, isPrivate),
     })

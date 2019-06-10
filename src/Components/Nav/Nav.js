@@ -47,6 +47,7 @@ export default class Nav extends React.Component{
   
   render() {
     return(
+<<<<<<< HEAD
       <header>
       <h1>
         <Link to='/'>
@@ -58,6 +59,35 @@ export default class Nav extends React.Component{
         : this.renderLoginLink()}
     </header>
   );
+||||||| merged common ancestors
+    <div className="nav">
+      <nav>
+        <Link to='/dashboard'>Dashboard</Link>     
+        <Link to='/profile'>Profile</Link> 
+
+        <div>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </div>
+      </nav>
+    </div>
+  )
+=======
+    <div className="nav">
+      <nav>
+        <Link to='/'>Dashboard</Link>     
+        <Link to='/profile'>Profile</Link> 
+
+        <div>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </div>
+      </nav>
+    </div>
+  )
+>>>>>>> 2af7768b1f93e89c9e9e65df5f9e687029d06c98
   }
   
 }
