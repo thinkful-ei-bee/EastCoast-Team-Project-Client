@@ -103,22 +103,22 @@ export default class Dashboard extends React.Component{
 
     return(
       <div className="dashboard">
-          <button className="btn" onClick={this.prevPicture}>{'<'}</button>
           <div className="picture-carousel">
           {firstImage.map((pic, index) => 
             <img key={index} src={pic} alt=''/>
             )}
           </div>
-          <button className="btn" onClick={this.nextPicture}>{'>'}</button>
+          <button className="left-btn" onClick={this.prevPicture}>{'<'}</button>
+          <button className="right-btn" onClick={this.nextPicture}>{'>'}</button>
         
-        <button type="click" className="btn" >Eventify Her</button>
+        <button type="click" className="match-btn" >Eventify Her</button>
         {/* <Popup
           trigger={open => (
             <button className="btn"></button>
           )}
           >
         </Popup> */}
-        <button type="click" className="btn" onClick={this.handleEventifyButton}>Create an event</button>
+        <button type="click" className="event-btn" onClick={this.handleEventifyButton}>Create an event</button>
         {showForm}
       </div>
     )

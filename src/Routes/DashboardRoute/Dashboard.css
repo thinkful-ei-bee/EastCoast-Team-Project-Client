@@ -1,6 +1,7 @@
 .dashboard {
     display: flex;
     flex-direction: column;
+    
 }
 
 .picture-carousel {
@@ -12,7 +13,31 @@
 }
 
 
-.btn {
+.left-btn, .right-btn {
     width: fit-content;
     margin: auto;
+   
+}
+.left-btn{
+    margin-left: 250px;
+    margin-top: 0px;
+}
+.right-btn{
+    margin-top: 0;
+    margin-right: 250px;
+}
+.event-btn{
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+}
+.match-btn {
+    width: fit-content;
+    margin: auto;
+    margin-top: 40px;
+}
+img {
+    height: 250px;
+    width: 220px;
+    margin-top: 80px;
 }
