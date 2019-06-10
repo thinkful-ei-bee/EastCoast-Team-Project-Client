@@ -1,8 +1,12 @@
 import config from '../config'
+import TokenService from './token-service'
 
 const ProfileService = {
 getProfile() {
   return fetch(`${config.API_ENDPOINT}/user_profile`, {
+    headers: {
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
+    }
   })
     .then(res =>
     (!res.ok)

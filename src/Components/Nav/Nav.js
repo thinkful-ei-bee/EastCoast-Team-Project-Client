@@ -34,7 +34,7 @@ export default class Nav extends React.Component{
     return(
     <div className="nav">
       <nav>
-        <Link to='/dashboard'>Dashboard</Link>     
+        <Link to='/'>Dashboard</Link>     
         <Link to='/profile'>Profile</Link> 
 
         <div>

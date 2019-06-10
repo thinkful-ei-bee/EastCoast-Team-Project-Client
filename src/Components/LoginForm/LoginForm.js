@@ -4,6 +4,7 @@ import AuthApiService from '../../Services/auth-api-service'
 import UserContext from '../../contexts/UserContext'
 import Button from '../Button/Button'
 import './LoginForm.css'
+import TokenService from '../../Services/token-service';
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -16,18 +17,31 @@ class LoginForm extends Component {
 
   firstInput = React.createRef()
 
+  handleSubmitBasicAuth = ev => {
+    ev.preventDefault()
+    const { user_name, password} = ev.target
+
+    TokenService.saveAuthToken(
+      TokenService.makeBasicAuthToken(user_name.value, password.value)
+    )
+
+    user_name.value = ''
+    password.value = ''
+    this.props.onLoginSuccess()
+  }
+
   handleSubmit = ev => {
     ev.preventDefault()
-    const { username, password } = ev.target
-    console.log(username.value,password.value,'test')
+    const { user_name, password } = ev.target
+    console.log(user_name.value,password.value,'test')
     this.setState({ error: null })
 
     AuthApiService.postLogin({
-      user_name: username.value,
+      user_name: user_name.value,
       password: password.value,
     })
       .then(res => {
-        username.value = ''
+        user_name.value = ''
         password.value = ''
         console.log(res.authToken,'test')
         console.log(this.context,'test context')
@@ -60,7 +74,7 @@ class LoginForm extends Component {
           <Input
             ref={this.firstInput}
             id='login-username-input'
-            name='username'
+            name='user_name'
             required
           />
         </div>
