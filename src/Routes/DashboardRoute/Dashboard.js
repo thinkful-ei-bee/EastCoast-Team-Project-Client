@@ -1,8 +1,6 @@
 import React from 'react';
-import {Link, Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
-import EventService from '../../Services/events-service'
-import EventForm from '../../Routes/EventsRoute/EventForm'
 import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
