@@ -1,7 +1,18 @@
-.event-carousel {
-    border: 1px solid black;
-    width: 60%;
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.picture-carousel {
     margin: auto;
-    margin-top: 100px;
-    text-align: center;
+}
+
+.picture-carousel img {
+    border: 1px solid black;
+}
+
+
+.btn {
+    width: fit-content;
+    margin: auto;
 }
