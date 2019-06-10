@@ -5,7 +5,7 @@ import './RegistrationForm.css'
 
 export default class RegistrationForm extends React.Component{
   static defaultProps = {
-    registrationSuccess: () => { }
+    registrationSucess: () => { }
   }
 
   state = { error: null }
@@ -28,7 +28,7 @@ export default class RegistrationForm extends React.Component{
       email.value = ''
       password.value = ''
       gender.value = ''
-      this.props.registrationSuccess()
+      this.props.registrationSucess()
     })
     .catch(res => {
       this.setState({ error: res.error })
