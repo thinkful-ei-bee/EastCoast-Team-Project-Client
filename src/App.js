@@ -11,6 +11,12 @@ import PrivateRoute from './Routes/PrivateOnlyRoute/PrivateOnlyRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
 
 class App extends React.Component{
+  state = { hasError: false }
+
+  static getDerivedStateFromError(error) {
+    console.error(error)
+    return { hasError: true }
+  }
   render() {
     return (
     <div className="App">
@@ -19,7 +25,8 @@ class App extends React.Component{
       <main role="main">
         <Switch>
           <PrivateRoute 
-            exact path={'/'}
+            exact 
+            path={'/'}
             component={Dashboard}
           />
           <PrivateRoute path={'/events'} component={EventsPage} />
@@ -28,6 +35,7 @@ class App extends React.Component{
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
           <PublicOnlyRoute exact path={'/landingPage'} component={LandingPage}/>
+         
         </Switch>
  
 

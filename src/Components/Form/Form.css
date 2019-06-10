@@ -1,0 +1,30 @@
+.Label{
+  font-size:25px;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  padding:5px;
+  color:white;
+  margin:0 auto;
+}
+
+form{
+  margin:0 auto;
+}
+
+.Input{
+  border: 1px solid #ddd;
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: left;
+
+  border-radius: 4px;
+}
+
+@media(max-width:600px){
+  .Input{
+   margin:0 auto;
+  }
+ }

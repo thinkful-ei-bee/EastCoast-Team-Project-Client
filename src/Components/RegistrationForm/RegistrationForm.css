@@ -1,11 +1,12 @@
 .registration-form {
-    display: block;
-    width: 320px;
-    height: 10px;
+    display: flex;
+    flex-direction: column;
+    width:320px;
+   
     font-size: 18px;
     text-align: left;
     padding: 15px;
-    border: 2px solid #e7e7e7;
+    
     border-radius: 5px;
     background: #fcfcfc;
     margin: 10px auto 20px;

@@ -43,9 +43,9 @@ export default class RegistrationForm extends React.Component{
     const { error } = this.state
     return(
       <section>
-        <div className="registration-form" >
+        <div className="registration-form-container" >
         <fieldset>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} className="registration-form">
             
             <div role='alert'>
               {error && <p>{error}</p>}

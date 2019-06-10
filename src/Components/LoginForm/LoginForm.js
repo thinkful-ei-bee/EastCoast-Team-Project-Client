@@ -1,70 +1,86 @@
-import React from 'react'
-import TokenService from '../../Services/token-service'
+import React, { Component } from 'react'
+import { Input, Label } from '../Form/Form'
 import AuthApiService from '../../Services/auth-api-service'
+import UserContext from '../../contexts/UserContext'
+import Button from '../Button/Button'
+import './LoginForm.css'
 
-export default class LoginForm extends React.Component{
+class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => { }
   }
 
+  static contextType = UserContext
+
   state = { error: null }
 
-  handleSubmitBasicAuth = ev => {
-    ev.preventDefault();
-    const { user_name, password } = ev.target;
+  firstInput = React.createRef()
 
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user_name.value, password.value)
-    );
+  handleSubmit = ev => {
+    ev.preventDefault()
+    const { username, password } = ev.target
+    console.log(username.value,password.value,'test')
+    this.setState({ error: null })
 
-    user_name.value = '';
-    password.value = '';
-    this.props.onLoginSuccess();
-  }
-
-  handleSubmitJwtAuth = ev => {
-    ev.preventDefault();
-    this.setState({ error: null });
-    const { user_name, password } = ev.target;
-    
     AuthApiService.postLogin({
-      user_name: user_name.value,
+      user_name: username.value,
       password: password.value,
     })
       .then(res => {
-        user_name.value = '';
-        password.value = '';
-        TokenService.saveAuthToken(res.authToken);
-        console.log(res.authToken)
-        this.props.onLoginSuccess();
+        username.value = ''
+        password.value = ''
+        console.log(res.authToken,'test')
+        console.log(this.context,'test context')
+        this.context.processLogin(res.authToken)
+        this.props.onLoginSuccess()
       })
       .catch(res => {
-        this.setState({ error: res.error });
-      });
+        this.setState({ error: res.error })
+      })
   }
 
+  componentDidMount() {
+    this.firstInput.current.focus()
+  }
 
-  render(){
+  render() {
     const { error } = this.state
-    return(
-      <section>
-        <div className="login-form">
-        <form className='LoginForm' onSubmit={this.handleSubmitJwtAuth}>
-
+    return (
+      <form
+        className='LoginForm'
+        onSubmit={this.handleSubmit}
+      >
         <div role='alert'>
           {error && <p>{error}</p>}
         </div>
-
-          <label htmlFor="email">UserName</label>
-          <input type="text" ref={this.firstInput} id="user_name" name="email" required/>
-
-          <label htmlFor="Password">Password</label>
-          <input type="password" id="password" name="password" required/> 
-
-          <button type="submit">Login</button>       
-        </form>
+        <div>
+          <Label htmlFor='login-username-input'>
+            Username
+          </Label>
+          <Input
+            ref={this.firstInput}
+            id='login-username-input'
+            name='username'
+            required
+          />
         </div>
-      </section>
+        <div>
+          <Label htmlFor='login-password-input'>
+            Password
+          </Label>
+          <Input
+            id='login-password-input'
+            name='password'
+            type='password'
+            required
+          />
+        </div>
+        <Button type='submit'>
+          Login
+        </Button>
+      </form>
     )
-  }   
+  }
 }
+
+export default LoginForm
