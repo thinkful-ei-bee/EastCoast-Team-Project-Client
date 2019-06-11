@@ -2,6 +2,7 @@ import React from 'react'
 import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
 import Button from '../../Components/Button/Button'
+import './EventifyForm.css'
 
 
 export default class EventifyForm extends React.Component{
@@ -40,14 +41,14 @@ export default class EventifyForm extends React.Component{
       )
      
     return(
-      <div>
+      <div className="eventify-form">
         <fieldset>
           <form onSubmit={this.handleChooseEvent}>
             <h2>Choose one of your events to invite this person:</h2>
             <select id="chooseEvent" name="chooseEvent" onChange={e => this.handleMenuChange(e.target.value)} value={ this.state.selectedValue }>
               {events}
-            </select>
-            <Button>Choose event</Button>
+            </select><br></br>
+            <Button>Choose event</Button><br></br>
             <Button type="click" onClick={this.routeChange}>Cancel</Button>    
           </form>
         </fieldset>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Input, Label } from '../../Components/Form/Form'
 import Button from '../../Components/Button/Button'
 import EventService from '../../Services/events-service'
-//import './EventForm.css'
+import './EventForm.css'
 
 export default class EventForm extends React.Component{
   state = {
