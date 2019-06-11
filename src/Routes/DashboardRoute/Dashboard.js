@@ -57,11 +57,8 @@ export default class Dashboard extends React.Component{
         // filter from allProfiles whose id does not match id of filtered gender
         let filteredProfiles = allProfiles.filter(user => parseInt(user.id) === parseInt(filteredGenderId))
         
-        this.setState({
-          filteredProfileInfo: filteredProfiles
-        })
+        this.setState({ filteredProfileInfo: filteredProfiles })
         const filteredPics = this.state.filteredProfileInfo.map(user => user.profile_picture)
-        
         this.setState({ filteredProfilePictures: filteredPics })
       })
     })
@@ -110,7 +107,7 @@ export default class Dashboard extends React.Component{
     if (firstImage.length < 1) {
       firstImage = firstImage.concat(this.state.filteredProfilePictures.slice(0, 1-firstImage.length))
     }
-    
+
     return(
       <div className="dashboard">
         <div className="dashboard-pic">
