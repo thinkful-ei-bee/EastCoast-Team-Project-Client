@@ -12,6 +12,7 @@ import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
 import EventForm from './Routes/EventsRoute/EventForm';
 import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
+import NotificationRoute from './Routes/Notifications/NotificationRoute'
 
 class App extends React.Component{
   state = { 
@@ -40,6 +41,7 @@ class App extends React.Component{
           <PrivateRoute path={'/createEvent'} component={EventForm}/>
           <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>
           <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
+          <PrivateRoute path={'/notifications'} component={NotificationRoute} />
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
