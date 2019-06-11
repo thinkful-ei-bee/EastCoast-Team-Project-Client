@@ -50,13 +50,13 @@ export default class UserProfile extends React.Component {
                     onChange={this.onFormChange}
                 />
                 <label htmlFor="me_intro">Bio:</label>
-                <input
+                <textarea
                     required
                     name="me_intro"
                     type="text"
                     value={this.state.me_intro}
-                    onChange={this.onFormChange}
-                />
+                    onChange={this.onFormChange}>
+                </textarea>
                 <label htmlFor="music_like">Music Interests:</label>
                 <input
                     required

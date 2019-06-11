@@ -14,9 +14,9 @@ export default class Profile extends React.Component{
     ProfileService.getProfile()
       .then(profile => {
         // console.log(profile)
-        const users = profile.filter(ev => ev.id === this.context.user.id)
+        // const users = profile.filter(ev => ev.id === this.context.user.id)
         this.setState({
-          userInfo: users
+          userInfo: profile
         })
       })
   }
