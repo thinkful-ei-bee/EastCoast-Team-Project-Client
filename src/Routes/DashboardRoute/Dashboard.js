@@ -7,11 +7,9 @@ import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
   state = {
-    userPictures: [],
     allUsers: [],
     allProfileInfo: [],
     filteredProfileInfo: [],
-    filteredProfilePictures: [],
     currentImageIndex: 0,
     showEventifyForm: false,
     selectValue: false
@@ -22,10 +20,8 @@ export default class Dashboard extends React.Component{
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
-        const userProfilePictures = profile.map(pic => pic.profile_picture)
         this.setState({
-          userPictures: userProfilePictures,
-          allProfileInfo: profile
+          userPictures: profile,
         })
 
       AuthApiService.getUsers()
@@ -33,7 +29,7 @@ export default class Dashboard extends React.Component{
         this.setState({ allUsers: users })
 
         const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
-        const allProfiles = (!this.state.allProfileInfo) ? [] : this.state.allProfileInfo
+        const allProfiles = (!this.state.userPictures) ? [] : this.state.userPictures
 
         const loggedinUser = allUsers.filter(user => {
           return user.id === this.context.user.id
@@ -47,10 +43,11 @@ export default class Dashboard extends React.Component{
           return allProfiles.some(o2 => {
             return o1.id === o2.id;
           })
-        })
+        }) 
+        
         // filters allUsers whose gender does not match logged in user gender
         let filteredGender = results.filter(user => user.gender !== loggedinUserGender.toString()) 
-
+        
         // gets ID of filtered gender from allUsers
         const filteredGenderId = filteredGender.map(user => user.id)
 
@@ -58,15 +55,14 @@ export default class Dashboard extends React.Component{
         let filteredProfiles = allProfiles.filter(user => parseInt(user.id) === parseInt(filteredGenderId))
         
         this.setState({ filteredProfileInfo: filteredProfiles })
-        const filteredPics = this.state.filteredProfileInfo.map(user => user.profile_picture)
-        this.setState({ filteredProfilePictures: filteredPics })
+        const filteredPics = this.state.filteredProfileInfo.map(user => user.profile_picture)  
       })
     })
   }
 
   prevPicture = () => {
     // find index of last image in the array
-    const lastIndex = this.state.filteredProfilePictures.length - 1;
+    const lastIndex = this.state.filteredProfileInfo.length - 1;
 
     //check if we need to start over from the last index
     const resetIndex = this.state.currentImageIndex === 0;
@@ -80,7 +76,7 @@ export default class Dashboard extends React.Component{
 
   nextPicture = () => {
     //find index of the last image in array
-    const lastIndex = this.state.filteredProfilePictures.length - 1;
+    const lastIndex = this.state.filteredProfileInfo.length - 1;
 
     //check if we need to start over from the last index
     const resetIndex = this.state.currentImageIndex === lastIndex;
@@ -101,12 +97,13 @@ export default class Dashboard extends React.Component{
     const index = this.state.currentImageIndex;
 
     // create new array with 1 image with the source images
-    let firstImage = this.state.filteredProfilePictures.slice(index, index + 1);
+    let firstImage = this.state.filteredProfileInfo.slice(index, index + 1);
 
     //check length of new array 
     if (firstImage.length < 1) {
-      firstImage = firstImage.concat(this.state.filteredProfilePictures.slice(0, 1-firstImage.length))
+      firstImage = firstImage.concat(this.state.filteredProfileInfo.slice(0, 1-firstImage.length))
     }
+
 
     return(
       <div className="dashboard">
@@ -114,7 +111,7 @@ export default class Dashboard extends React.Component{
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
           <div className="picture-carousel">
           {firstImage.map((pic, index) => 
-            <img key={index} src={pic} alt=''/>
+            <Link to={`/profile/${pic.id}`} key={index}><img src={pic.profile_picture} alt=''/></Link>
             )}
           </div>
           <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>

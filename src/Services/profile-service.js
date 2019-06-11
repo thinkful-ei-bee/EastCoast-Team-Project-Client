@@ -29,8 +29,8 @@ getProfile(){
           : res.json()
       )
   },
-  getProfileById() {
-    return fetch(`${config.API_ENDPOINT}/user_profile/:profile_id`, {
+  getProfileById(id) {
+    return fetch(`${config.API_ENDPOINT}/user_profile/${id}`, {
       headers:{
         'authorization':`bearer ${TokenService.getAuthToken()}`
        }, 
