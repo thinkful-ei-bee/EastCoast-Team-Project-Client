@@ -4,17 +4,36 @@
     padding-bottom: 5%;
 }
 
+.dashboard-pic {
+    position: relative;
+    margin: auto;
+}
+
 .picture-carousel {
     margin: auto;
 }
 
 .picture-carousel img {
     border: 1px solid black;
+    width: 250px;
 }
 
 .btn {
+    position: absolute;
     width: fit-content;
     margin: auto;
+    font-size: 20px;
+    border: none;
+    background: none;
+}
+
+.left-btn {
+    left: -15%;
+    top: 45%;
+}
+.right-btn {
+    right: -15%;
+    bottom: 50%;
 }
 
 .dashboard a{
