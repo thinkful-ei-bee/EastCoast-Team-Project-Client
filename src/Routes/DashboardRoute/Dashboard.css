@@ -22,7 +22,7 @@
     position: absolute;
     width: fit-content;
     margin: auto;
-    font-size: 20px;
+    font-size: 30px;
     border: none;
     background: none;
 }
@@ -33,11 +33,14 @@
 }
 .right-btn {
     right: -15%;
-    bottom: 50%;
+    bottom: 45%;
 }
 
 .dashboard a{
     text-align: center;
     text-decoration: none;
+    color: black;
+    background: rgb(226, 191, 240); 
     margin-top: 10px;
+    width: fit-content
 }

@@ -36,6 +36,7 @@ export default class EventifyForm extends React.Component{
 
   
   render() {
+    console.log(this.context.user)
     const events = (!this.state.events) ? [] : this.state.events.map((event, i) => 
       <option key={i}>{event.event_name}</option>
       )
