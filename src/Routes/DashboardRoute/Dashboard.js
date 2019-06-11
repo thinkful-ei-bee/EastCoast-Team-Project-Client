@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
 import AuthApiService from '../../Services/auth-api-service'
+import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
 import './Dashboard.css'
 
@@ -10,6 +11,7 @@ export default class Dashboard extends React.Component{
     allUsers: [],
     allProfileInfo: [],
     filteredProfileInfo: [],
+    events: [],
     currentImageIndex: 0,
     showEventifyForm: false,
     selectValue: false
@@ -18,6 +20,12 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
+    EventService.getEvents()
+      .then(events => {
+        const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id)
+        this.setState({ events: filteredEvents })
+      })
+
     ProfileService.getProfile()
       .then(profile => {
         this.setState({
@@ -92,6 +100,16 @@ export default class Dashboard extends React.Component{
     this.setState({ showEventifyForm: true })
   }
 
+  renderEvents() {
+    const userEvents = (this.state.events.length === 0) ? 'You have no events yet'
+    : this.state.events.map((event, i) => 
+      <div key={i}>
+        <Link to={`/events/${event.id}`}>{event.event_name}</Link>
+      </div>
+      )
+    return userEvents;
+  }
+
   render(){
     // get current image index
     const index = this.state.currentImageIndex;
@@ -119,6 +137,9 @@ export default class Dashboard extends React.Component{
       
         <Link to="/eventifyForm">Eventify Her</Link>
         <Link to="/createEvent">Create Event</Link>
+
+        <h3>Your upcoming events:</h3>
+        {this.renderEvents()}
       </div>
     )
   }

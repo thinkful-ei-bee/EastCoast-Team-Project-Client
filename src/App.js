@@ -37,7 +37,7 @@ class App extends React.Component{
             path={'/'}
             component={Dashboard}
           />
-          <PrivateRoute path={'/events'} component={EventsPage} />
+          <PrivateRoute path={'/events/:id'} component={EventsPage} />
           {/* <PrivateRoute path={'/profile'} component={Profile} /> */}
           <PrivateRoute path={'/createEvent'} component={EventForm}/>
           <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>

@@ -22,13 +22,13 @@ export default class ProfileOther extends React.Component{
           events: filteredEvents
         })
       })
-
   }
 
   render() {
     const user = this.state.profile
     const events = this.state.events
     const userEvents = (events.length === 0 ) ? 'I have no events yet' : events
+
     return(
       <div className="profile">
         <img src={user.profile_picture} alt=''/>
