@@ -18,9 +18,9 @@ export default class Nav extends React.Component{
         {this.context.user.name}
       </span>
       <nav>
-        <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
         <Link to='/'>Dashboard</Link><br></br>
-        <Link to='/notifications'>Notifications</Link>
+        <Link to='/notifications'>Notifications</Link><br></br>
+        <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
       </nav>
     </div>
   )

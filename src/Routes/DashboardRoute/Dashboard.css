@@ -1,6 +1,7 @@
 .dashboard {
     display: flex;
     flex-direction: column;
+    padding-bottom: 5%;
 }
 
 .picture-carousel {
@@ -11,9 +12,13 @@
     border: 1px solid black;
 }
 
-
-
 .btn {
     width: fit-content;
     margin: auto;
+}
+
+.dashboard a{
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10px;
 }
