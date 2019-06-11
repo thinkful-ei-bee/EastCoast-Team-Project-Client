@@ -3,9 +3,11 @@ import React from 'react';
 export default class EditProfile extends React.Component {
 
     state = {
-        //help me. not sure
+        //not sure
     }
 
+    // i was doing a GET request in order to pre-fill the form inputs with the existing values
+    // using properties(params) set by the route component
     componentDidMount() {
         const userId = this.props.match.params.user_id
         fetch(`http://localhost:8000/api/user_profile/${userId}`, {
@@ -15,6 +17,7 @@ export default class EditProfile extends React.Component {
             return res.json()
         })
     }
+
 
     handleSubmit = event => {
         event.preventDefault()
@@ -28,10 +31,11 @@ export default class EditProfile extends React.Component {
 
     render() { 
         const {} = this.state //whenever we talk about this
+
         return (
             <div>
                 <h2>Edit Profile</h2>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="me_intro">Profile Picture</label>
                     <input
                         required
