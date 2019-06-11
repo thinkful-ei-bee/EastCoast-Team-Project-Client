@@ -99,12 +99,7 @@ export default class Dashboard extends React.Component{
     this.setState({ showEventifyForm: true })
   }
 
-  filteredProfiles() {
-   
-    }
-
   render(){
-    console.log(this.context.user)
     // get current image index
     const index = this.state.currentImageIndex;
 
@@ -115,7 +110,7 @@ export default class Dashboard extends React.Component{
     if (firstImage.length < 1) {
       firstImage = firstImage.concat(this.state.filteredProfilePictures.slice(0, 1-firstImage.length))
     }
-
+    
     return(
       <div className="dashboard">
         <div className="dashboard-pic">
