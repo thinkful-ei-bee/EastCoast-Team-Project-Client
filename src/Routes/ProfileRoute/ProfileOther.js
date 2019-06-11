@@ -27,7 +27,11 @@ export default class ProfileOther extends React.Component{
   render() {
     const user = this.state.profile
     const events = this.state.events
-    const userEvents = (events.length === 0 ) ? 'I have no events yet' : events
+    const userEvents = (events.length === 0 ) ? 'I have no events yet' 
+    : <div>
+        <p>My events: {events}</p>
+        <button>Intrigued</button>
+      </div>
 
     return(
       <div className="profile">
@@ -38,7 +42,7 @@ export default class ProfileOther extends React.Component{
           <li>Music: {user.music_like}</li>
           <li>Favorite movie: {user.movie_like}</li>
         </ul>
-        <p>My events: {userEvents}</p>
+        <p>Events: {userEvents}</p>
       </div>
     )
   }
