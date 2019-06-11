@@ -4,4 +4,10 @@
 
 .profile img {
     width: 250px;
+    border-radius: 50%;
+}
+
+.profile ul {
+    list-style: none;
+    line-height: 30px;
 }
