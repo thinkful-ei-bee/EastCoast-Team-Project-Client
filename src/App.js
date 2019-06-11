@@ -12,7 +12,8 @@ import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
 import EventForm from './Routes/EventsRoute/EventForm';
 import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
-import NotificationRoute from './Routes/Notifications/NotificationRoute'
+import NotificationRoute from './Routes/Notifications/NotificationRoute';
+import EditProfile from './Routes/ProfileRoute/EditProfile'
 
 class App extends React.Component{
   state = { 
@@ -42,6 +43,7 @@ class App extends React.Component{
           <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>
           <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
           <PrivateRoute path={'/notifications'} component={NotificationRoute} />
+          <PrivateRoute path={'/edit/:id'} component={EditProfile}/>
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
