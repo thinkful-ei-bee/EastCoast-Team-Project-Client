@@ -1,7 +1,16 @@
 .dashboard {
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     
+=======
+    padding-bottom: 5%;
+}
+
+.dashboard-pic {
+    position: relative;
+    margin: auto;
+>>>>>>> 3cef3c7125c3c5fe49d89c7ea76ad4a36a79e6c9
 }
 
 .picture-carousel {
@@ -10,6 +19,7 @@
 
 .picture-carousel img {
     border: 1px solid black;
+<<<<<<< HEAD
 }
 
 
@@ -41,3 +51,34 @@ img {
     width: 220px;
     margin-top: 80px;
 }
+=======
+    width: 250px;
+}
+
+.btn {
+    position: absolute;
+    width: fit-content;
+    margin: auto;
+    font-size: 30px;
+    border: none;
+    background: none;
+}
+
+.left-btn {
+    left: -15%;
+    top: 45%;
+}
+.right-btn {
+    right: -15%;
+    bottom: 45%;
+}
+
+.dashboard a{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background: rgb(226, 191, 240); 
+    margin-top: 10px;
+    width: fit-content
+}
+>>>>>>> 3cef3c7125c3c5fe49d89c7ea76ad4a36a79e6c9

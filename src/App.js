@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom'
+import { Switch} from 'react-router-dom'
 import LandingPage from './Routes/LandingPageRoute/LandingPage'
 import Dashboard from './Routes/DashboardRoute/Dashboard'
 import Nav from './Components/Nav/Nav'
@@ -9,14 +9,21 @@ import RegistrationRoute from './Routes/RegistrationRouter/RegistrationRoute';
 import LoginRoute from './Routes/LoginRoute/LoginRoute'
 import PrivateRoute from './Routes/PrivateOnlyRoute/PrivateOnlyRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
+import EventForm from './Routes/EventsRoute/EventForm';
+import EventifyForm from './Routes/EventifyRoute/EventifyForm';
+import NotifcationSent from './Routes/NotificationSent/NotificationSent';
+import NotificationRoute from './Routes/Notifications/NotificationRoute'
 
 class App extends React.Component{
-  state = { hasError: false }
+  state = { 
+    hasError: false
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
     return { hasError: true }
   }
+
   render() {
     return (
     <div className="App">
@@ -31,6 +38,10 @@ class App extends React.Component{
           />
           <PrivateRoute path={'/events'} component={EventsPage} />
           <PrivateRoute path={'/profile'} component={Profile} />
+          <PrivateRoute path={'/createEvent'} component={EventForm}/>
+          <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>
+          <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
+          <PrivateRoute path={'/notifications'} component={NotificationRoute} />
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />

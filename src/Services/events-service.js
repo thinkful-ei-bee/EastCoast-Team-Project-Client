@@ -2,7 +2,7 @@ import config from '../config'
 import TokenService from './token-service';
 
 const EventsService = {
-  getEvents() {
+  getEvents(){
     return fetch(`${config.API_ENDPOINT}/events`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
