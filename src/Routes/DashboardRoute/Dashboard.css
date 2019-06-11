@@ -1,16 +1,12 @@
 .dashboard {
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
-    
-=======
     padding-bottom: 5%;
 }
 
 .dashboard-pic {
     position: relative;
     margin: auto;
->>>>>>> 3cef3c7125c3c5fe49d89c7ea76ad4a36a79e6c9
 }
 
 .picture-carousel {
@@ -19,39 +15,6 @@
 
 .picture-carousel img {
     border: 1px solid black;
-<<<<<<< HEAD
-}
-
-
-.left-btn, .right-btn {
-    width: fit-content;
-    margin: auto;
-   
-}
-.left-btn{
-    margin-left: 250px;
-    margin-top: 0px;
-}
-.right-btn{
-    margin-top: 0;
-    margin-right: 250px;
-}
-.event-btn{
-    width: fit-content;
-    margin: auto;
-    margin-top: 20px;
-}
-.match-btn {
-    width: fit-content;
-    margin: auto;
-    margin-top: 40px;
-}
-img {
-    height: 250px;
-    width: 220px;
-    margin-top: 80px;
-}
-=======
     width: 250px;
 }
 
@@ -81,4 +44,3 @@ img {
     margin-top: 10px;
     width: fit-content
 }
->>>>>>> 3cef3c7125c3c5fe49d89c7ea76ad4a36a79e6c9

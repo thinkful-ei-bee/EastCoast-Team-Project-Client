@@ -1,5 +1,6 @@
 import React from 'react'
 import ProfileService from '../../Services/profile-service'
+import UserContext from '../../contexts/UserContext';
 import UserProfile from './AddProfile';
 
 export default class Profile extends React.Component{
@@ -7,12 +8,15 @@ export default class Profile extends React.Component{
     userInfo: []
   }
 
+  static contextType = UserContext
+
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
         // console.log(profile)
+        const users = profile.filter(ev => ev.event_owner_id === this.context.user.id)
         this.setState({
-          userInfo: profile,
+          userInfo: users
         })
       })
   }
