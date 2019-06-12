@@ -10,9 +10,12 @@
   font-size:20px;
   font-weight:300;
   color:white;
-  background-color:#E55934;
+  /* background-color:#E55934; */
+  background-color: #b47eb3;
   text-align:center;
   transition: all 0.2s;
+  margin-left: 145px;
+  margin-top: 50px;
   }
   
   .Button:hover{

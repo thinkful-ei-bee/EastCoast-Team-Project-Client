@@ -1,4 +1,16 @@
-.nav{
+/* .nav{
     height: 60px;
     border-bottom: 1px solid black;
+    
+} */
+.nav-link {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: inline-block;
+}
+body {
+    background-color: white;
 }

@@ -1,4 +1,4 @@
-.registration-form {
+/* .registration-form {
     display: flex;
     flex-direction: column;
     width:320px;
@@ -10,5 +10,30 @@
     border-radius: 5px;
     background: #fcfcfc;
     margin: 10px auto 20px;
+} */
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    width:320px;
+    background-color: #ffd5ff;
+    width: 400px;
+    padding: 40px;
+    border-radius: 3px;
+    /* background: white; */
+    margin: 0 auto;
+    height: 300px;
+    padding-top: 90px;
 }
+#login-username-input {
+    margin: auto;
+}
+#login-password-input {
+    margin: auto;
+    margin-top: 25px;
+}
+#login-button {
+    margin-right: 80px;
+}
+
 
