@@ -143,11 +143,10 @@ export default class Dashboard extends React.Component{
   }
  
   render(){
+    console.log(this.context.user)
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
-
-    console.log(userId)
 
     return(
       <div className="dashboard">
