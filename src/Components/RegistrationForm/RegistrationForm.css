@@ -11,7 +11,10 @@
     background: #fcfcfc;
     margin: 10px auto 20px;
 } */
-
+.registration-form-container {
+    background-color: #b47eb3;
+    border-radius: 50%;
+}
 .registration-form {
     display: flex;
     flex-direction: column;

@@ -18,3 +18,9 @@
 #login-button {
     margin-right: 80px;
 }
+.login-form-container {
+    background-color: #b47eb3;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 50%;
+}
