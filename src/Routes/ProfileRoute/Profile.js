@@ -1,10 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Input, Label } from '../../Components/Form/Form'
-import { Button } from '../../Components/Button/Button'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
-import addProfileForm from '../../Components/addProfileForm/addProfileForm'
 import './Profile.css'
 
 export default class ProfileOther extends React.Component{
