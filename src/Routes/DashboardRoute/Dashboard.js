@@ -1,17 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
-import AuthApiService from '../../Services/auth-api-service'
+import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
 import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
   state = {
-    userPictures: [],
+    currentUser: [],
     allUsers: [],
     allProfileInfo: [],
     filteredProfileInfo: [],
-    filteredProfilePictures: [],
+    events: [],
+    currentImage: [],
     currentImageIndex: 0,
     showEventifyForm: false,
     selectValue: false
@@ -20,60 +21,48 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
+    EventService.getEvents()
+      .then(events => {
+        const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
+        this.setState({ events: filteredEvents })
+      })
+
     ProfileService.getProfile()
       .then(profile => {
-        const userProfilePictures = profile.map(pic => pic.profile_picture)
+        console.log(profile)
+        const currentUser = profile.filter(user => user.user_id === this.context.user.id)
         this.setState({
-          userPictures: userProfilePictures,
-          allProfileInfo: profile
+          currentUser: currentUser,
+          allUsers: profile
         })
-
-      AuthApiService.getUsers()
-      .then(users => {
-        this.setState({ allUsers: users })
-
-        const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
-        const allProfiles = (!this.state.allProfileInfo) ? [] : this.state.allProfileInfo
-
-        const loggedinUser = allUsers.filter(user => {
-          return user.id === this.context.user.id
-        })
-
-        // get gender of logged in user from id
-        const loggedinUserGender = loggedinUser.map(user => user.gender)
         
-        // filter allUsers array so that only the users that match the users in allProfiles match
-        let results = allUsers.filter(o1 => {
-          return allProfiles.some(o2 => {
-            return o1.id === o2.id;
-          })
-        })
-        // filters allUsers whose gender does not match logged in user gender
-        let filteredGender = results.filter(user => user.gender !== loggedinUserGender.toString()) 
+      const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
+      const loggedinUser = this.state.currentUser
+      //console.log(loggedinUser)
 
-        // gets ID of filtered gender from allUsers
-        const filteredGenderId = filteredGender.map(user => user.id)
+      // get gender of logged in user from id
+      const loggedinUserGender = loggedinUser.map(user => user.gender)
+     console.log(loggedinUserGender)
 
-        // filter from allProfiles whose id does not match id of filtered gender
-        let filteredProfiles = allProfiles.filter(user => parseInt(user.id) === parseInt(filteredGenderId))
-        
-        this.setState({
-          filteredProfileInfo: filteredProfiles
-        })
-        const filteredPics = this.state.filteredProfileInfo.map(user => user.profile_picture)
-        
-        this.setState({ filteredProfilePictures: filteredPics })
+      // filter users whose gender does not match the logged in user gender
+      const filteredUsers = allUsers.filter(user => user.gender !== loggedinUserGender.toString())
+
+      this.setState({
+        filteredProfileInfo: filteredUsers
       })
     })
   }
 
   prevPicture = () => {
     // find index of last image in the array
-    const lastIndex = this.state.filteredProfilePictures.length - 1;
+    const lastIndex = this.state.filteredProfileInfo.length - 1;
+
+    const { currentImageIndex } = this.state;
 
     //check if we need to start over from the last index
-    const resetIndex = this.state.currentImageIndex === 0;
-    const index = resetIndex ? lastIndex : this.state.currentImageIndex - 1;
+    const resetIndex = currentImageIndex === 0;
+
+    const index = resetIndex ? lastIndex : currentImageIndex - 1;
 
     //assign the logical index to currentImageIndex that will use in render method
     this.setState({
@@ -83,11 +72,13 @@ export default class Dashboard extends React.Component{
 
   nextPicture = () => {
     //find index of the last image in array
-    const lastIndex = this.state.filteredProfilePictures.length - 1;
+    const lastIndex = this.state.filteredProfileInfo.length - 1;
+
+    const { currentImageIndex } = this.state;
 
     //check if we need to start over from the last index
-    const resetIndex = this.state.currentImageIndex === lastIndex;
-    const index = resetIndex ? 0 : this.state.currentImageIndex + 1;
+    const resetIndex = currentImageIndex === lastIndex;
+    const index = resetIndex ? 0 : currentImageIndex + 1;
 
     //assign the logical index to currentImageIndex that will use in render method
     this.setState({
@@ -99,37 +90,50 @@ export default class Dashboard extends React.Component{
     this.setState({ showEventifyForm: true })
   }
 
-  filteredProfiles() {
-   
-    }
+  renderEvents() {
+    const userEvents = (this.state.events.length === 0) ? 'You have no events yet'
+    : this.state.events.map((event, i) => 
+      <div key={i}>
+        <Link to={`/events/${event.id}`}>{event.event_name}</Link>
+      </div>
+      )
+    return userEvents;
+  }
 
+  renderEventifyButton() {
+    const userGender = this.state.currentUser.map(user => user.gender.toString())
+    console.log(userGender)
+
+    if (userGender == 'female'.toString()) {
+      return <Link to="/eventifyForm">Eventify Him</Link>
+    } else { 
+      return <Link to="/eventifyForm">Eventify Her</Link>
+    }
+  }
+ 
   render(){
     console.log(this.context.user)
-    // get current image index
-    const index = this.state.currentImageIndex;
-
-    // create new array with 1 image with the source images
-    let firstImage = this.state.filteredProfilePictures.slice(index, index + 1);
-
-    //check length of new array 
-    if (firstImage.length < 1) {
-      firstImage = firstImage.concat(this.state.filteredProfilePictures.slice(0, 1-firstImage.length))
-    }
+    const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
+    
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
     return(
       <div className="dashboard">
         <div className="dashboard-pic">
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
           <div className="picture-carousel">
-          {firstImage.map((pic, index) => 
-            <img key={index} src={pic} alt=''/>
-            )}
+
+          <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
           </div>
+
           <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
         </div>
       
-        <Link to="/eventifyForm">Eventify Her</Link>
+        {this.renderEventifyButton()}
         <Link to="/createEvent">Create Event</Link>
+
+        <h3>Your upcoming events:</h3>
+        {this.renderEvents()}
       </div>
     )
   }

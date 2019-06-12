@@ -21,7 +21,7 @@ export default class Nav extends React.Component{
         <Link to='/'>Dashboard</Link><br></br>
         <Link to='/notifications'>Notifications</Link><br></br>
         <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
-        <Link to='/profile'>Profile</Link><br></br>
+        <Link to='/profile'>Profile</Link>
       </nav>
     </div>
   )

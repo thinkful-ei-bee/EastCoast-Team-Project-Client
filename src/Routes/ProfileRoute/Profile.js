@@ -1,7 +1,7 @@
 import React from 'react'
 import ProfileService from '../../Services/profile-service'
 import UserContext from '../../contexts/UserContext';
-import UserProfile from './AddProfile';
+import AddUserProfile from '../../Components/addProfileForm/addProfileForm';
 
 export default class Profile extends React.Component{
   state = {
@@ -38,8 +38,8 @@ export default class Profile extends React.Component{
     )
     return(
       <div>
-        <UserProfile />
-        {users}
+        <AddUserProfile />
+        
       </div>
     )
   }
