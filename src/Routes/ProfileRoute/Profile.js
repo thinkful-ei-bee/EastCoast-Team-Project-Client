@@ -1,12 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { Input, Label } from '../../Components/Form/Form'
+import { Button } from '../../Components/Button/Button'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
+import addProfileForm from '../../Components/addProfileForm/addProfileForm'
 import './Profile.css'
 
 export default class ProfileOther extends React.Component{
   state = {
     profile: [],
-    events: []
+    events: [],
+    edit: false,
   }
 
   componentDidMount() {
@@ -24,7 +29,15 @@ export default class ProfileOther extends React.Component{
       })
   }
 
-  render() {
+  handleEditButton = () => {
+    this.setState({ edit: true })
+  }
+
+  handleCancelButton = () => {
+    this.setState({ edit: false})
+  }
+
+  renderBioText() {
     const user = this.state.profile
     const events = this.state.events
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
@@ -33,8 +46,9 @@ export default class ProfileOther extends React.Component{
         <button>Intrigued</button>
       </div>
 
-    return(
+    return (
       <div className="profile">
+        <button onClick={this.handleEditButton}>Edit Profile</button>
         <img src={user.profile_picture} alt=''/>
         <p>Bio: {user.me_intro}</p>
         <p>Interests:</p>
@@ -43,6 +57,41 @@ export default class ProfileOther extends React.Component{
           <li>Favorite movie: {user.movie_like}</li>
         </ul>
         <p>Events: {userEvents}</p>
+      </div>
+    )
+  }
+
+  renderEditForm() {
+    const user = this.state.profile
+    console.log(user)
+    return(
+      <div className="edit-profile">
+        <fieldset>
+          <form>
+            <Label htmlFor="bio">Bio</Label>
+            <Input type="text" id="bio" name="bio" defaultValue={user.me_intro} />
+
+            <p>Interests:</p>
+            <Label htmlFor="music">Music</Label>
+            <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
+
+            <Label htmlFor="movie">Movie</Label>
+            <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
+
+            <button onClick={this.handleCancelButton}>Cancel</button>
+          </form>
+          
+        </fieldset>
+      </div>
+    ) 
+  }
+
+  render() {
+    const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
+
+    return(
+      <div>
+        {renderForm}
       </div>
     )
   }
