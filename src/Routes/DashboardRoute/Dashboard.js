@@ -14,6 +14,7 @@ export default class Dashboard extends React.Component{
     events: [],
     currentImage: [],
     currentImageIndex: 0,
+    currentImageId: [],
     showEventifyForm: false,
     selectValue: false
   }
@@ -27,9 +28,29 @@ export default class Dashboard extends React.Component{
         this.setState({ events: filteredEvents })
       })
 
+      ProfileService.getCurrentUserProfile()  
+      .then(profile=>
+        { 
+          // console.log( profile.isEmpty(),'test profile sendback')
+          if(profile.length ===0){
+            console.log('no')
+            const newUserProfileMandatory ={
+              profile_picture:'https://assets.rebelcircus.com/blog/wp-content/uploads/2016/05/facebook-avatar.jpg',
+              music_like:'unknown',
+              movie_like:'unknown',
+              me_intro:'User is lazy, did not leave any bio',
+            }
+            ProfileService.postProfile(newUserProfileMandatory)
+          }
+          else
+          {console.log(profile.user_id,'yes')}
+          console.log(profile,profile.length)
+      }
+      )
+
     ProfileService.getProfile()
       .then(profile => {
-        console.log(profile)
+        //console.log(profile)
         const currentUser = profile.filter(user => user.user_id === this.context.user.id)
         this.setState({
           currentUser: currentUser,
@@ -38,17 +59,18 @@ export default class Dashboard extends React.Component{
         
       const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
       const loggedinUser = this.state.currentUser
-      //console.log(loggedinUser)
 
       // get gender of logged in user from id
       const loggedinUserGender = loggedinUser.map(user => user.gender)
-     console.log(loggedinUserGender)
 
       // filter users whose gender does not match the logged in user gender
       const filteredUsers = allUsers.filter(user => user.gender !== loggedinUserGender.toString())
 
       this.setState({
         filteredProfileInfo: filteredUsers
+      })
+      this.setState({
+        currentImageId: this.state.filteredProfileInfo[this.state.currentImageIndex].id
       })
     })
   }
@@ -102,17 +124,20 @@ export default class Dashboard extends React.Component{
 
   renderEventifyButton() {
     const userGender = this.state.currentUser.map(user => user.gender.toString())
-    console.log(userGender)
+
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
     if (userGender == 'female'.toString()) {
-      return <Link to="/eventifyForm">Eventify Him</Link>
+      return <Link to={{
+        pathname: '/eventifyForm',
+        state: { userId: userId}
+      }}>Eventify Him</Link>
     } else { 
       return <Link to="/eventifyForm">Eventify Her</Link>
     }
   }
  
   render(){
-    console.log(this.context.user)
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
