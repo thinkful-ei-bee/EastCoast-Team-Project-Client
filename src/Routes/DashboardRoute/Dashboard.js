@@ -102,9 +102,13 @@ export default class Dashboard extends React.Component{
 
   renderEventifyButton() {
     const userGender = this.state.currentUser.map(user => user.gender.toString())
-    if (userGender === 'female') {
+    console.log(userGender)
+
+    if (userGender == 'female'.toString()) {
       return <Link to="/eventifyForm">Eventify Him</Link>
-    } else { return <Link to="/eventifyForm">Eventify Her</Link>}
+    } else { 
+      return <Link to="/eventifyForm">Eventify Her</Link>
+    }
   }
  
   render(){
