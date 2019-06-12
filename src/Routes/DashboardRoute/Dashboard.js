@@ -28,6 +28,26 @@ export default class Dashboard extends React.Component{
         this.setState({ events: filteredEvents })
       })
 
+      ProfileService.getCurrentUserProfile()  
+      .then(profile=>
+        { 
+          // console.log( profile.isEmpty(),'test profile sendback')
+          if(profile.length ===0){
+            console.log('no')
+            const newUserProfileMandatory ={
+              profile_picture:'https://assets.rebelcircus.com/blog/wp-content/uploads/2016/05/facebook-avatar.jpg',
+              music_like:'unknown',
+              movie_like:'unknown',
+              me_intro:'User is lazy, did not leave any bio',
+            }
+            ProfileService.postProfile(newUserProfileMandatory)
+          }
+          else
+          {console.log(profile.user_id,'yes')}
+          console.log(profile,profile.length)
+      }
+      )
+
     ProfileService.getProfile()
       .then(profile => {
         //console.log(profile)
