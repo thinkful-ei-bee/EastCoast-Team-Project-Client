@@ -9,14 +9,22 @@ import RegistrationRoute from './Routes/RegistrationRouter/RegistrationRoute';
 import LoginRoute from './Routes/LoginRoute/LoginRoute'
 import PrivateRoute from './Routes/PrivateOnlyRoute/PrivateOnlyRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
+import EventForm from './Routes/EventsRoute/EventForm';
+import EventifyForm from './Routes/EventifyRoute/EventifyForm';
+import NotifcationSent from './Routes/NotificationSent/NotificationSent';
+import NotificationRoute from './Routes/Notifications/NotificationRoute'
+import ProfileOther from './Routes/ProfileRoute/ProfileOther';
 
 class App extends React.Component{
-  state = { hasError: false }
+  state = { 
+    hasError: false
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
     return { hasError: true }
   }
+
   render() {
     return (
     <div className="App">
@@ -29,8 +37,13 @@ class App extends React.Component{
             path={'/'}
             component={Dashboard}
           />
-          <PrivateRoute path={'/events'} component={EventsPage} />
-          <PrivateRoute path={'/profile'} component={Profile} />
+          <PrivateRoute path={'/events/:id'} component={EventsPage} />
+          {/* <PrivateRoute path={'/profile'} component={Profile} /> */}
+          <PrivateRoute path={'/createEvent'} component={EventForm}/>
+          <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>
+          <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
+          <PrivateRoute path={'/notifications'} component={NotificationRoute} />
+          <PrivateRoute path={'/profile/:id'} component={ProfileOther} />
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />

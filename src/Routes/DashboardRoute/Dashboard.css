@@ -1,6 +1,12 @@
 .dashboard {
     display: flex;
     flex-direction: column;
+    padding-bottom: 5%;
+}
+
+.dashboard-pic {
+    position: relative;
+    margin: auto;
 }
 
 .picture-carousel {
@@ -9,11 +15,32 @@
 
 .picture-carousel img {
     border: 1px solid black;
+    width: 250px;
 }
 
-
-
 .btn {
+    position: absolute;
     width: fit-content;
     margin: auto;
+    font-size: 30px;
+    border: none;
+    background: none;
+}
+
+.left-btn {
+    left: -15%;
+    top: 45%;
+}
+.right-btn {
+    right: -15%;
+    bottom: 45%;
+}
+
+.dashboard a{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    background: rgb(226, 191, 240); 
+    margin-top: 10px;
+    width: fit-content
 }
