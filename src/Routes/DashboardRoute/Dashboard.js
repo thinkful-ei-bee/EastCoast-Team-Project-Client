@@ -47,8 +47,6 @@ export default class Dashboard extends React.Component{
       this.setState({
         filteredProfileInfo: filteredUsers
       })
-      console.log(this.state.filteredProfileInfo[0].id)
-     
     })
   }
 
@@ -100,31 +98,17 @@ export default class Dashboard extends React.Component{
   }
 
   render(){
-    // console.log(Object.keys(this.state.filteredProfileInfo[this.state.currentImageIndex]))
-    console.log(this.state.currentImageIndex)
+    const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
+    
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
-    // const currentImage = (!this.state.filteredProfileInfo) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
-    // console.log(currentImage)
-    // // get current image index
-    // const index = this.state.currentImageIndex;
-
-    // // create new array with 1 image with the source images
-    // let firstImage = this.state.filteredProfileInfo.slice(index, index + 1);
-
-    // //check length of new array 
-    // if (firstImage.length < 1) {
-    //   firstImage = firstImage.concat(this.state.filteredProfileInfo.slice(0, 1-firstImage.length))
-    // }
     return(
       <div className="dashboard">
         <div className="dashboard-pic">
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
           <div className="picture-carousel">
-          {/* {this.state.currentImage.map((pic, index) => 
-            <Link to={`/profile/${pic.id}`} key={index}><img src={pic.profile_picture} alt=''/></Link>
-            )} */}
-            {/* {this.state.filteredProfileInfo.map(pic => <img src={pic.profile_picture}/>)} */}
-          <img src={this.state.filteredProfileInfo[0]}/>
+
+          <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
           </div>
 
           <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
