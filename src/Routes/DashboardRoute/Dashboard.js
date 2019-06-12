@@ -97,6 +97,12 @@ export default class Dashboard extends React.Component{
     return userEvents;
   }
 
+  renderEventifyButton() {
+    const eventifyButton = (this.state.currentUser.map(user => user.gender.toString() === 'female')) ?
+    <Link to="/eventifyForm">Eventify Him</Link> : <Link to="/eventifyForm">Eventify Her</Link>
+    return eventifyButton;
+  }
+ 
   render(){
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
@@ -114,7 +120,7 @@ export default class Dashboard extends React.Component{
           <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
         </div>
       
-        <Link to="/eventifyForm">Eventify Her</Link>
+        {this.renderEventifyButton()}
         <Link to="/createEvent">Create Event</Link>
 
         <h3>Your upcoming events:</h3>
