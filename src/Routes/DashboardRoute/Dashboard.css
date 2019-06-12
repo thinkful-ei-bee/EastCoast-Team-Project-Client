@@ -1,7 +1,8 @@
 .dashboard {
     display: flex;
     flex-direction: column;
-    background-color: #b47eb3;
+    /* background-color: #b47eb3; */
+    background-color: #ffcba4;
     padding: 25px;
     margin-left: 20px;
     margin-right: 20px;
@@ -19,7 +20,7 @@
 
 .picture-carousel {
     margin: auto;
-    background-color: #b47eb3;
+    /* background-color: #b47eb3; */
 }
 
 .picture-carousel img {
@@ -54,7 +55,9 @@
     width: fit-content
 }
 .create-event {
-    background-color: #ffd5ff;
+    /* background-color: #ffd5ff; */
+    border: 10px solid #000080;
+    background-color: white;
     /* color: white; */
     margin-top: 60px;
     padding: auto;

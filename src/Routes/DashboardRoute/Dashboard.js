@@ -143,6 +143,7 @@ export default class Dashboard extends React.Component{
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
     return(
+      <div>
       <div className="dashboard">
         <div className="dashboard-pic">
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
@@ -156,10 +157,11 @@ export default class Dashboard extends React.Component{
       
         {this.renderEventifyButton()}
         <Link to="/createEvent">Create Event</Link>
-        <div className="create-event">
+      </div>
+      <div className="create-event">
         <h3>Your upcoming events:</h3>
         {this.renderEvents()}
-        </div>
+      </div>
       </div>
     )
   }
