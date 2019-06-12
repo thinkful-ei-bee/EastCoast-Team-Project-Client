@@ -20,20 +20,26 @@
     width: 400px;
     padding: 40px;
     border-radius: 3px;
-    /* background: white; */
-    margin: 0 auto;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
     height: 300px;
     padding-top: 90px;
+    padding-bottom: 90px;
+    
 }
-#login-username-input {
+.btn {
+    margin-top: -60px;
+    margin-left: 140px;
+}
+.account-created {
     margin: auto;
+    margin-top: 12px;
 }
-#login-password-input {
-    margin: auto;
-    margin-top: 25px;
+.registration-input {
+    padding: 12px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    /* margin: auto; */
 }
-#login-button {
-    margin-right: 80px;
-}
-
 

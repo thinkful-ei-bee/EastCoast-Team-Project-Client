@@ -99,7 +99,7 @@ export default class RegistrationForm extends React.Component{
 
             <button type="submit" className="btn">Sign up!</button> 
             {' '}<br></br>
-            <Link to='/login'>Already have an account?</Link>      
+            <Link to='/login' className="account-created">Already have an account?</Link>      
           </form>
         </fieldset>
         </div>
