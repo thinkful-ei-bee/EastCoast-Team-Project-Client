@@ -26,6 +26,15 @@ export default class Dashboard extends React.Component{
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
       })
+    ProfileService.getCurrentUserProfile()  
+      .then(profile=>
+        {
+          if(!profile){
+            console.log('no')
+          }
+          console.log('yes')
+      }
+      )
 
     ProfileService.getProfile()
       .then(profile => {
