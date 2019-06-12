@@ -43,7 +43,7 @@ class App extends React.Component{
           <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>
           <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
           <PrivateRoute path={'/notifications'} component={NotificationRoute} />
-          <PrivateRoute path={'/profile/:id'} component={ProfileOther} />
+          <PrivateRoute path={'/profile'} component={Profile} />
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
