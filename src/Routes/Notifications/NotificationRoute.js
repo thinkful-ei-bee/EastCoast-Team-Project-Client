@@ -10,15 +10,19 @@ export default class Notifications extends React.Component {
     showSent: false,
     recievedEvents: [],
     sentEvents: [],
-    currentUser: ''
+    allProfiles: [],
   }
 
   static contextType = UserContext
 
   componentDidMount() {
+    ProfileService.getProfile()
+      .then(profile => {
+        this.setState({ allProfiles: profile})
+      })
+
     ProfileService.getCurrentUserProfile()
       .then(user => {
-        // this.setState({ currentUser: user.map(user=>user.id)})
         const userId = user.map(user=>user.id)
       
     EventifyService.getEventify()
@@ -26,6 +30,7 @@ export default class Notifications extends React.Component {
         console.log(eventify)
         const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(userId))
         const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
+        console.log(filteredSentEvents)
         this.setState({ 
           recievedEvents: filteredRecievedEvents,
           sentEvents: filteredSentEvents 
@@ -54,16 +59,25 @@ export default class Notifications extends React.Component {
     )
   }
 
-  handleDeclineButton = () => {
-
+  handleDeclineButton = (eventifyId) => {
+  
+    // EventifyService.deleteEventify(eventifyId)
+    // let filteredEventify = this.state.recievedEvents.filter(eventify => eventify.id !== eventifyId.id)
+    // this.setState({
+    //   recievedEvents: filteredEventify
+    // })
   }
 
   renderSentNotifications() {
     return (this.state.sentEvents.map(event =>
       <div className="sent-notification" key={event.id}>
-        <h3>Sent</h3>
-        <img src={event.profile_picture} alt=''/>
-        <h4>From: {event.full_name}</h4>
+        <div className="sent-from">
+          <h3>Sent</h3>
+          <img src={event.profile_picture} alt=''/>
+          <h4>From: {event.full_name}</h4>
+        </div>
+        <div className="sent-to">
+        </div>
       </div>
     ))
   }
@@ -81,6 +95,7 @@ export default class Notifications extends React.Component {
     }
 
   render() {
+    console.log(this.state.recievedEvents)
     const notifications = (!this.state.showSent) ? this.renderRecievedNotifications() : this.renderSentNotifications()
 
     return(
