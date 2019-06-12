@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import EventifyService from '../../Services/eventify-service'
+import ProfileService from '../../Services/profile-service'
 import UserContext from '../../contexts/UserContext'
 import './NotificationRoute.css'
 
@@ -8,21 +9,29 @@ export default class Notifications extends React.Component {
   state = {
     showSent: false,
     recievedEvents: [],
-    sentEvents: []
+    sentEvents: [],
+    currentUser: ''
   }
 
   static contextType = UserContext
 
   componentDidMount() {
+    ProfileService.getCurrentUserProfile()
+      .then(user => {
+        // this.setState({ currentUser: user.map(user=>user.id)})
+        const userId = user.map(user=>user.id)
+      
     EventifyService.getEventify()
       .then(eventify => {
-        const filteredRecievedEvents = eventify.filter(e => e.recipient_id === this.context.user.id)
+        console.log(eventify)
+        const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(userId))
         const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
         this.setState({ 
           recievedEvents: filteredRecievedEvents,
           sentEvents: filteredSentEvents 
         })
       })
+    })
   }
 
   handleRecievedButton = () => {
@@ -43,8 +52,6 @@ export default class Notifications extends React.Component {
     }, 2000)}
       </>
     )
-
-    
   }
 
   handleDeclineButton = () => {
