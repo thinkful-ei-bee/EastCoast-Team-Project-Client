@@ -17,6 +17,7 @@ export default class EventifyForm extends React.Component{
 
   componentDidMount() {
     const {userId} = this.props.location.state
+    console.log(userId)
     this.setState({ recipientUserId: userId })
 
     EventService.getEvents()
@@ -53,6 +54,8 @@ export default class EventifyForm extends React.Component{
 
   
   render() {
+    console.log(this.state.recipientUserId)
+
     const events = (!this.state.events) ? [] : this.state.events.map(event => 
       <option key={event.id} value={event.id} id='event'>{event.event_name}</option>
       )
