@@ -1,7 +1,13 @@
+body {
+    background-image: url("steve-halama-1401211-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .LoginForm {
     /* background-color: #ffd5ff; */
     /* background-color: #cff0cc; */
-    background-color: #ffcba4;
+    /* background-color: #ffcba4; */
+    background-color: transparent;
     width: 400px;
     padding: 40px;
     border-radius: 3px;

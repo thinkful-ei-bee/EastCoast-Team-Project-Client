@@ -1,3 +1,8 @@
+body {
+    background-image: url("steve-halama-1401211-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .registration-form-container {
     /* background-color: #b47eb3; */
     /* border-radius: 50%; */
@@ -10,7 +15,8 @@
     width:320px;
     /* background-color: #ffd5ff; */
     /* background-color: #cff0cc; */
-    background-color: #ffcba4;
+    /* background-color: #ffcba4; */
+    background-color: transparent;
     /* border: 40px solid #f0e68c; */
     border: 10px solid #000080;
     width: 400px;
