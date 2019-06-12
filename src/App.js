@@ -38,12 +38,11 @@ class App extends React.Component{
             component={Dashboard}
           />
           <PrivateRoute path={'/events/:id'} component={EventsPage} />
-          {/* <PrivateRoute path={'/profile'} component={Profile} /> */}
           <PrivateRoute path={'/createEvent'} component={EventForm}/>
           <PrivateRoute path={'/eventifyForm'} component={EventifyForm}/>
           <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
           <PrivateRoute path={'/notifications'} component={NotificationRoute} />
-          <PrivateRoute path={'/profile'} component={Profile} />
+          <PrivateRoute path={'/profile/:id'} component={Profile} />
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />

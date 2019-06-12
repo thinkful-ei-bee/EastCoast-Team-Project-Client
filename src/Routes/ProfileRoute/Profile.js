@@ -1,47 +1,48 @@
 import React from 'react'
 import ProfileService from '../../Services/profile-service'
-import UserContext from '../../contexts/UserContext';
-import AddUserProfile from '../../Components/addProfileForm/addProfileForm';
+import EventService from '../../Services/events-service'
+import './Profile.css'
 
-export default class Profile extends React.Component{
+export default class ProfileOther extends React.Component{
   state = {
-    currentUserProfile: []
+    profile: [],
+    events: []
   }
 
-  static contextType = UserContext
-
-  
-// Inside other components, such as the list of articles, we would use a Link component from react-router-dom to link to this Route for any specific article.
-// Clicking on that link would navigate to the new route where we display an edit form: <Link to={`/edit/${props.id}`}>Edit Article</Link>
-
   componentDidMount() {
-    ProfileService.getCurrentUserProfile()
+    ProfileService.getProfileById(this.props.match.params.id)
       .then(profile => {
-        //  console.log(profile,'test profile')
-        //const users = profile.filter(ev => ev.id === this.context.user.id)
+        this.setState({ profile: profile})
+      })
+    
+    EventService.getEvents()
+      .then(event => {
+        const filteredEvents = event.filter(e => e.event_owner_id === this.state.profile.id)
         this.setState({
-          currentUserProfile: profile
+          events: filteredEvents
         })
-        //console.log(this.state.currentUserProfile,'test current user');
       })
   }
 
-  
+  render() {
+    const user = this.state.profile
+    const events = this.state.events
+    const userEvents = (events.length === 0 ) ? 'I have no events yet' 
+    : <div>
+        <p>My events: {events}</p>
+        <button>Intrigued</button>
+      </div>
 
-  render(){
-   
-    // const users = this.state.userInfo.map((info) => 
-    //   <div>
-    //     <li>{info.me_intro}</li>
-    //     <li>{info.music_like}</li>
-    //     <li>{info.movie_like}</li>
-    //   </div>
-    // )
-    console.log(this.state.currentUserProfile,'test')
     return(
-      <div>
-        <AddUserProfile />
-        
+      <div className="profile">
+        <img src={user.profile_picture} alt=''/>
+        <p>Bio: {user.me_intro}</p>
+        <p>Interests:</p>
+        <ul>
+          <li>Music: {user.music_like}</li>
+          <li>Favorite movie: {user.movie_like}</li>
+        </ul>
+        <p>Events: {userEvents}</p>
       </div>
     )
   }

@@ -2,16 +2,29 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import './Nav.css'
 import TokenService from '../../Services/token-service';
+import ProfileService from '../../Services/profile-service'
 import UserContext from '../../contexts/UserContext'
 
 export default class Nav extends React.Component{
+  state = {
+    currentUserProfileId: []
+  }
   static contextType = UserContext
+
+  componentDidMount() {
+    ProfileService.getCurrentUserProfile()
+      .then(profile => {
+        const id = profile.map(profile => parseInt(profile.id))
+        this.setState({ currentUserProfileId: id})
+      })
+  }  
 
   handleLogoutClick = () => {
     this.context.processLogout()
   }
 
   renderLogoutLink() {
+    const profileId = this.state.currentUserProfileId
     return (
       <div>
       <span>
@@ -21,7 +34,7 @@ export default class Nav extends React.Component{
         <Link to='/'>Dashboard</Link><br></br>
         <Link to='/notifications'>Notifications</Link><br></br>
         <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
-        <Link to='/profile'>Profile</Link>
+        <Link to={`/profile/${profileId}`}>Profile</Link>
       </nav>
     </div>
   )
@@ -40,6 +53,7 @@ export default class Nav extends React.Component{
   }
   
   render() {
+    console.log(this.context.user)
     return(
       <header>
       <h1>
