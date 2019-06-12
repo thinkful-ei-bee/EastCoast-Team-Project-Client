@@ -44,7 +44,7 @@ export default class RegistrationForm extends React.Component{
     return(
       <section>
         <div className="registration-form-container" >
-        <fieldset>
+        
           <form onSubmit={this.handleSubmit} className="registration-form">
             
             <div role='alert'>
@@ -99,9 +99,9 @@ export default class RegistrationForm extends React.Component{
 
             <button type="submit" className="btn">Sign up!</button> 
             {' '}<br></br>
-            <Link to='/login'>Already have an account?</Link>      
+            <Link to='/login' className="account-created">Already have an account?</Link>      
           </form>
-        </fieldset>
+        
         </div>
       </section>
     )
