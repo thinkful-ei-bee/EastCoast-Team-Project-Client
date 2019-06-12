@@ -44,7 +44,7 @@ export default class Dashboard extends React.Component{
           }
           else
           {console.log(profile.user_id,'yes')}
-          console.log(profile,profile.length)
+          // console.log(profile,profile.length)
       }
       )
 
@@ -127,17 +127,23 @@ export default class Dashboard extends React.Component{
 
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
+    console.log(userId)
+
     if (userGender == 'female'.toString()) {
       return <Link to={{
         pathname: '/eventifyForm',
         state: { userId: userId}
       }}>Eventify Him</Link>
     } else { 
-      return <Link to="/eventifyForm">Eventify Her</Link>
+      return <Link to={{
+        pathname: '/eventifyForm',
+        state: { userId: userId}
+      }}>Eventify Her</Link>
     }
   }
  
   render(){
+    console.log(this.context.user)
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
