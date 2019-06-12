@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
-import AuthApiService from '../../Services/auth-api-service'
 import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
 import './Dashboard.css'
 
 export default class Dashboard extends React.Component{
   state = {
+    currentUser: [],
     allUsers: [],
     allProfileInfo: [],
     filteredProfileInfo: [],
@@ -22,49 +22,30 @@ export default class Dashboard extends React.Component{
   componentDidMount() {
     EventService.getEvents()
       .then(events => {
-        const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id)
+        const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
       })
 
     ProfileService.getProfile()
       .then(profile => {
+        const currentUser = profile.filter(user => user.id === this.context.user.id)
         this.setState({
-          userPictures: profile,
+          currentUser: currentUser,
+          allUsers: profile
         })
-
-      AuthApiService.getUsers()
-      .then(users => {
-        this.setState({ allUsers: users })
-
+        
         const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
-        const allProfiles = (!this.state.userPictures) ? [] : this.state.userPictures
-
-        const loggedinUser = allUsers.filter(user => {
-          return user.id === this.context.user.id
-        })
+        const loggedinUser = this.state.currentUser
 
         // get gender of logged in user from id
         const loggedinUserGender = loggedinUser.map(user => user.gender)
-        
-        // filter allUsers array so that only the users that match the users in allProfiles match
-        let results = allUsers.filter(o1 => {
-          return allProfiles.some(o2 => {
-            return o1.id === o2.id;
-          })
-        }) 
-        
-        // filters allUsers whose gender does not match logged in user gender
-        let filteredGender = results.filter(user => user.gender !== loggedinUserGender.toString()) 
-        
-        // gets ID of filtered gender from allUsers
-        const filteredGenderId = filteredGender.map(user => user.id)
 
-        // filter from allProfiles whose id does not match id of filtered gender
-        let filteredProfiles = allProfiles.filter(user => parseInt(user.id) === parseInt(filteredGenderId))
-        
-        this.setState({ filteredProfileInfo: filteredProfiles })
-        const filteredPics = this.state.filteredProfileInfo.map(user => user.profile_picture)  
-      })
+        // filter users whose gender does not match the logged in user gender
+        const filteredUsers = allUsers.filter(user => user.gender !== loggedinUserGender.toString())
+
+        this.setState({
+          filteredProfileInfo: filteredUsers
+        })
     })
   }
 
