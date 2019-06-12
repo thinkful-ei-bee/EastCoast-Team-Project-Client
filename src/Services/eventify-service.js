@@ -15,7 +15,7 @@ const EventifyService = {
       )
   },
   postEventify(recipient_id, event) {
-    return fetch(`${config.API_ENDPOINT}/events`, {
+    return fetch(`${config.API_ENDPOINT}/eventify`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
