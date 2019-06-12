@@ -1,18 +1,38 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import EventifyService from '../../Services/eventify-service'
+import ProfileService from '../../Services/profile-service'
+import UserContext from '../../contexts/UserContext'
 import './NotificationRoute.css'
 
 export default class Notifications extends React.Component {
   state = {
-    showSent: false
+    showSent: false,
+    recievedEvents: [],
+    sentEvents: [],
+    currentUser: ''
   }
 
-  // componentDidMount() {
-  //   EventifyService.getEventify()
-  //     .then(eventify => {
-  //       console.log(eventify)
-  //     })
-  // }
+  static contextType = UserContext
+
+  componentDidMount() {
+    ProfileService.getCurrentUserProfile()
+      .then(user => {
+        // this.setState({ currentUser: user.map(user=>user.id)})
+        const userId = user.map(user=>user.id)
+      
+    EventifyService.getEventify()
+      .then(eventify => {
+        console.log(eventify)
+        const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(userId))
+        const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
+        this.setState({ 
+          recievedEvents: filteredRecievedEvents,
+          sentEvents: filteredSentEvents 
+        })
+      })
+    })
+  }
 
   handleRecievedButton = () => {
     this.setState({ showSent: false })
@@ -22,27 +42,43 @@ export default class Notifications extends React.Component {
     this.setState({ showSent: true})
   }
 
-  renderSentNotifications() {
-    return (
-      <div className="sent-notification">
-        <h3>Sent</h3>
-        <h4>You sent an eventify to this person</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur</p>
-      </div>
+  handleAcceptButton = () => {
+    const senderId = this.state.recievedEvents.map(sender => sender.sender_id)
+    return( 
+      <>
+      <p>Great! Redirecting you to his profile</p>
+      {setTimeout(() => {
+      this.props.history.push(`/profile/${senderId}`)
+    }, 2000)}
+      </>
     )
   }
 
+  handleDeclineButton = () => {
+
+  }
+
+  renderSentNotifications() {
+    return (this.state.sentEvents.map(event =>
+      <div className="sent-notification" key={event.id}>
+        <h3>Sent</h3>
+        <img src={event.profile_picture} alt=''/>
+        <h4>From: {event.full_name}</h4>
+      </div>
+    ))
+  }
+
   renderRecievedNotifications() {
-    return (
-        <div className="recieved-notification">
+    return (this.state.recievedEvents.map(event =>
+        <div className="recieved-notification" key={event.id}>
           <h3>Recieved</h3>
-          <h4>Person's name</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur</p>
-          <button>Accept</button>
+          <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
+          <h4>From: {event.full_name}</h4>
+          <button onClick={this.handleAcceptButton}>Accept</button>
           <button>Decline</button>
         </div>
-    )
-  }
+      ))
+    }
 
   render() {
     const notifications = (!this.state.showSent) ? this.renderRecievedNotifications() : this.renderSentNotifications()
