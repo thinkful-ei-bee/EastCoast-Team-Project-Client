@@ -59,19 +59,8 @@ export default class Notifications extends React.Component {
     )
   }
 
-  handleDeclineButton = (eventifyId) => {
-    EventifyService.deleteEventify(eventifyId.id)
-      // .then(response => {
-      //   let filteredEventify = this.state.recievedEvents.filter(eventify => eventify.id !== eventifyId.id)
-      //   this.setState({
-      //   recievedEvents: filteredEventify
-      //   })
-      // })
-    // console.log(this.state.recievedEvents)
-    // let filteredEventify = this.state.recievedEvents.filter(eventify => eventify.id !== eventifyId.id)
-    // this.setState({
-    //   recievedEvents: filteredEventify
-    // })
+  handleDeclineButton = () => {
+    this.props.history.push(`/`)
   }
 
   renderSentNotifications() {
@@ -90,19 +79,18 @@ export default class Notifications extends React.Component {
 
   renderRecievedNotifications() {
     return (this.state.recievedEvents.map((event, i) =>
-      // console.log(event)
         <div className="recieved-notification" key={event.id}>
           <h3>Recieved</h3>
           <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
-          <h4>From: {event.full_name}</h4>
+          <h4>{event.full_name} is inviting you to {event.event_name}!</h4>
           <button onClick={this.handleAcceptButton}>Accept</button>
-          <button type="submit" onClick={() => {this.handleDeclineButton(event.id)}}>Decline</button>
+          <button type="click" onClick={this.handleDeclineButton}>Decline</button>
         </div>
       ))
     }
 
   render() {
-    console.log(this.state.recievedEvents)
+    console.log(this.state.sentEvents)
     const notifications = (!this.state.showSent) ? this.renderRecievedNotifications() : this.renderSentNotifications()
 
     return(
