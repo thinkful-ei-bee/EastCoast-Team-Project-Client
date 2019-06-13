@@ -3,6 +3,12 @@
 .footer{
   width: auto;
   background-color: black;
+  padding: auto;
+}
+
+#author {
+  color: white;
+  text-align: center;
 }
 
 .copyright-text{

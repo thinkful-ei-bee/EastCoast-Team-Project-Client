@@ -33,10 +33,10 @@ export default class Nav extends React.Component{
         {this.context.user.name}
       </span>
       <nav>
-        <Link to='/'>Dashboard</Link><br></br>
-        <Link to='/notifications'>Notifications</Link><br></br>
-        <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
-        <Link to={`/profile/${profileId}`}>Profile</Link>
+        <Link to='/' className="nav-links">Dashboard</Link><br></br>
+        <Link to='/notifications' className="nav-links">Notifications</Link><br></br>
+        <Link onClick={this.handleLogoutClick} to='/login' className="nav-links">Logout</Link>
+        <Link to={`/profile/${profileId}`} className="nav-links">Profile</Link>
       </nav>
     </div>
   )}
