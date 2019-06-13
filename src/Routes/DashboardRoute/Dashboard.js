@@ -22,19 +22,26 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
-    console.log('dashboard mounted')
     EventService.getEvents()
       .then(events => {
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
       })
+    ProfileService.getCurrentUserProfile()  
+      .then(profile=>
+        {
+          if(!profile){
+            console.log('no')
+          }
+          console.log('yes')
+      }
+      )
 
       ProfileService.getCurrentUserProfile()  
       .then(profile=>
         { 
           // console.log( profile.isEmpty(),'test profile sendback')
           if(profile.length ===0){
-            console.log('no')
             const newUserProfileMandatory ={
               profile_picture:'https://assets.rebelcircus.com/blog/wp-content/uploads/2016/05/facebook-avatar.jpg',
               music_like:'unknown',
@@ -123,28 +130,26 @@ export default class Dashboard extends React.Component{
   }
 
   renderEventifyButton() {
-    const userGender = this.state.currentUser.map(user => user.gender.toString())
+    const userGender = this.state.currentUser.map(user => user.gender)
+    const gender = userGender.toString()
 
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
-    console.log(userId)
-
-    if (userGender == 'female'.toString()) {
+    if (gender === "female") {
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId}
+        state: { userId: userId, userGender: gender}
       }}>Eventify Him</Link>
     } else { 
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId}
+        state: { userId: userId, userGender: gender}
       }}>Eventify Her</Link>
     }
   }
  
   render(){
     console.log(this.context.user)
-    const events = this.state.events
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
