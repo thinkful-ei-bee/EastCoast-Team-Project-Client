@@ -130,19 +130,20 @@ export default class Dashboard extends React.Component{
   }
 
   renderEventifyButton() {
-    const userGender = this.state.currentUser.map(user => user.gender.toString())
+    const userGender = this.state.currentUser.map(user => user.gender)
+    const gender = userGender.toString()
 
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
-    if (userGender == 'female'.toString()) {
+    if (gender === "female") {
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId, userGender: userGender}
+        state: { userId: userId, userGender: gender}
       }}>Eventify Him</Link>
     } else { 
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId}
+        state: { userId: userId, userGender: gender}
       }}>Eventify Her</Link>
     }
   }

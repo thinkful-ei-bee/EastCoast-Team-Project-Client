@@ -8,11 +8,7 @@ export default class NotifcationSent extends React.Component{
     const {userGender} = this.props.location.state
     this.setState({ userGender: userGender})
   }
-
-  routeChange = () => {
-    this.props.history.push('/');
-  }
-
+  
   renderMessage() {
     const userGender = this.state.userGender.toString()
     if (userGender === "female") {
@@ -27,7 +23,7 @@ export default class NotifcationSent extends React.Component{
     return(
     <div className="notification-sent">
       {this.renderMessage()}
-      <button type="click" onClick={this.routeChange}>Back</button>
+      <button type="click" onClick={() => this.props.history.push('/')}>Back</button>
     </div>
   )
   }

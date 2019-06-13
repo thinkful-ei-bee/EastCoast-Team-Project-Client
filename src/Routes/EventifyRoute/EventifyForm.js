@@ -18,7 +18,6 @@ export default class EventifyForm extends React.Component{
 
   componentDidMount() {
     const {userId, userGender} = this.props.location.state
-    console.log(userGender)
     this.setState({ recipientUserId: userId, userGender: userGender })
 
     EventService.getEvents()
@@ -42,9 +41,7 @@ export default class EventifyForm extends React.Component{
       recipient_id: userId,
       event: event.value,
     })
-      .then(response => {
-        event.value = ''
-      })
+      .then( event.value = '' )
     this.props.history.push({
       pathname: '/notificationSent',
       state: { userGender: userGender}
