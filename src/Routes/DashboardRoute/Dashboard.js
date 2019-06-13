@@ -22,6 +22,7 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
+    console.log('dashboard mounted')
     EventService.getEvents()
       .then(events => {
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
@@ -44,7 +45,6 @@ export default class Dashboard extends React.Component{
           }
           else
           {console.log(profile.user_id,'yes')}
-          // console.log(profile,profile.length)
       }
       )
 
@@ -144,6 +144,7 @@ export default class Dashboard extends React.Component{
  
   render(){
     console.log(this.context.user)
+    const events = this.state.events
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
@@ -162,9 +163,8 @@ export default class Dashboard extends React.Component{
         </div>
       
         {this.renderEventifyButton()}
-        <Link to="/createEvent">Create Event</Link>
-      </div>
-      <div className="create-event">
+        <Link to='/createEvent'>Create Event</Link>
+
         <h3>Your upcoming events:</h3>
         {this.renderEvents()}
       </div>

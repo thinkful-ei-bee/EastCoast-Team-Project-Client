@@ -45,7 +45,7 @@ export default class EventifyForm extends React.Component{
         console.log(response)
         event.value = ''
       })
-    //this.props.history.push('/notificationSent')
+    this.props.history.push('/notificationSent')
   }
 
   routeChange = () => {
