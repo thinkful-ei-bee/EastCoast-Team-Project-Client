@@ -6,7 +6,8 @@ import './EventForm.css'
 
 export default class EventForm extends React.Component{
   state = {
-    selectValue: false
+    selectValue: false,
+    events: []
   }
 
   handleMenuChange = (selectValue) => {
@@ -35,8 +36,11 @@ export default class EventForm extends React.Component{
         is_private.value = ''
         event_location.value = ''
         event_details.value = ''
+        this.setState({ events: [...this.state.events, response]})
+        this.props.history.push('/');
       })
-      this.props.history.push('/');
+      
+      
   }
 
   routeChange = () => {
