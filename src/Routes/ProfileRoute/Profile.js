@@ -18,21 +18,20 @@ export default class Profile extends React.Component{
   componentDidMount() {
     ProfileService.getProfileById(this.props.match.params.id)
       .then(profile => {
-        console.log(profile)
         this.setState({ profile: profile})
-      })
-    
-    EventService.getEvents()
-      .then(event => {
-        console.log('event', event)
-        this.setState({
-          events: event
-        })
+
+      const profileId = this.state.profile.user_id
+
+    EventService.getAllEvents()
+      .then( event => {
+        const profileEvents = event.filter(e => e.event_owner_id === profileId)
+        this.setState({ events: profileEvents})
       })
 
-    // if (parseInt(this.props.match.params.id) === parseInt(this.context.user.id)) {
-    //   this.setState({ canEdit: true })
-    // }
+      if (profileId === this.context.user.id) {
+        this.setState({ canEdit: true })
+      }
+    })  
   }
 
   handleEditButton = () => { 
@@ -41,7 +40,7 @@ export default class Profile extends React.Component{
 
   handleSubmitButton = (e) => {
     e.preventDefault()
-    const userId = this.state.profile.id
+    const userId = this.state.profile.user_id
 
     const { profile_picture, music_like, movie_like, me_intro } = e.target;
 
@@ -85,7 +84,7 @@ export default class Profile extends React.Component{
     )
     return (
       <div className="profile">
-        <button onClick={this.handleEditButton}>Edit Profile</button>
+       {this.renderEditButton()}
         <img src={user.profile_picture} alt=''/>
         <p>Bio: {user.me_intro}</p>
         <p>Interests:</p>
@@ -127,7 +126,7 @@ export default class Profile extends React.Component{
   }
 
   render() {
-    console.log(this.state.events)
+    console.log(this.state.canEdit)
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
 
     return(

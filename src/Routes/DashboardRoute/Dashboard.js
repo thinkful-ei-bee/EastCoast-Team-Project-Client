@@ -22,7 +22,7 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
-    EventService.getEvents()
+    EventService.getEventsForCurrentUser()
       .then(events => {
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
@@ -135,31 +135,37 @@ export default class Dashboard extends React.Component{
 
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
+    const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
+    console.log(userName)
+
     if (gender === "female") {
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId, userGender: gender}
-      }}>Eventify Him</Link>
+        state: { userId: userId, userGender: gender }
+      }}>Eventify {userName}</Link>
     } else { 
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId, userGender: gender}
-      }}>Eventify Her</Link>
+        state: { userId: userId, userGender: gender }
+      }}>Eventify {userName}</Link>
     }
   }
  
   render(){
-    console.log(this.context.user)
+
+    console.log(this.state.filteredProfileInfo[this.state.currentImageIndex])
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
-    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
+
+    const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
     return(
       <div className="dashboard">
         <div className="dashboard-pic">
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
           <div className="picture-carousel">
-
+          <h3 className="picture-name">{userName}</h3>
           <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
           </div>
 

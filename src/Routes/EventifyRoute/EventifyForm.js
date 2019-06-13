@@ -20,7 +20,7 @@ export default class EventifyForm extends React.Component{
     const {userId, userGender} = this.props.location.state
     this.setState({ recipientUserId: userId, userGender: userGender })
 
-    EventService.getEvents()
+    EventService.getEventsForCurrentUser()
       .then(event => {
         const eventList = event.filter(ev => ev.event_owner_id === this.context.user.id)
         this.setState({ events: eventList})
