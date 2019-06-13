@@ -10,15 +10,16 @@ export default class EventifyForm extends React.Component{
   state = {
     events: [],
     selectedValue: '',
-    recipientUserId: []
+    recipientUserId: [],
+    userGender: []
   }
 
   static contextType = UserContext
 
   componentDidMount() {
-    const {userId} = this.props.location.state
-    console.log(userId)
-    this.setState({ recipientUserId: userId })
+    const {userId, userGender} = this.props.location.state
+    console.log(userGender)
+    this.setState({ recipientUserId: userId, userGender: userGender })
 
     EventService.getEvents()
       .then(event => {
@@ -34,7 +35,7 @@ export default class EventifyForm extends React.Component{
   handleChooseEvent = (e) => {
     e.preventDefault()
     const userId = this.state.recipientUserId
-
+    const userGender = this.state.userGender
     const { event } = e.target;
     
     EventifyService.postEventify({
@@ -42,10 +43,12 @@ export default class EventifyForm extends React.Component{
       event: event.value,
     })
       .then(response => {
-        console.log(response)
         event.value = ''
       })
-    this.props.history.push('/notificationSent')
+    this.props.history.push({
+      pathname: '/notificationSent',
+      state: { userGender: userGender}
+    })
   }
 
   routeChange = () => {
@@ -54,8 +57,6 @@ export default class EventifyForm extends React.Component{
 
   
   render() {
-    console.log(this.state.recipientUserId)
-
     const events = (!this.state.events) ? [] : this.state.events.map(event => 
       <option key={event.id} value={event.id} id='event'>{event.event_name}</option>
       )
