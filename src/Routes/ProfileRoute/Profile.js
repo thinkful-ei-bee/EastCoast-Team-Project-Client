@@ -2,6 +2,7 @@ import React from 'react'
 import { Input, Label } from '../../Components/Form/Form'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
+import UserContext from '../../contexts/UserContext'
 import './Profile.css'
 
 export default class ProfileOther extends React.Component{
@@ -9,9 +10,14 @@ export default class ProfileOther extends React.Component{
     profile: [],
     events: [],
     edit: false,
+    canEdit: false
   }
 
+  static contextType = UserContext
+
   componentDidMount() {
+    console.log(this.props.match.params.id)
+    console.log(this.context.user)
     ProfileService.getProfileById(this.props.match.params.id)
       .then(profile => {
         this.setState({ profile: profile})
@@ -24,6 +30,11 @@ export default class ProfileOther extends React.Component{
           events: filteredEvents
         })
       })
+
+    if (parseInt(this.props.match.params.id) === parseInt(this.context.user.id)) {
+      console.log('match')
+      this.setState({ canEdit: true })
+    }
   }
 
   handleEditButton = () => { 
@@ -50,6 +61,11 @@ export default class ProfileOther extends React.Component{
     })
   }
 
+  renderEditButton() {
+    const editButton = (this.state.canEdit) ? <button onClick={this.handleEditButton}>Edit Profile</button> : ''
+    return editButton
+  }
+
   handleCancelButton = () => {
     this.setState({ edit: false})
   }
@@ -65,7 +81,7 @@ export default class ProfileOther extends React.Component{
 
     return (
       <div className="profile">
-        <button onClick={this.handleEditButton}>Edit Profile</button>
+        {this.renderEditButton()}
         <img src={user.profile_picture} alt=''/>
         <p>Bio: {user.me_intro}</p>
         <p>Interests:</p>
