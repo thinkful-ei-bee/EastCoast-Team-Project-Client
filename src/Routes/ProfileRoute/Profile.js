@@ -58,6 +58,10 @@ export default class ProfileOther extends React.Component{
       music_like.value = ''
       movie_like.value = ''
       me_intro.value = ''
+      this.setState({ 
+        profile: response,
+        edit: false 
+      })
     })
   }
 
