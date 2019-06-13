@@ -26,8 +26,28 @@ export default class ProfileOther extends React.Component{
       })
   }
 
-  handleEditButton = () => {
+  handleEditButton = () => { 
     this.setState({ edit: true })
+  }
+
+  handleSubmitButton = (e) => {
+    e.preventDefault()
+
+    const { profile_picture, music_like, movie_like, me_intro } = e.target;
+
+    ProfileService.editProfile(this.state.profile.user_id, {
+      profile_picture: profile_picture.value,
+      music_like: music_like.value,
+      movie_like: movie_like.value,
+      me_intro: me_intro.value
+    })
+    .then(response => {
+      console.log(response)
+      profile_picture.value = ''
+      music_like.value = ''
+      movie_like.value = ''
+      me_intro.value = ''
+    })
   }
 
   handleCancelButton = () => {
@@ -60,13 +80,12 @@ export default class ProfileOther extends React.Component{
 
   renderEditForm() {
     const user = this.state.profile
-    console.log(user)
     return(
       <div className="edit-profile">
         <fieldset>
-          <form>
+          <form onSubmit={this.handleSubmitButton}>
             <Label htmlFor="bio">Bio</Label>
-            <Input type="text" id="bio" name="bio" defaultValue={user.me_intro} />
+            <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
             <p>Interests:</p>
             <Label htmlFor="music">Music</Label>
@@ -75,15 +94,19 @@ export default class ProfileOther extends React.Component{
             <Label htmlFor="movie">Movie</Label>
             <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
 
+            <Label htmlFor="bio">Profile pic</Label>
+            <Input type="text" id="profile_picture" name="profile_picture" />
+
+            <button type="submit">Submit</button>
             <button onClick={this.handleCancelButton}>Cancel</button>
           </form>
-          
         </fieldset>
       </div>
     ) 
   }
 
   render() {
+    console.log(this.state.profile)
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
 
     return(
