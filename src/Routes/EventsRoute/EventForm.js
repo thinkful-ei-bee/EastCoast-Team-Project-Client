@@ -40,7 +40,6 @@ export default class EventForm extends React.Component{
         this.props.history.push('/');
       })
       
-      
   }
 
   routeChange = () => {
