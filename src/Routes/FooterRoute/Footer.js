@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Footer extends React.Component{
   render(){
@@ -8,8 +8,8 @@ export default class Footer extends React.Component{
       <div className='footer'>
       <span id='author'>Created by EastCoast Team</span>
         <div className='social_icon_group'>
-       
-       <a href='https://github.com/JizongL'>               
+
+       {/* <a href='https://github.com/JizongL'>               
          <FontAwesomeIcon className='social_icon' icon={['fab', 'github']} />       
        </a>
        
@@ -21,7 +21,7 @@ export default class Footer extends React.Component{
         </a>
         <a href='https://twitter.com/TmmGeek'>
         <FontAwesomeIcon className='social_icon' icon={['fab', 'twitter']} />
-        </a>
+        </a> */}
         </div>
         
         <p className="copyright-text">Copyright &copy; 2019 All Rights Reserved
