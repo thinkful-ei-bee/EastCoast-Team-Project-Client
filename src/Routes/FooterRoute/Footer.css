@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.github{
+  width:90px;
+  height:90px;
+}
+.social_icon{
+
+  
+  width:30px !important;
+  height:30px;
+  color:white;
+  margin-left:16px;
+  margin-right:0;
+  border-radius:100%;  
+  text-align:right;  
+  list-style:none;
+}
+
+a .social-icon{
+  width:20px;
+}
+
+.social_icon:hover{
+
+  
+  width:40px;
+  height:40px;
+  color:white;
+  margin-left:16px;
+  margin-right:0;
+  border-radius:100%;  
+  text-align:right;  
+  list-style:none;
+}
+
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:60px;
+  height:60px;
+  border-radius:100%;
+  
+  
+  
+}
+
+#author{
+  width:30%;
+  color:white;
+  margin:0 auto;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  padding:15px;
+}
+
+.social_icon_group{
+  display:flex;
+  justify-content: space-evenly;
+  width:40%;
+  margin:0 auto;
+  padding:15px;
+}
+.footer{
+ 
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  width:100%;
+  left: "0";
+  bottom: "0";
+  background-color: #049c41;
+}
+
+.copyright-text{
+  color:white;
+  width:30%;
+  margin:0 auto;
+  text-align: center;
+  padding:15px;
+}
