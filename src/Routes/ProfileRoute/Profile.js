@@ -106,7 +106,6 @@ export default class ProfileOther extends React.Component{
   }
 
   render() {
-    console.log(this.state.profile)
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
 
     return(
