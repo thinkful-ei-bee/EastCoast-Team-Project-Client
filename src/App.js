@@ -13,7 +13,6 @@ import EventForm from './Routes/EventsRoute/EventForm';
 import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
 import NotificationRoute from './Routes/Notifications/NotificationRoute'
-import ProfileOther from './Routes/ProfileRoute/ProfileOther';
 import AddUserProfile from './Components/addProfileForm/addProfileForm';
 
 class App extends React.Component{

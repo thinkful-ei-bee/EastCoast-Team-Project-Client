@@ -5,7 +5,7 @@ import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
 import './Profile.css'
 
-export default class ProfileOther extends React.Component{
+export default class Profile extends React.Component{
   state = {
     profile: [],
     events: [],
