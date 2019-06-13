@@ -48,11 +48,6 @@ export default class EventifyForm extends React.Component{
     })
   }
 
-  routeChange = () => {
-    this.props.history.push('/');
-  }
-
-  
   render() {
     const events = (!this.state.events) ? [] : this.state.events.map(event => 
       <option key={event.id} value={event.id} id='event'>{event.event_name}</option>
@@ -69,7 +64,7 @@ export default class EventifyForm extends React.Component{
               {events}
             </select><br></br>
             <Button>Choose event</Button><br></br>
-            <Button type="click" onClick={this.routeChange}>Cancel</Button>    
+            <Button type="click" onClick={() => this.props.history.push('/')}>Cancel</Button>    
           </form>
         </fieldset>
       </div>
