@@ -14,6 +14,7 @@ import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
 import NotificationRoute from './Routes/Notifications/NotificationRoute'
 import ProfileOther from './Routes/ProfileRoute/ProfileOther';
+import Footer from './Routes/FooterRoute/Footer';
 
 class App extends React.Component{
   state = { 
@@ -50,9 +51,10 @@ class App extends React.Component{
           <PublicOnlyRoute exact path={'/landingPage'} component={LandingPage}/>
          
         </Switch>
- 
-
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
   }
