@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.footer{
+  width: auto;
+  background-color: black;
+}
+
+.copyright-text{
+  color:white;
+  width: auto;
+  margin: auto;
+  text-align: center;
+  padding:15px;
+}
