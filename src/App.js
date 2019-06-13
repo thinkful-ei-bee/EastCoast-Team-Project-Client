@@ -1,11 +1,11 @@
 import React from 'react';
-import { Switch} from 'react-router-dom'
+import { Switch, withRouter} from 'react-router-dom'
 import LandingPage from './Routes/LandingPageRoute/LandingPage'
 import Dashboard from './Routes/DashboardRoute/Dashboard'
 import Nav from './Components/Nav/Nav'
 import Profile from './Routes/ProfileRoute/Profile'
 import EventsPage from './Routes/EventsRoute/EventsPage';
-import RegistrationRoute from './Routes/RegistrationRouter/RegistrationRoute';
+import RegistrationRoute from './Routes/RegistrationRoute/RegistrationRoute';
 import LoginRoute from './Routes/LoginRoute/LoginRoute'
 import PrivateRoute from './Routes/PrivateOnlyRoute/PrivateOnlyRoute'
 import PublicOnlyRoute from './Routes/PublicOnlyRoute/PublicOnlyRoute'
@@ -13,7 +13,7 @@ import EventForm from './Routes/EventsRoute/EventForm';
 import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
 import NotificationRoute from './Routes/Notifications/NotificationRoute'
-import AddUserProfile from './Components/addProfileForm/addProfileForm';
+//import AddUserProfile from './Components/addProfileForm/addProfileForm';
 
 class App extends React.Component{
   state = { 
@@ -43,7 +43,7 @@ class App extends React.Component{
           <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
           <PrivateRoute path={'/notifications'} component={NotificationRoute} />
           <PrivateRoute path={'/profile/:id'} component={Profile} />
-          <PrivateRoute path={'/editProfile'} component={AddUserProfile} />
+          {/* <PrivateRoute path={'/editProfile'} component={AddUserProfile} /> */}
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
@@ -59,4 +59,4 @@ class App extends React.Component{
   
 }
 
-export default App;
+export default withRouter(App);
