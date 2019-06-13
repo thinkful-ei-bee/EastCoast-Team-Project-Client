@@ -1,6 +1,7 @@
 
 import React from 'react'
 import TokenService from '../../Services/token-service.js'
+import ProfileService from '../../Services/profile-service'
 
 
 export default class AddUserProfile extends React.Component {

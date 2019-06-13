@@ -38,8 +38,7 @@ export default class EventForm extends React.Component{
         event_details.value = ''
         this.setState({ events: [...this.state.events, response]})
         this.props.history.push('/');
-      })
-      
+      }) 
   }
 
   routeChange = () => {
