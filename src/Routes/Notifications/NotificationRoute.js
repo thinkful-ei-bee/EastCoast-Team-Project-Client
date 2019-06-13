@@ -60,8 +60,14 @@ export default class Notifications extends React.Component {
   }
 
   handleDeclineButton = (eventifyId) => {
-  
-    // EventifyService.deleteEventify(eventifyId)
+    EventifyService.deleteEventify(eventifyId.id)
+      // .then(response => {
+      //   let filteredEventify = this.state.recievedEvents.filter(eventify => eventify.id !== eventifyId.id)
+      //   this.setState({
+      //   recievedEvents: filteredEventify
+      //   })
+      // })
+    // console.log(this.state.recievedEvents)
     // let filteredEventify = this.state.recievedEvents.filter(eventify => eventify.id !== eventifyId.id)
     // this.setState({
     //   recievedEvents: filteredEventify
@@ -83,13 +89,14 @@ export default class Notifications extends React.Component {
   }
 
   renderRecievedNotifications() {
-    return (this.state.recievedEvents.map(event =>
+    return (this.state.recievedEvents.map((event, i) =>
+      // console.log(event)
         <div className="recieved-notification" key={event.id}>
           <h3>Recieved</h3>
           <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
           <h4>From: {event.full_name}</h4>
           <button onClick={this.handleAcceptButton}>Accept</button>
-          <button>Decline</button>
+          <button type="submit" onClick={() => {this.handleDeclineButton(event.id)}}>Decline</button>
         </div>
       ))
     }
