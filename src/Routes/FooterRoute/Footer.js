@@ -6,7 +6,7 @@ export default class Footer extends React.Component{
   render(){
     return(
       <div className='footer'>
-      <span id='author'>Created by JizongL</span>
+      <span id='author'>Created by EastCoast Team</span>
         <div className='social_icon_group'>
        
        <a href='https://github.com/JizongL'>               
