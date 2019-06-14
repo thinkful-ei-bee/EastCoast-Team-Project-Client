@@ -33,7 +33,7 @@ export default class Profile extends React.Component{
 
   handleIntriguedButton = (id, index) => {
     EventifyService.postEventify({
-      recipient_id: this.context.user.id,
+      recipient_id: this.props.match.params.id,
       event: id,
     })
     .then(
