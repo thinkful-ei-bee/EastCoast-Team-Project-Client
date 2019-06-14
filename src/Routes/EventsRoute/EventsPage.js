@@ -21,7 +21,7 @@ export default class EventsPage extends React.Component{
 
     return(
       <div className="events-page">
-        <h2>{event.event_name}</h2>
+        <h2 className="event-name">{event.event_name}</h2>
         <div className="event-picture">Event pic</div>
         <div>
           <h4>Event info:</h4>

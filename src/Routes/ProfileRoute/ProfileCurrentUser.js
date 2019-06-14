@@ -76,7 +76,6 @@ export default class Profile extends React.Component{
     : events.map(event => 
       <div key={event.id}>
         <p >{event.event_name}</p>
-        <button>Intrigued</button>
       </div> 
     )
     return (
@@ -95,18 +94,18 @@ export default class Profile extends React.Component{
       <div className="edit-profile">
         <fieldset>
           <form onSubmit={this.handleSubmitButton}>
-                <Label htmlFor="bio">About me</Label>
-                <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
+              <Label htmlFor="bio">About me</Label>
+              <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
-                <p>Interests:</p>
-                <Label htmlFor="music">Favorite music genre:</Label>
-                <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
+              <p>Interests:</p>
+              <Label htmlFor="music">Favorite music genre:</Label>
+              <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
 
-                <Label htmlFor="movie">Favorite movie:</Label>
-                <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
+              <Label htmlFor="movie">Favorite movie:</Label>
+              <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
 
-                {/* <Label htmlFor="bio">Profile pic</Label>
-                <Input type="text" id="profile_picture" name="profile_picture" /> */}
+              {/* <Label htmlFor="bio">Profile pic</Label>
+              <Input type="text" id="profile_picture" name="profile_picture" /> */}
             <button type="submit">Submit</button>
             <button onClick={this.handleCancelButton}>Cancel</button>
           </form>
