@@ -11,6 +11,7 @@ const UserContext = React.createContext({
   setUser: () => {},
   processLogin: () => {},
   processLogout: () => {},
+  editProfile: () => {},
 })
 
 export default UserContext
@@ -112,6 +113,7 @@ export class UserProvider extends Component {
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
+      editProfile: this.editProfile,
     }
     return (
       <UserContext.Provider value={value}>

@@ -1,16 +1,26 @@
 .dashboard {
     display: flex;
     flex-direction: column;
-    padding-bottom: 5%;
+    /* background-color: #b47eb3; */
+    background-color: #ffcba4;
+    padding: 25px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 5px 10px 18px black;
+    border-radius: 15%;
+    padding-bottom: 80px;
 }
 
 .dashboard-pic {
     position: relative;
     margin: auto;
+    padding-top: 40px;
 }
 
 .picture-carousel {
     margin: auto;
+    /* background-color: #b47eb3; */
 }
 
 .picture-carousel img {
@@ -28,8 +38,8 @@
 }
 
 .left-btn {
-    left: -15%;
-    top: 45%;
+    left: -70%;
+    top: 60%;
 }
 .right-btn {
     right: -15%;
@@ -43,4 +53,17 @@
     background: rgb(226, 191, 240); 
     margin-top: 10px;
     width: fit-content
+}
+.create-event {
+    /* background-color: #ffd5ff; */
+    border: 10px solid #000080;
+    background-color: white;
+    /* color: white; */
+    margin-top: 60px;
+    padding: auto;
+    padding-bottom: 20px;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    /* border-radius: 30%; */
 }

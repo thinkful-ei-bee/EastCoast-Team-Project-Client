@@ -60,6 +60,7 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state
     return (
+      <div className="login-form-container">
       <form
         className='LoginForm'
         onSubmit={this.handleSubmit}
@@ -89,10 +90,11 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <Button type='submit'>
+        <Button type='submit' id="login-button">
           Login
         </Button>
       </form>
+      </div>
     )
   }
 }

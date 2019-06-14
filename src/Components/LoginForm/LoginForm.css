@@ -1,0 +1,31 @@
+.LoginForm {
+    /* background-color: #ffd5ff; */
+    /* background-color: #cff0cc; */
+    background-color: #ffcba4;
+    width: 400px;
+    padding: 40px;
+    border-radius: 3px;
+    /* border: 40px solid #f0e68c; */
+    border: 10px solid #000080;
+    /* background: white; */
+    margin: 0 auto;
+    height: 300px;
+    padding-top: 90px;
+}
+#login-username-input {
+    margin: auto;
+}
+#login-password-input {
+    margin: auto;
+    margin-top: 25px;
+}
+#login-button {
+    margin-right: 80px;
+}
+.login-form-container {
+    /* background-color: #b47eb3; */
+    /* background-color: #f0e68c; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* border-radius: 50%; */
+}

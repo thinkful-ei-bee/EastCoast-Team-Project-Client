@@ -26,14 +26,14 @@ const EventsService = {
           : res.json()
       )
   },
-  postEvents(eventName, eventDate, eventTime, eventLocation, eventDetails, isPrivate) {
+  postEvents(event_name, event_date, event_time, event_location, event_details, is_private) {
     return fetch(`${config.API_ENDPOINT}/events`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(eventName, eventDate, eventTime, eventLocation, eventDetails, isPrivate),
+      body: JSON.stringify(event_name, event_date, event_time, event_location, event_details, is_private),
     })
       .then(res =>
         (!res.ok)

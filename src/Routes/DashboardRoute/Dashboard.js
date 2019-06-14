@@ -158,6 +158,7 @@ export default class Dashboard extends React.Component{
     const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
     return(
+      <div>
       <div className="dashboard">
         <div className="dashboard-pic">
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
@@ -170,10 +171,17 @@ export default class Dashboard extends React.Component{
         </div>
       
         {this.renderEventifyButton()}
+<<<<<<< HEAD
         <Link to='/createEvent'>Create Event</Link>
 
+=======
+        <Link to="/createEvent">Create Event</Link>
+      </div>
+      <div className="create-event">
+>>>>>>> origin/laurelDesign1
         <h3>Your upcoming events:</h3>
         {this.renderEvents()}
+      </div>
       </div>
     )
   }
