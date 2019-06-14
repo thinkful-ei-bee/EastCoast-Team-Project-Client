@@ -20,7 +20,6 @@ class LoginRoute extends Component {
     return (
       <section className='login__container'>
         <div className='login_title'>
-          <h2>Login</h2>
           </div>
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}

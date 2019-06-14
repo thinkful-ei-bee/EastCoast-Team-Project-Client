@@ -11,6 +11,27 @@
     z-index: 10;
     display: inline-block;
 }
+.nav-links {
+    position: fixed;
+    top: 0;
+    left: 5;
+    right: 5;
+    z-index: 10;
+    display: inline-block;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+}
 body {
     background-color: white;
+}
+header {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 80px;
+    padding: auto;
+}
+h1 {
+    text-align: center;
+    padding: auto;
 }

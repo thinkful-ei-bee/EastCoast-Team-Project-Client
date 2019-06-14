@@ -1,3 +1,11 @@
+body {
+    background-image: url("steve-halama-1401211-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+form{
+  margin:0 auto;
+}
 .registration-form-container {
     /* background-color: #b47eb3; */
     /* border-radius: 50%; */
@@ -10,32 +18,60 @@
     width:320px;
     /* background-color: #ffd5ff; */
     /* background-color: #cff0cc; */
-    background-color: #ffcba4;
+    /* background-color: #ffcba4; */
+    background-color: transparent;
     /* border: 40px solid #f0e68c; */
-    border: 10px solid #000080;
+    /* border: 10px solid #000080; */
     width: 400px;
     padding: 40px;
-    border-radius: 3px;
     margin: auto;
     margin-bottom: 20px;
     margin-top: 20px;
-    height: 300px;
-    padding-top: 90px;
-    padding-bottom: 90px;
-    
+    height: auto;
+    padding: auto;
+    /* color: white;
+    font-size: 20px; */
 }
 .btn {
     margin-top: -60px;
     margin-left: 140px;
+    color: white;
 }
 .account-created {
     margin: auto;
-    margin-top: 12px;
+    /* margin-top: 12px; */
+    border: 15px solid white;
+    background-color: white;
+    width: fit-content;
+    height: auto;
+    margin-top: 25px;
 }
 .registration-input {
-    padding: 12px;
+    padding: 8px;
     margin-top: 3px;
     margin-bottom: 3px;
     /* margin: auto; */
 }
-
+label {
+  font-size:20px;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  padding:5px;
+  margin:0 auto;
+  color: white;
+}
+input {
+  border: 1px solid #ddd;
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: left;
+  border-radius: 4px;
+}
+@media(max-width:600px){
+  input{
+   margin:0 auto;
+  }
+ }
