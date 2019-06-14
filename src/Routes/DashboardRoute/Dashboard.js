@@ -171,18 +171,13 @@ export default class Dashboard extends React.Component{
         </div>
       
         {this.renderEventifyButton()}
-<<<<<<< HEAD
-<<<<<<< HEAD
         <Link to='/createEvent'>Create Event</Link>
 
-=======
+
         <Link to="/createEvent">Create Event</Link>
       </div>
       <div className="create-event">
->>>>>>> origin/laurelDesign1
-=======
         <Link to='/createEvent'>Create Event</Link>
->>>>>>> b2a260a070c6d2e514ff58b1e22f609d7e6b2803
         <h3>Your upcoming events:</h3>
         {this.renderEvents()}
       </div>

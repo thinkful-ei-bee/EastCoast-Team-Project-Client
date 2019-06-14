@@ -13,11 +13,8 @@ import EventForm from './Routes/EventsRoute/EventForm';
 import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
 import NotificationRoute from './Routes/Notifications/NotificationRoute'
-<<<<<<< HEAD
-=======
 import AddUserProfile from './Components/addProfileForm/addProfileForm';
 import Footer from './Components/FooterRoute/Footer';
->>>>>>> b2a260a070c6d2e514ff58b1e22f609d7e6b2803
 
 class App extends React.Component{
   state = { 
