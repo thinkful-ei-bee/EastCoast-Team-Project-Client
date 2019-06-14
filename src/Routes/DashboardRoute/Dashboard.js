@@ -171,10 +171,6 @@ export default class Dashboard extends React.Component{
         </div>
       
         {this.renderEventifyButton()}
-        <Link to='/createEvent'>Create Event</Link>
-
-
-        <Link to="/createEvent">Create Event</Link>
       </div>
       <div className="create-event">
         <Link to='/createEvent'>Create Event</Link>
