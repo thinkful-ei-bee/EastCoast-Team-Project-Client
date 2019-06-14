@@ -8,10 +8,14 @@ import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
-describe.skip('Registration Form Component', () => {
+describe('Registration Form Component', () => {
   it('renders without crashing', () => {
+    const location = {
+      state : { baseId : 1 }
+      }
+      
     const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><EventifyForm /></BrowserRouter>, div);
+    ReactDOM.render(<BrowserRouter><EventifyForm location={location} /></BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   })
   
