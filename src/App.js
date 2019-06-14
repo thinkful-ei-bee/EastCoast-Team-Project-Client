@@ -4,6 +4,7 @@ import LandingPage from './Routes/LandingPageRoute/LandingPage'
 import Dashboard from './Routes/DashboardRoute/Dashboard'
 import Nav from './Components/Nav/Nav'
 import Profile from './Routes/ProfileRoute/Profile'
+import ProfileCurrentUser from './Routes/ProfileRoute/ProfileCurrentUser'
 import EventsPage from './Routes/EventsRoute/EventsPage';
 import RegistrationRoute from './Routes/RegistrationRoute/RegistrationRoute';
 import LoginRoute from './Routes/LoginRoute/LoginRoute'
@@ -43,6 +44,7 @@ class App extends React.Component{
           <PrivateRoute path={'/notificationSent'} component={NotifcationSent} />
           <PrivateRoute path={'/notifications'} component={NotificationRoute} />
           <PrivateRoute path={'/profile/:id'} component={Profile} />
+          <PrivateRoute path={'/profile'} component={ProfileCurrentUser} />
           
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />

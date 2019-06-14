@@ -8,35 +8,21 @@ import './Profile.css'
 export default class Profile extends React.Component{
   state = {
     profile: [],
-    events: [],
-    edit: false,
-    canEdit: false
+    events: []
   }
 
   static contextType = UserContext
 
   componentDidMount() {
-    ProfileService.getProfileById(this.props.match.params.id)
+    ProfileService.getCurrentUserProfile()
       .then(profile => {
-        console.log(profile)
-        this.setState({ profile: profile})
-
-      const profileId = this.state.profile.user_id
-
-    EventService.getAllEvents()
-      .then( event => {
-        const profileEvents = event.filter(e => e.event_owner_id === profileId)
-        this.setState({ events: profileEvents})
+        this.setState({ profile: profile[0]})
       })
 
-      if (profileId === this.context.user.id) {
-        this.setState({ canEdit: true })
-      }
-    })  
-  }
-
-  handleEditButton = () => { 
-    this.setState({ edit: true })
+    EventService.getEventsForCurrentUser()
+      .then(events => {
+        this.setState({ events: events })
+      })  
   }
 
   handleSubmitButton = (e) => {
@@ -52,7 +38,6 @@ export default class Profile extends React.Component{
       me_intro: me_intro.value
     })
     .then(response => {
-      console.log(response)
       // profile_picture.value = ''
       music_like.value = ''
       movie_like.value = ''
@@ -64,9 +49,8 @@ export default class Profile extends React.Component{
     })
   }
 
-  renderEditButton() {
-    const editButton = (this.state.canEdit) ? <button onClick={this.handleEditButton}>Edit Profile</button> : ''
-    return editButton
+  handleEditButton = () => { 
+    this.setState({ edit: true })
   }
 
   handleCancelButton = () => {
@@ -74,8 +58,19 @@ export default class Profile extends React.Component{
   }
 
   renderBioText() {
-    const user = this.state.profile
-    console.log(user)
+    const userProfile = this.state.profile
+    const profile = (
+    <div>
+     <img src={userProfile.profile_picture} alt=''/>
+       <p>Bio: {userProfile.me_intro}</p>
+       <p>Interests:</p>
+       <ul>
+         <li>Music: {userProfile.music_like}</li>
+         <li>Favorite movie: {userProfile.movie_like}</li>
+       </ul>
+   </div>
+    )
+
     const events = this.state.events
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
     : events.map(event => 
@@ -86,14 +81,8 @@ export default class Profile extends React.Component{
     )
     return (
       <div className="profile">
-       {this.renderEditButton()}
-        <img src={user.profile_picture} alt=''/>
-        <p>Bio: {user.me_intro}</p>
-        <p>Interests:</p>
-        <ul>
-          <li>Music: {user.music_like}</li>
-          <li>Favorite movie: {user.movie_like}</li>
-        </ul>
+        <button type="click" onClick={this.handleEditButton}>Edit</button>
+        {profile}
         <p>Events:</p>
         {userEvents}
       </div>
@@ -106,19 +95,18 @@ export default class Profile extends React.Component{
       <div className="edit-profile">
         <fieldset>
           <form onSubmit={this.handleSubmitButton}>
-            <Label htmlFor="bio">Bio</Label>
-            <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
+                <Label htmlFor="bio">About me</Label>
+                <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
-            <p>Interests:</p>
-            <Label htmlFor="music">Music</Label>
-            <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
+                <p>Interests:</p>
+                <Label htmlFor="music">Favorite music genre:</Label>
+                <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
 
-            <Label htmlFor="movie">Movie</Label>
-            <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
+                <Label htmlFor="movie">Favorite movie:</Label>
+                <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
 
-            {/* <Label htmlFor="bio">Profile pic</Label>
-            <Input type="text" id="profile_picture" name="profile_picture" /> */}
-
+                {/* <Label htmlFor="bio">Profile pic</Label>
+                <Input type="text" id="profile_picture" name="profile_picture" /> */}
             <button type="submit">Submit</button>
             <button onClick={this.handleCancelButton}>Cancel</button>
           </form>
@@ -128,7 +116,6 @@ export default class Profile extends React.Component{
   }
 
   render() {
-    console.log(this.state.canEdit)
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
 
     return(
@@ -138,4 +125,3 @@ export default class Profile extends React.Component{
     )
   }
 }
-

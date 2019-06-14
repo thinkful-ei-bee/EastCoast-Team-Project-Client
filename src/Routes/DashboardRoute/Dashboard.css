@@ -31,6 +31,7 @@
 }
 
 .btn {
+    color: black;
     position: absolute;
     width: fit-content;
     margin: auto;
