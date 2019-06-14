@@ -36,11 +36,13 @@ export default class Profile extends React.Component{
       recipient_id: this.props.match.params.id,
       event: id,
     })
-    .then(
+    .then( response => {
+        console.log(response)
+   
       this.setState({ 
         disabledButton: index, 
         eventifySent: true
-      })
+      }) }
     )
   }
 
@@ -52,7 +54,7 @@ export default class Profile extends React.Component{
     : events.map((event, i) => 
       <div key={event.id}>
         <p >{event.event_name}</p>
-        <button type="submit" disabled={this.state.disabledButton === i} onClick={() => this.handleIntriguedButton(event.id, i)}>{!this.state.eventifySent ? ('Intrigued') : 'Eventify sent!'}</button>
+        <button type="submit" disabled={this.state.disabledButton === i} onClick={() => this.handleIntriguedButton(event.id, i)}>{!this.state.eventifySent ? ('Intrigued') : ('Eventify sent!')}</button>
       </div> 
     )
     return (

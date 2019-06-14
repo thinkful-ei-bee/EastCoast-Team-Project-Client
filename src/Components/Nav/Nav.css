@@ -3,6 +3,10 @@
     border-bottom: 1px solid black;
     
 } */
+.logout {
+    margin: 20px;
+    padding: 20px;
+}
 .nav-link {
     position: fixed;
     top: 0;
