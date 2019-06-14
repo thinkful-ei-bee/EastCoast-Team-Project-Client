@@ -14,8 +14,7 @@ export default class Nav extends React.Component{
   componentDidMount() {
     ProfileService.getCurrentUserProfile()
       .then(profile => {
-        console.log(profile)
-        const id = profile.map(profile => parseInt(profile.id))
+        const id = profile.map(profile => parseInt(profile.user_id))
         this.setState({ currentUserProfileId: id})
       })
   }  
@@ -26,7 +25,6 @@ export default class Nav extends React.Component{
 
   renderLogoutLink() {
     const profileId = this.state.currentUserProfileId
-    const userId = this.context.user.id
     return (
       <div>
       <span>

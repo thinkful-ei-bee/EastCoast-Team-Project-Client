@@ -16,6 +16,7 @@ export default class Profile extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
+    console.log(this.props.match.params.id)
     ProfileService.getProfileById(this.props.match.params.id)
       .then(profile => {
         this.setState({ profile: profile})

@@ -136,7 +136,6 @@ export default class Dashboard extends React.Component{
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
     const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
-    console.log(userName)
 
     if (gender === "female") {
       return <Link to={{
@@ -152,8 +151,6 @@ export default class Dashboard extends React.Component{
   }
  
   render(){
-
-    console.log(this.state.filteredProfileInfo[this.state.currentImageIndex])
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
