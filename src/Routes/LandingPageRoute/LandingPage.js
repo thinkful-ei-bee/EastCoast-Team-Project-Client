@@ -14,7 +14,7 @@ export default class LandingPage extends Component{
             </p>
           <div className='explore-rendezvous'>
         <Link 
-          to='/register'
+          to='/signup'
          > Sign up and try</Link>
         </div>
       </div>
