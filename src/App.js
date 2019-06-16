@@ -15,6 +15,7 @@ import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
 import NotificationRoute from './Routes/Notifications/NotificationRoute'
 import Footer from './Components/FooterRoute/Footer';
+import './App.css'
 
 class App extends React.Component{
   state = { 

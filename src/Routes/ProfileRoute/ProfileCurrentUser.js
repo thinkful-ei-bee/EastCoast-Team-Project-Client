@@ -29,7 +29,7 @@ export default class Profile extends React.Component{
     e.preventDefault()
     const userId = this.state.profile.user_id
 
-    const { profile_picture, music_like, movie_like, me_intro } = e.target;
+    const { music_like, movie_like, me_intro } = e.target;
 
     ProfileService.editProfile(userId, {
       // profile_picture: profile_picture.value,

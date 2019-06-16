@@ -52,11 +52,11 @@ export default class Nav extends React.Component{
   render() {
     return(
       <header>
-      <h1>
+      <div className='logo'>
         <Link to='/'>
           Rendezvous
         </Link>
-      </h1>
+      </div>
       {TokenService.hasAuthToken()
         ? this.renderLogoutLink()
         : this.renderLoginLink()}

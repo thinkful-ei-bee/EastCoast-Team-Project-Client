@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Label } from '../../Components/Form/Form'
+//import { Input, Label } from '../../Components/Form/Form'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
 import EventifyService from '../../Services/eventify-service'

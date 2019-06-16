@@ -25,7 +25,7 @@ export default class Notifications extends React.Component {
 
     ProfileService.getCurrentUserProfile()
       .then(user => {
-        const userId = user.map(user=>user.id)
+        //const userId = user.map(user=>user.id)
       
     EventifyService.getEventify()
       .then(eventify => {
@@ -74,11 +74,11 @@ export default class Notifications extends React.Component {
   }
 
   renderRecievedNotifications() {
-    const eventInfo = (!this.state.recievedEventInfo)? '' : this.state.recievedEventInfo.map(info => 
-      // <div className="event-info">
-        <p>Check out more info <Link to={`/events/${info.id}`}>here</Link></p>
-      // </div>
-    )
+    // const eventInfo = (!this.state.recievedEventInfo)? '' : this.state.recievedEventInfo.map(info => 
+    //   // <div className="event-info">
+    //     <p>Check out more info <Link to={`/events/${info.id}`}>here</Link></p>
+    //   // </div>
+    // )
 
     const eventify = (!this.state.recievedEvents) ? [] : this.state.recievedEvents.map(event => 
       <div className="recieved-notification" key={event.id}>

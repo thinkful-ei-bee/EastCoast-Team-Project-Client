@@ -1,12 +1,17 @@
 import React from 'react';
 import './Footer.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Footer extends React.Component{
   render(){
     return(
       <div className='footer'>
       <span id='author'>Created by EastCoast Team</span>
+      <div className='social_icon_container'>
+      <a href='https://github.com/thinkful-ei-bee/EastCoast-Team-Project-Client'>               
+         <FontAwesomeIcon className='social_icon' icon={['fab', 'github']} />       
+       </a>
+       </div>
         {/* <div className='social_icon_group'>
 
        <a href='https://github.com/JizongL'>               
