@@ -44,6 +44,7 @@ export default class Nav extends React.Component{
     return (
       <nav>
         <div className='nav_link'>
+        <Link to='/landingPage'>Home</Link>
         <Link to='/login'>Login</Link>
         {' '}
         <Link to='/signup'>Sign up</Link>

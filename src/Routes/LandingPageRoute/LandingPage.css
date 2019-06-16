@@ -1,0 +1,115 @@
+.LandingPageContent{
+  position: relative;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.landing-hero{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  padding:60px;
+  margin-top:150px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#landing-title{
+  color:white;
+  font-size: 80px;  
+  text-align: center;
+}
+
+#landing-title:hover{
+  color:white;
+  font-size: 90px;  
+  text-align: center;
+}
+
+.landing-slogan{
+  color:white;
+  font-size: 30px;  
+  text-align: center;
+}
+
+.explore-rendezvous{
+  margin:0 auto;
+  padding:20px;
+}
+
+.how-it-work{
+  margin-top:100px;
+  color:white;
+  font-size: 80px;  
+  text-align: center;  
+}
+
+.how-it-work-demo{
+  margin-top:50px;
+  font-size:20px;
+}
+
+.images_group{
+  flex-direction: row;
+}
+
+.explore-rendezvous a{
+  color:white;
+  display:inline-block;
+  padding:0.5em 3em;
+  border:0.16em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  box-sizing: border-box;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-family:'Roboto',sans-serif;
+  font-size:20px;
+  font-weight:400;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.15s;
+}
+
+.explore-streSTrac a:hover{
+  color:#DDDDDD;
+  border-color:#DDDDDD;
+}
+ 
+.explore-streSTrac a:active{
+  color:#BBBBBB;
+  border-color:#BBBBBB;
+}
+
+@media all and (max-width:600px){
+  #landing-title{
+    font-size:40px;
+  }
+
+  .landing-hero{
+    padding:0px;
+  }
+
+  a{
+    display:block;
+    margin:0.4em auto
+  }
+
+  .landing-slogan{
+    font-size:20px;    
+  }
+
+  .landing-hero{
+    width:100%;    
+  }
+
+  .how-it-work-demo{
+    font-size: 15px;
+    margin:30px auto;
+  }
+
+  .how-it-work{
+    font-size: 40px;
+  }
+}
+  
