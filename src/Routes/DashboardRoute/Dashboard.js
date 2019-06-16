@@ -159,25 +159,37 @@ export default class Dashboard extends React.Component{
     const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
     return(
-      <div>
+      <div className='dashboard_container'>
       <div className="dashboard">
-        <div className="dashboard-pic">
+        <div className='left_button'>
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
+        </div>
+        <div className="dashboard-pic">
+          
           <div className="picture-carousel">
           <h3 className="picture-name">{userName}</h3>
           <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
           </div>
-
-          <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
-        </div>
-        <div className='eventify_link_button'>
+          <div className='eventify_link_button'>
         {this.renderEventifyButton()}
         </div>
+          
+        </div>
+        <div className='right_button'>
+          <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
+        </div>
+        
       </div>
-      <div className="create-event">
+      <div className="create_event_container">
+        <div className='create_event'>
         <Link to='/createEvent'>Create Event</Link>
-        <h3>Your upcoming events:</h3>
+        </div>
+        <div className='upcoming_event_title'>
+          Your upcoming events:
+        </div>
+        <div className='upcoming_events'>
         {this.renderEvents()}
+        </div>
       </div>
       </div>
     )

@@ -107,4 +107,7 @@ header a{
     .nav_link a{
         margin:10px 20px;
     }
+    .nav_link_Logged_in{
+        flex-direction: column;
+    }
 }
