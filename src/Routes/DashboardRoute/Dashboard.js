@@ -170,8 +170,9 @@ export default class Dashboard extends React.Component{
 
           <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
         </div>
-      
+        <div className='eventify_link_button'>
         {this.renderEventifyButton()}
+        </div>
       </div>
       <div className="create-event">
         <Link to='/createEvent'>Create Event</Link>
