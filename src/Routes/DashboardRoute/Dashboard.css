@@ -18,6 +18,7 @@
     position: relative;
     margin: auto;
     padding-top: 40px;
+    padding: auto;
 }
 
 .picture-carousel {
@@ -54,5 +55,5 @@
     color: black;
     background: rgb(226, 191, 240); 
     margin-top: 10px;
-    width: fit-content
+    width: fit-content;
 }

@@ -35,7 +35,11 @@ form{
 .btn {
     margin-top: -60px;
     margin-left: 140px;
-    color: white;
+    color: black;
+    background-color: white;
+}
+.btn:hover {
+  cursor: pointer;
 }
 .account-created {
     margin: auto;
@@ -44,7 +48,6 @@ form{
     background-color: white;
     width: fit-content;
     height: auto;
-    margin-top: 25px;
 }
 .registration-input {
     padding: 8px;

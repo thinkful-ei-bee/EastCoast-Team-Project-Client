@@ -1,16 +1,10 @@
 .event-form{
-    width: fit-content;
+    width: auto;
     margin: auto;
     text-align: center;
-    margin-bottom: 50px;
-}
-
-.event-form input{
-    margin: auto;
-}
-
-#event_details {
-    margin-bottom: 20px;
+    /* margin-bottom: 50px; */
+    background-color: white;
+    padding: 20px;
 }
 
 .event-form select {
@@ -24,4 +18,19 @@
     text-align: left;
   
     border-radius: 4px;
+}
+.create-event-btn {
+    margin: auto;
+    padding: auto;
+}
+.cancel-btn {
+    margin: auto;
+    padding: auto;
+}
+fieldset {
+    border: 0;
+}
+select {
+    margin: auto;
+    padding: auto;
 }

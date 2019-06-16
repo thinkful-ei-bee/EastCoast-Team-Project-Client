@@ -2,10 +2,6 @@ import React from 'react';
 
 export default class EditProfile extends React.Component {
 
-    state = {
-        //not sure
-    }
-
     // i was doing a GET request in order to pre-fill the form inputs with the existing values
     // using properties(params) set by the route component
     componentDidMount() {
@@ -30,12 +26,11 @@ export default class EditProfile extends React.Component {
 
 
     render() { 
-        const {} = this.state //whenever we talk about this
 
         return (
             <div>
                 <h2>Edit Profile</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="edit-form">
                     <label htmlFor="me_intro">Profile Picture</label>
                     <input
                         required

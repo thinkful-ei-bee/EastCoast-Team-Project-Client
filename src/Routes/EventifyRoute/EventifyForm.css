@@ -2,6 +2,8 @@
     width: fit-content;
     margin: auto;
     margin-top: 5%;
+    background-color: white;
+    text-align: center;
 }
 
 .eventify-form select {
@@ -15,4 +17,12 @@
     text-align: left;
   
     border-radius: 4px;
+}
+.cancel-btn {
+    margin: auto;
+    padding: auto;
+}
+.choose-event-btn {
+    margin: auto;
+    padding: auto;
 }

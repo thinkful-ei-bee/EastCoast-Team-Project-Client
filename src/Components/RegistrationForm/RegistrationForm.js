@@ -96,11 +96,11 @@ export default class RegistrationForm extends React.Component{
               name="gender" 
               placeholder="Enter gender"
               required/> 
-
+          </form>
             <button type="submit" className="btn">Sign Up!</button> 
             {' '}<br></br>
             <Link to='/login' className="account-created">Already have an account?</Link>      
-          </form>
+         
         
         </div>
       </section>

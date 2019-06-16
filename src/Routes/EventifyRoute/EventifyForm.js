@@ -63,8 +63,8 @@ export default class EventifyForm extends React.Component{
               onChange={e => this.handleMenuChange(e.target.value)} >
               {events}
             </select><br></br>
-            <Button>Choose event</Button><br></br>
-            <Button type="click" onClick={() => this.props.history.push('/')}>Cancel</Button>    
+            <Button className="choose-event-btn">Choose event</Button><br></br>
+            <Button type="click" onClick={() => this.props.history.push('/')} className="cancel-btn">Cancel</Button>    
           </form>
         </fieldset>
       </div>

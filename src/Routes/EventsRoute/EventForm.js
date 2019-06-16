@@ -61,7 +61,7 @@ export default class EventForm extends React.Component{
             <Input type="text" id="event_date" name="event_date" placeholder="Date" required/> 
 
             <Label htmlFor="time">Time</Label>
-            <Input type="text" id="event_time" name="event_time" placeholder="time" required/> 
+            <Input type="text" id="event_time" name="event_time" placeholder="Time" required/> 
 
             <Label htmlFor="type">Type</Label>
             <Input type="text" id="event_type" name="event_type" placeholder="Type" required/> 
@@ -77,8 +77,8 @@ export default class EventForm extends React.Component{
             <Label htmlFor="details">Details</Label>
             <Input type="text" id="event_details" name="event_details" placeholder="Event details" required/> 
 
-            <Button type="submit">Create Event</Button>      
-            <Button type="click" onClick={this.routeChange}>Cancel</Button>    
+            <Button type="submit" className="create-event-btn">Create Event</Button>      
+            <Button type="click" onClick={this.routeChange} className="cancel-btn">Cancel</Button>    
           </form>
         </fieldset>
         </div>
