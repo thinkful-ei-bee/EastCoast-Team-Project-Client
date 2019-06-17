@@ -61,7 +61,6 @@ export default class Profile extends React.Component{
       <div className="profile">
         <img src={user.profile_picture} alt=''/>
         <p>Bio: {user.me_intro}</p>
-        <p>Interests:</p>
         <ul>
           <li>Music: {user.music_like}</li>
           <li>Favorite movie: {user.movie_like}</li>
