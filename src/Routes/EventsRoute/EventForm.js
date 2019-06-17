@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, Label } from '../../Components/Form/Form'
 import Button from '../../Components/Button/Button'
+import Select from 'react-select'
 import EventService from '../../Services/events-service'
 import './EventForm.css'
 
@@ -47,6 +48,11 @@ export default class EventForm extends React.Component{
 
 
   render(){
+    const options = [
+      { value: 'false', label: 'Group' },
+      { value: 'true', label: 'Private' }
+    ]
+
     return(
       <section>
         <div className="event-form">
@@ -66,10 +72,12 @@ export default class EventForm extends React.Component{
             <Label htmlFor="type">Type</Label>
             <Input type="text" id="event_type" name="event_type" placeholder="Type" required/> 
 
-            <select id="is_private" name="is_private" onChange={e => this.handleMenuChange(e.target.value)} value={ this.props.selectValue }>
-              <option value="false">Group</option>
-              <option value="true">Private</option>
-            </select>
+            <Select  
+              name="is_private"
+              id="is_private"
+              value = {this.state.selectValue} 
+              onChange={this.handleMenuChange}
+              options = {options} />
 
             <Label htmlFor="locatio">Location</Label>
             <Input type="text" id="event_location" name="event_location" placeholder="Location" required/> 
