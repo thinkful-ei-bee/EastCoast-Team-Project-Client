@@ -33,5 +33,4 @@ describe('Registration Form Component', () => {
     form.simulate('submit', {target: {event_name: {}, event_date: {}, event_time: {}, event_type: {}, event_location: {}, event_details: {}, is_private: {}}});
     expect(handleSubmitMock).toHaveBeenCalledTimes(0);
   })
-  
 })
