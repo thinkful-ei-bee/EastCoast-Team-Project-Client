@@ -134,10 +134,12 @@ export default class Dashboard extends React.Component{
     const gender = userGender.toString()
 
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
-
     const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
-    console.log(userName)
-    if (gender === "female") {
+
+    if (this.state.events.length === 0) {
+      return ( <p className="eventify-message">You must first create an event before eventifying this person! </p>)
+    } else {
+      if (gender === "female") {
       return <Link to={{
         pathname: '/eventifyForm',
         state: { userId: userId, userGender: gender }
@@ -148,10 +150,10 @@ export default class Dashboard extends React.Component{
         state: { userId: userId, userGender: gender }
       }}>Eventify {userName}</Link>
     }
+    }
   }
  
   render(){
-    console.log(this.context.user.id)
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
