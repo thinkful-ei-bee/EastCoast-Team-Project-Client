@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../../Components/Button/Button'
 import './NotificationSent.css'
 
 export default class NotifcationSent extends React.Component{
@@ -23,7 +24,7 @@ export default class NotifcationSent extends React.Component{
     return(
     <div className="notification-sent">
       {this.renderMessage()}
-      <button type="click" onClick={() => this.props.history.push('/')}>Back</button>
+      <Button type="click" onClick={() => this.props.history.push('/')}>Back</Button>
     </div>
   )
   }

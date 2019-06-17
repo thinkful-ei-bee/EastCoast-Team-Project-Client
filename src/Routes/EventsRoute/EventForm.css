@@ -12,16 +12,3 @@
 #event_details {
     margin-bottom: 20px;
 }
-
-.event-form select {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    display: block;
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    margin-top: 10px;
-    padding: 10px;
-    text-align: left;
-  
-    border-radius: 4px;
-}
