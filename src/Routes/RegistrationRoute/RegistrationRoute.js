@@ -1,6 +1,6 @@
 import React from 'react'
 import RegistrationForm from '../../Components/RegistrationForm/RegistrationForm';
-
+import './RegistrationRoute.css'
 export default class RegistrationRoute extends React.Component {
   static defaultProps = {
     history: {
@@ -16,7 +16,9 @@ export default class RegistrationRoute extends React.Component {
   render() {
     return(
     <section>
-      <h1>Rendezvous registration</h1>
+      <div className='registration_title'>
+        Registration
+      </div>
       <div>
         <RegistrationForm registrationSucess={this.handleRegistrationSuccess} />
       </div>
