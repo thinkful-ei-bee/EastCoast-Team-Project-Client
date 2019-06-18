@@ -191,6 +191,7 @@ export default class Dashboard extends React.Component{
         {this.renderEvents()}
         </div>
       </div>
+      </div>
       
     )
   }
