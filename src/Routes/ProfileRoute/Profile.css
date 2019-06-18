@@ -1,5 +1,9 @@
 .profile {
-    padding: 3%;
+    margin:auto auto;
+    
+    color:white;
+    font-size:30px;
+
 }
 
 .profile img {
@@ -10,4 +14,30 @@
 .profile ul {
     list-style: none;
     line-height: 30px;
+    padding-left: 0;
+    
+}
+
+fieldset {
+    border: none;
+}
+
+.profile button{
+    display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid white;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-size:20px;
+  font-weight:300;
+  color: white;
+  background-color:transparent;
+  /* background-color: #b47eb3; */
+  /* background-color: #f0e68c; */
+  text-align:center;
+  transition: all 0.2s;
+  margin-top: 50px;
 }

@@ -14,8 +14,7 @@ export default class Nav extends React.Component{
   componentDidMount() {
     ProfileService.getCurrentUserProfile()
       .then(profile => {
-        console.log(profile)
-        const id = profile.map(profile => parseInt(profile.id))
+        const id = profile.map(profile => parseInt(profile.user_id))
         this.setState({ currentUserProfileId: id})
       })
   }  
@@ -25,18 +24,18 @@ export default class Nav extends React.Component{
   }
 
   renderLogoutLink() {
-    const profileId = this.state.currentUserProfileId
-    const userId = this.context.user.id
     return (
       <div>
       <span>
         {this.context.user.name}
       </span>
       <nav>
-        <Link to='/' className="nav-links">Dashboard</Link><br></br>
-        <Link to='/notifications' className="nav-links">Notifications</Link><br></br>
-        <Link onClick={this.handleLogoutClick} to='/login' className="nav-links">Logout</Link>
-        <Link to={`/profile/${profileId}`} className="nav-links">Profile</Link>
+        <div className='nav_link_Logged_in'>
+        <Link to='/' >Dashboard</Link><br></br>
+        <Link to='/notifications' >Notifications</Link><br></br>
+        <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
+        <Link to={`/profile`} >Profile</Link>
+        </div>
       </nav>
     </div>
   )}
@@ -45,6 +44,7 @@ export default class Nav extends React.Component{
     return (
       <nav>
         <div className='nav_link'>
+        <Link to='/landingPage'>Home</Link>
         <Link to='/login'>Login</Link>
         {' '}
         <Link to='/signup'>Sign up</Link>
@@ -55,11 +55,11 @@ export default class Nav extends React.Component{
   render() {
     return(
       <header>
-      <h1>
+      <div className='logo'>
         <Link to='/'>
           Rendezvous
         </Link>
-      </h1>
+      </div>
       {TokenService.hasAuthToken()
         ? this.renderLogoutLink()
         : this.renderLoginLink()}

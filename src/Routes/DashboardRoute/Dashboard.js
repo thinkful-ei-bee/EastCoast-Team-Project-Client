@@ -22,7 +22,7 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
-    EventService.getEvents()
+    EventService.getEventsForCurrentUser()
       .then(events => {
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
@@ -135,44 +135,61 @@ export default class Dashboard extends React.Component{
 
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
 
+    const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
+
     if (gender === "female") {
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId, userGender: gender}
-      }}>Eventify Him</Link>
+        state: { userId: userId, userGender: gender }
+      }}>Eventify {userName}</Link>
     } else { 
       return <Link to={{
         pathname: '/eventifyForm',
-        state: { userId: userId, userGender: gender}
-      }}>Eventify Her</Link>
+        state: { userId: userId, userGender: gender }
+      }}>Eventify {userName}</Link>
     }
   }
  
   render(){
-    console.log(this.context.user)
+    console.log(this.context.user.id)
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
-    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
+
+    const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
     return(
-      
+      <div className='dashboard_container'>
       <div className="dashboard">
-        <div className="dashboard-pic">
+        <div className='left_button'>
           <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
+        </div>
+        <div className="dashboard-pic">
+          
           <div className="picture-carousel">
-
+          <h3 className="picture-name">{userName}</h3>
           <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
           </div>
-
+          <div className='eventify_link_button'>
+        {this.renderEventifyButton()}
+        </div>
+          
+        </div>
+        <div className='right_button'>
           <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
         </div>
-      
-        {this.renderEventifyButton()}
-     
+        
+      </div>
+      <div className="create_event_container">
+        <div className='create_event'>
         <Link to='/createEvent'>Create Event</Link>
-        <h3>Your upcoming events:</h3>
+        </div>
+        <div className='upcoming_event_title'>
+          Your upcoming events:
+        </div>
+        <div className='upcoming_events'>
         {this.renderEvents()}
-       
+        </div>
       </div>
       
     )

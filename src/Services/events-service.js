@@ -2,7 +2,19 @@ import config from '../config'
 import TokenService from './token-service';
 
 const EventsService = {
-  getEvents(){
+  getAllEvents() {
+    return fetch(`${config.API_ENDPOINT}/events/all-event`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      }
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+  getEventsForCurrentUser(){
     return fetch(`${config.API_ENDPOINT}/events`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,

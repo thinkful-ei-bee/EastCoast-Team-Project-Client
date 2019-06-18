@@ -2,11 +2,11 @@ import React from 'react'
 import './NotificationSent.css'
 
 export default class NotifcationSent extends React.Component{
-  state = { userGender: [] }
+  state = { userGender: [], userName: [] }
 
   componentDidMount() {
-    const {userGender} = this.props.location.state
-    this.setState({ userGender: userGender})
+    const {userGender } = this.props.location.state
+    this.setState({ userGender: userGender })
   }
   
   renderMessage() {
