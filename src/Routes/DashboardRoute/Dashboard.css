@@ -77,6 +77,18 @@
     bottom: 45%;
 }
 
+.create_event_container{
+    /* background: linear-gradient(#DBEAE3, black); */
+}
+
+.upcoming-event-title {
+    margin: auto;
+    width: fit-content;
+    color: white;
+    font-size: 30px;
+    padding: 2%;
+}
+
 .upcoming-events {
     display: flex;
     flex-direction: row;
@@ -85,14 +97,25 @@
 
 .dashboard-events {
     width: 250px;
-    line-height: 0px;
     text-align: center;
+    font-size: 25px;
     border: 1px solid white;
     padding: 3%;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 5px;
     width: 100px;
+
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.dashboard-events:hover {
+    opacity: 0.5;
 }
 
 .dashboard-events a {

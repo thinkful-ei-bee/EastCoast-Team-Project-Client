@@ -186,7 +186,7 @@ export default class Dashboard extends React.Component{
         <div className='create_event'>
           <Link to='/createEvent'>Create Event</Link>
         </div>
-        <div className='upcoming_event_title'>
+        <div className='upcoming-event-title'>
           Your upcoming events:
         </div>
         <div className='upcoming-events'>
