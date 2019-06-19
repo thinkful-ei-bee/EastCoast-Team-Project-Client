@@ -32,7 +32,6 @@
     color:white;
 }
 
-
 .eventify_link_button a{
     display:inline-block;
     border:0.1em solid white;
@@ -72,7 +71,7 @@
 }
 
 .create_event {
-    width: fit-content;
+    width: 200px;
     margin: auto;
 }
 
