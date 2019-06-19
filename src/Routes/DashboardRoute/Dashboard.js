@@ -122,7 +122,7 @@ export default class Dashboard extends React.Component{
   renderEvents() {
     const userEvents = (this.state.events.length === 0) ? 'You have no events yet'
     : this.state.events.map((event, i) => 
-      <div key={i}>
+      <div key={i} className="dashboard-events">
         <Link to={`/events/${event.id}`}>{event.event_name}</Link>
       </div>
       )
@@ -184,12 +184,12 @@ export default class Dashboard extends React.Component{
       </div>
       <div className="create_event_container">
         <div className='create_event'>
-        <Link to='/createEvent'>Create Event</Link>
+          <Link to='/createEvent'>Create Event</Link>
         </div>
         <div className='upcoming_event_title'>
           Your upcoming events:
         </div>
-        <div className='upcoming_events'>
+        <div className='upcoming-events'>
         {this.renderEvents()}
         </div>
       </div>
