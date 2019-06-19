@@ -22,9 +22,7 @@ export default class Nav extends React.Component{
 
       EventifyService.getEventify()
       .then(eventify => {
-        console.log(eventify)
         const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
-        console.log(filteredRecievedEvents)
         this.setState({ 
           recievedEvents: filteredRecievedEvents
         })

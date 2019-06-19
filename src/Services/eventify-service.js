@@ -29,6 +29,21 @@ const EventifyService = {
           : res.json()
       )
   },
+  editEventify(  event_id, event, recipient_id, is_accept ) {
+    return fetch(`${config.API_ENDPOINT}/eventify/${event_id}`, {
+      method: 'PATCH',
+      headers:{
+        'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`
+       }, 
+       body: JSON.stringify( event, recipient_id, is_accept ),
+    })
+      .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+      )
+  }
 }
 
 export default EventifyService;

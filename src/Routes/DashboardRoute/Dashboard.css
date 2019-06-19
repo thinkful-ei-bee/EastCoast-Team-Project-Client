@@ -20,14 +20,17 @@
 }
 
 .picture-carousel {
-    
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
     margin: auto;
+    overflow: hidden;
     /* background-color: #b47eb3; */
 }
 
 .picture-carousel img {
-    
-    width: 250px;
+    width:  250px;
+    height: 250px;
 }
 
 .picture-carousel h3{
