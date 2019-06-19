@@ -12,9 +12,7 @@ export default class Notifications extends React.Component {
     recievedEvents: [],
     recievedEventInfo: [],
     sentEvents: [],
-    allProfiles: [],
-    is_accept: false,
-    acceptButton: -1,
+    allProfiles: []
   }
 
   static contextType = UserContext
@@ -27,7 +25,6 @@ export default class Notifications extends React.Component {
 
     ProfileService.getCurrentUserProfile()
       .then(user => {
-        //const userId = user.map(user=>user.id)
       
     EventifyService.getEventify()
       .then(eventify => {
@@ -60,8 +57,7 @@ export default class Notifications extends React.Component {
     this.props.history.push(`/`)
   }
 
-  handleAcceptButton = (id, index) => {
-    console.log(index)
+  handleAcceptButton = (id) => {
     const eventifyId = id;
     const recipientId = this.state.recievedEvents.filter(event => event.id === eventifyId)
     const recipientIdNum = parseInt(recipientId.map(recipient => recipient.recipient_id))
@@ -73,13 +69,16 @@ export default class Notifications extends React.Component {
       is_accept: true
     })
     .then(response => {
-      this.setState({
-        recievedEvents: [...this.state.recievedEvents]
-      })
-      console.log(this.state.recievedEvents)
+      const newReceivedEvents = this.state.recievedEvents.map(rEvent => {
+        if(rEvent.event === response.event) {
+          rEvent.is_accept = true;
+        }
+        return rEvent;
+      }) 
+      this.setState({ recievedEvents: newReceivedEvents })
     })
   }
-
+  
   renderSentNotifications() {
     let sentProfiles = this.state.allProfiles.filter(o1 => this.state.sentEvents.some(o2 => o1.user_id === o2.recipient_id));
 
@@ -100,17 +99,20 @@ export default class Notifications extends React.Component {
   renderRecievedNotifications() {
     return (
     <div>
-      <h3>Recieved:</h3>
+      <h3>Received:</h3>
       {!this.state.recievedEvents ? [] : this.state.recievedEvents.map((event, i) => 
         <div className="recieved-notification" key={i}>
           <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
           <h4>{event.full_name} is inviting you to {event.event_name}!</h4>
-
-          {!event.is_accept && !this.state.is_accept ? (<button type="click" onClick={() => {this.handleAcceptButton(event.id, i)}} >Accept</button>) : (<button type="click" disabled={true}>You've accepted this request!</button>) } 
-
-          <button type="click" onClick={this.handleDeclineButton}>Decline</button>
+          
+          {!event.is_accept ? 
+            <div>
+              <button type="click" onClick={() => {this.handleAcceptButton(event.id, i)}} >Accept</button>
+              <button type="click" onClick={this.handleDeclineButton}>Decline</button>
+            </div> : 
+            <button type="click" disabled={true}>You've accepted this request!</button>}
         </div>
-        )}
+       )}
     </div>
       )
     }
@@ -121,7 +123,7 @@ export default class Notifications extends React.Component {
     return(
       <div className="notifcations"> 
         <div className="sent-recieved">
-          <button onClick={this.handleRecievedButton} disabled={!this.state.showSent}>See recieved</button>
+          <button onClick={this.handleRecievedButton} disabled={!this.state.showSent}>See received</button>
           <button onClick={this.handleSentButton} disabled={this.state.showSent}>See sent</button>
         </div>
         {notifications}
