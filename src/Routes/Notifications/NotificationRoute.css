@@ -6,9 +6,10 @@
     padding-bottom: 5%;
 }
 
-.notifcations button{
+.notifcations button, .accepted-message {
     display:inline-block;
     border:0.1em solid white;
+    padding: 1%;
     margin:0 0.3em 0.3em 0;
     border-radius:0.12em;
     box-sizing: border-box;
@@ -18,14 +19,15 @@
     font-weight:300;
     color: white;
     background-color:transparent;
-    /* background-color: #b47eb3; */
-    /* background-color: #f0e68c; */
     text-align:center;
     transition: all 0.2s;
-    margin-top: 50px;
-  
-}
+    margin-top: 30px;
+} 
 
+.notifcations button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
 
 .recieved-notification img, .sent-notification img{
     border-radius: 50%;
@@ -43,12 +45,29 @@
     font-size: 20px;
 }
 
-.recieved-notification img, .sent-notification img {
+.recieved-notification img{
     float: right;
+    width: 150px;
+}
+
+.sent-notification img {
+    width: 150px;
 }
 
 .sent-notification img {
     margin: 1%;
+}
+
+.received-h3 {
+    color: white;
+    margin-left: 2%;
+    font-size: 30px;
+}
+
+.sent-received {
+    margin-left: auto;
+    margin-right: 2%;
+    width: fit-content;
 }
 
 

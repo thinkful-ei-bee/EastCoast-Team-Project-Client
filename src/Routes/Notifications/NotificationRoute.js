@@ -99,7 +99,7 @@ export default class Notifications extends React.Component {
   renderRecievedNotifications() {
     return (
     <div>
-      <h3>Received:</h3>
+      <h3 className="received-h3">Received:</h3>
       {!this.state.recievedEvents ? [] : this.state.recievedEvents.map((event, i) => 
         <div className="recieved-notification" key={i}>
           <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
@@ -110,7 +110,7 @@ export default class Notifications extends React.Component {
               <button type="click" onClick={() => {this.handleAcceptButton(event.id, i)}} >Accept</button>
               <button type="click" onClick={this.handleDeclineButton}>Decline</button>
             </div> : 
-            <button type="click" disabled={true}>You've accepted this request!</button>}
+            <div className="accepted-message">You've accepted this request!</div>}
         </div>
        )}
     </div>
@@ -122,11 +122,13 @@ export default class Notifications extends React.Component {
 
     return(
       <div className="notifcations"> 
-        <div className="sent-recieved">
+        <div className="sent-received">
           <button onClick={this.handleRecievedButton} disabled={!this.state.showSent}>See received</button>
           <button onClick={this.handleSentButton} disabled={this.state.showSent}>See sent</button>
         </div>
+        <div className="all-notifications">
         {notifications}
+        </div>
       </div>
     )
   }
