@@ -12,3 +12,13 @@
 #event_details {
     margin-bottom: 20px;
 }
+
+.date_picker{
+    margin-right:15px;
+    color:white;
+}
+
+.date_picker input{
+    margin-top:5px;
+    height:20px;
+}
