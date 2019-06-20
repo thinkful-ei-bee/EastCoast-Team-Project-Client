@@ -25,23 +25,22 @@ export default class Notifications extends React.Component {
 
     ProfileService.getCurrentUserProfile()
       .then(user => {
-      
-    EventifyService.getEventify()
-      .then(eventify => {
-        const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
-        console.log(filteredRecievedEvents)
-        const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
-        this.setState({ 
-          recievedEvents: filteredRecievedEvents,
-          sentEvents: filteredSentEvents 
-        })
+      EventifyService.getEventify()
+        .then(eventify => {
+          const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
+          console.log(filteredRecievedEvents)
+          const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
+          this.setState({ 
+            recievedEvents: filteredRecievedEvents,
+            sentEvents: filteredSentEvents 
+          })
 
-    EventService.getAllEvents()
-      .then(events => {
-        let recievedEventInfo = events.filter(o1 => filteredRecievedEvents.some(o2 => o1.id === o2.event));
-        this.setState({ recievedEventInfo: recievedEventInfo })
+      EventService.getAllEvents()
+        .then(events => {
+          let recievedEventInfo = events.filter(o1 => filteredRecievedEvents.some(o2 => o1.id === o2.event));
+          this.setState({ recievedEventInfo: recievedEventInfo })
+          })
         })
-      })
     })
   }
 
@@ -58,9 +57,7 @@ export default class Notifications extends React.Component {
     EventifyService.deleteEventify(eventifyId)
       .then(response => {
         const newReceivedEvents = this.state.recievedEvents.filter(event => event.id !== eventifyId)
-        this.setState({ 
-          recievedEvents: newReceivedEvents
-        })
+        this.setState({ recievedEvents: newReceivedEvents })
       })
   }
 
@@ -109,6 +106,7 @@ export default class Notifications extends React.Component {
       <h3 className="received-h3">Received:</h3>
       {!this.state.recievedEvents ? [] : this.state.recievedEvents.map((event, i) => 
         <div className="recieved-notification" key={i}>
+
           <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
           <h4>{event.full_name} is inviting you to {event.event_name}!</h4>
           
@@ -117,12 +115,11 @@ export default class Notifications extends React.Component {
               <button type="click" onClick={() => {this.handleAcceptButton(event.id, i)}} >Accept</button>
               <button type="click" onClick={() => this.handleDeclineButton(event.id)}>Decline</button>
             </div> : 
-            <div className="accepted-message">You've accepted this request!</div>}
+            <div className="accepted-message">You've accepted this request!</div> }
         </div>
        )}
     </div>
-      )
-    }
+    )}
 
   render() {
     const notifications = (!this.state.showSent) ? this.renderRecievedNotifications() : this.renderSentNotifications()
@@ -137,6 +134,5 @@ export default class Notifications extends React.Component {
         {notifications}
         </div>
       </div>
-    )
+    )}
   }
-}

@@ -97,6 +97,7 @@ export default class EventForm extends React.Component{
 
             <Label htmlFor="is_private">Is this event a private event or a group event?</Label><br></br>
             <Select  
+              className="is_private"
               name="is_private"
               id="is_private"
               value = {this.state.selectValue} 
@@ -112,7 +113,7 @@ export default class EventForm extends React.Component{
             <Label htmlFor="details">Details</Label>
             <Input type="text" id="event_details" name="event_details" placeholder="Event details" required/> 
 
-            <Button type="submit">Create Event</Button>      
+            <Button type="submit" className="create-event-btn">Create Event</Button>      
             <Button type="click" onClick={this.routeChange}>Cancel</Button>    
           </form>
         </fieldset>
