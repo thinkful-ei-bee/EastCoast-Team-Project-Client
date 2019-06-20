@@ -2,8 +2,10 @@
 .notifcations {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(#445C66, #90B1B8 );
+    background: rgba(25, 25, 25, .6);
+    border-radius: 5px;
     padding-bottom: 5%;
+    margin: 5%;
 }
 
 .notifcations button, .accepted-message {
@@ -30,8 +32,9 @@
 }
 
 .recieved-notification img, .sent-notification img{
+    margin-top: 3.5%;
     border-radius: 50%;
-    width: 200px;
+    width: 250px;
 }
 
 .recieved-notification, .sent-notification{
@@ -65,9 +68,7 @@
 }
 
 .sent-received {
-    margin-left: auto;
-    margin-right: 2%;
-    width: fit-content;
+   margin-left: 2%;
 }
 
 

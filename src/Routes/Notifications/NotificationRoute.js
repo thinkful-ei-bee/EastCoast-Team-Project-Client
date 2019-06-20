@@ -86,18 +86,21 @@ export default class Notifications extends React.Component {
   renderSentNotifications() {
     let sentProfiles = this.state.allProfiles.filter(o1 => this.state.sentEvents.some(o2 => o1.user_id === o2.recipient_id));
 
-    return (this.state.sentEvents.map(event =>
-      <div className="sent-notification" key={event.id}>
-        <div className="sent-from">
-          <h3>Sent an invitation for {event.event_name} to {sentProfiles.filter(user => user.user_id === event.recipient_id).map(user => user.full_name)}</h3>
-          <img src={sentProfiles.filter(user => user.user_id === event.recipient_id).map(user => user.profile_picture)} alt=''/>
-          <img src={event.profile_picture} alt=''/>
-          <h4>Status: {!event.is_accept ? ('Waiting for event to be accepted') : ('Accepted!')} </h4>
-        </div>
-        <div className="sent-to">
-        </div>
+    return (
+      <div>
+        <h3 className="received-h3">Sent:</h3>
+        {this.state.sentEvents.map(event => 
+          <div className="sent-notification" key={event.id}>
+            <div className="sent-from">
+              <h3>Sent an invitation for {event.event_name} to {sentProfiles.filter(user => user.user_id === event.recipient_id).map(user => user.full_name)}</h3>
+              <img src={sentProfiles.filter(user => user.user_id === event.recipient_id).map(user => user.profile_picture)} alt=''/>
+              <img src={event.profile_picture} alt=''/>
+              <h4>Status: {!event.is_accept ? ('Waiting for event to be accepted') : ('Accepted!')} </h4>
+            </div>
+          </div>
+          )}
       </div>
-    ))
+    )
   }
 
   renderRecievedNotifications() {
