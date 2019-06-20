@@ -3,7 +3,8 @@ import { Input, Label } from '../../Components/Form/Form'
 import Button from '../../Components/Button/Button'
 import Select from 'react-select'
 import DatePicker from 'react-datepicker'
-import TimePicker from 'react-time-picker'
+import "react-datepicker/dist/react-datepicker.css"
+import TimePicker from 'rc-time-picker';
 import SelectUSState from 'react-select-us-states'
 import EventService from '../../Services/events-service'
 import './EventForm.css'
@@ -80,18 +81,21 @@ export default class EventForm extends React.Component{
             <Input type="text" id="event_name" name="event_name" placeholder="Name of event" required/><br></br>
 
             <Label htmlFor="date">Date</Label>
+            
             <DatePicker 
               selected = {this.state.startDate}
               onChange = {this.handleDateChange}
-            /><br></br>
+            />
+            
+            <br></br>
 
             <Label htmlFor="time">Time</Label>
-            {/* <TimePicker 
+            <TimePicker 
               selected = {this.state.time}
               onChange = {this.handleTimeChange}
               required
-            /> */}
-            <Input type="text" id="event_time" name="event_time" placeholder="time" required/> <br></br>
+            />
+            {/* <Input type="text" id="event_time" name="event_time" placeholder="time" required/> <br></br> */}
 
             <Label htmlFor="is_private">Is this event a private event or a group event?</Label>
             <Select  
@@ -102,7 +106,6 @@ export default class EventForm extends React.Component{
               options = {options} /><br></br>
 
             <Label htmlFor="locatio">Location</Label><br></br>
-            {/* <Input type="text" id="event_location" name="event_location" placeholder="Location" required/>  */}
             <SelectUSState 
               selected = {this.state.state}
               onChange = {this.handleStateChange}
