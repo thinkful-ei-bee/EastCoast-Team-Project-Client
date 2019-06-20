@@ -59,7 +59,7 @@ export default class Profile extends React.Component{
   renderBioText() {
     const userProfile = this.state.profile
     const profile = (
-    <div>
+    <>
      <img src={userProfile.profile_picture} alt=''/>
        <p>Bio: {userProfile.me_intro}</p>
        <p>Interests:</p>
@@ -67,7 +67,7 @@ export default class Profile extends React.Component{
          <li>Music: {userProfile.music_like}</li>
          <li>Favorite movie: {userProfile.movie_like}</li>
        </ul>
-   </div>
+   </>
     )
 
     const events = this.state.events
@@ -78,14 +78,14 @@ export default class Profile extends React.Component{
       </div> 
     )
     return (
-      <div className="profile">
-        <button type="click" onClick={this.handleEditButton}>Edit</button>
+      <>
+        <button className="edit-button" type="click" onClick={this.handleEditButton}>Edit</button>
         {profile}
         <p>Events:</p>
         <div className="profile-events">
           {userEvents}
         </div>
-      </div>
+      </>
     )
   }
 
@@ -99,7 +99,6 @@ export default class Profile extends React.Component{
               <Label htmlFor="bio">About me</Label>
               <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
-              <p>Interests:</p>
               <Label htmlFor="music">Favorite music genre:</Label>
               <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
 
@@ -118,7 +117,7 @@ export default class Profile extends React.Component{
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
 
     return(
-      <div className="profile">
+      <div className="personal-profile">
         {renderForm}
       </div>
     )

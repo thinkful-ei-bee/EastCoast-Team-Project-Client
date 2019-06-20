@@ -1,15 +1,33 @@
-.profile, .edit-profile {
+.profile, .edit-profile, .personal-profile {
     margin: auto;
     color:white;
     font-size:30px;
+    background: rgba(25, 25, 25, .6);
+    border-radius: 5px;
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 60%;
 }
 
-.profile img {
+.personal-profile {
+    background: rgba(25, 25, 25, .6);
+    color:white;
+    font-size:30px;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;   
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.profile img, .personal-profile img {
     width: 250px;
     border-radius: 50%;
 }
 
-.profile ul {
+.profile ul, .personal-profile ul {
     list-style: none;
     line-height: 40px;
     padding-left: 0; 
@@ -19,7 +37,7 @@ fieldset {
     border: none;
 }
 
-.profile button{
+.profile button, .personal-profile button{
     display:inline-block;
     padding:0.35em 1.2em;
     border:0.1em solid white;
@@ -75,4 +93,8 @@ fieldset {
 
 .event button:hover{
     cursor: pointer;
+}
+
+.edit-button {
+
 }
