@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, withRouter} from 'react-router-dom'
+import { Route, Switch, withRouter} from 'react-router-dom'
 import LandingPage from './Routes/LandingPageRoute/LandingPage'
 import Dashboard from './Routes/DashboardRoute/Dashboard'
 import Nav from './Components/Nav/Nav'
@@ -14,6 +14,7 @@ import EventForm from './Routes/EventsRoute/EventForm';
 import EventifyForm from './Routes/EventifyRoute/EventifyForm';
 import NotifcationSent from './Routes/NotificationSent/NotificationSent';
 import NotificationRoute from './Routes/Notifications/NotificationRoute'
+import NotFoundRoute from './Routes/NotFoundRoute/NotFoundRoute'
 import Footer from './Components/FooterRoute/Footer';
 import './App.css'
 
@@ -50,6 +51,8 @@ class App extends React.Component{
           <PublicOnlyRoute path={'/signup'} component={RegistrationRoute} />
           <PublicOnlyRoute path={'/login'} component={LoginRoute}  />
           <PublicOnlyRoute exact path={'/landingPage'} component={LandingPage}/>
+
+          <Route component={NotFoundRoute}/>
          
         </Switch>
       </main>
@@ -59,7 +62,6 @@ class App extends React.Component{
     </div>
   );
   }
-  
 }
 
 export default withRouter(App);

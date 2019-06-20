@@ -43,6 +43,20 @@ const EventifyService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
       )
+  },
+  deleteEventify(eventify_id) {
+    return fetch(`${config.API_ENDPOINT}/eventify/${eventify_id}`, {
+      method: 'DELETE',
+      headers:{
+        'content-type': 'application/json',
+        'authorization':`bearer ${TokenService.getAuthToken()}`
+       }, 
+    })
+    // .then(res =>
+    //   (!res.ok)
+    //     ? res.json().then(e => Promise.reject(e))
+    //     : res.json()
+    //   )
   }
 }
 

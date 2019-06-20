@@ -1,13 +1,17 @@
+
 .notifcations {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgba(25, 25, 25, .6);
+    border-radius: 5px;
+    padding-bottom: 5%;
+    margin: 5%;
 }
 
-
-
-.notifcations button{
+.notifcations button, .accepted-message {
     display:inline-block;
-    
     border:0.1em solid white;
+    padding: 1%;
     margin:0 0.3em 0.3em 0;
     border-radius:0.12em;
     box-sizing: border-box;
@@ -17,15 +21,54 @@
     font-weight:300;
     color: white;
     background-color:transparent;
-    /* background-color: #b47eb3; */
-    /* background-color: #f0e68c; */
     text-align:center;
     transition: all 0.2s;
-    margin-top: 50px;
-  
+    margin-top: 30px;
+} 
+
+.notifcations button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .recieved-notification img, .sent-notification img{
+    margin-top: 3.5%;
     border-radius: 50%;
-    width: 200px;
+    width: 250px;
 }
+
+.recieved-notification, .sent-notification{
+    border: 1px solid white;
+    padding: 3%;
+    margin: 2%;
+}
+
+.recieved-notification h4, .sent-notification {
+    color: white;
+    font-size: 20px;
+}
+
+.recieved-notification img{
+    float: right;
+    width: 150px;
+}
+
+.sent-notification img {
+    width: 150px;
+}
+
+.sent-notification img {
+    margin: 1%;
+}
+
+.received-h3 {
+    color: white;
+    margin-left: 2%;
+    font-size: 30px;
+}
+
+.sent-received {
+   margin-left: 2%;
+}
+
+

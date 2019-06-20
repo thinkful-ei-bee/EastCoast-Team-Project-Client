@@ -1,66 +1,100 @@
-.profile {
-    margin:auto auto;
-    
+.profile, .edit-profile, .personal-profile {
+    margin: auto;
     color:white;
     font-size:30px;
-
+    background: rgba(25, 25, 25, .6);
+    border-radius: 5px;
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 60%;
 }
 
-.profile img {
+.personal-profile {
+    background: rgba(25, 25, 25, .6);
+    color:white;
+    font-size:30px;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;   
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.profile img, .personal-profile img {
     width: 250px;
     border-radius: 50%;
 }
 
-.profile ul {
-    
+.profile ul, .personal-profile ul {
     list-style: none;
     line-height: 40px;
-    padding-left: 0;
-    
+    padding-left: 0; 
 }
 
 fieldset {
     border: none;
 }
 
-.profile button{
+.profile button, .personal-profile button{
     display:inline-block;
-  padding:0.35em 1.2em;
-  border:0.1em solid white;
-  margin:0 0.3em 0.3em 0;
-  border-radius:0.12em;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-size:20px;
-  font-weight:300;
-  color: white;
-  background-color:transparent;
-  /* background-color: #b47eb3; */
-  /* background-color: #f0e68c; */
-  text-align:center;
-  transition: all 0.2s;
-  margin-top: 50px;
+    padding:0.35em 1.2em;
+    border:0.1em solid white;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-size:20px;
+    font-weight:300;
+    color: white;
+    background-color:transparent;
+    text-align:center;
+    transition: all 0.2s;
+    margin-top: 50px;
 }
 
 .profile-events {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: fit-content;
 }
 
 .profile-events p {
     padding-top: 5%;
 }
 
-.event {
+.profile-event {
     width: 250px;
-    line-height: 0px;
     text-align: center;
+    font-size: 18px;
     border: 1px solid white;
-    padding-bottom: 5%;
+    padding: 3%;
     margin-left: 5px;
     margin-right: 5px;
+    margin-top: 5px;
+    width: 100px;
+
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.profile-event:hover{
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 .event button:hover{
     cursor: pointer;
+}
+
+.edit-button {
+
 }

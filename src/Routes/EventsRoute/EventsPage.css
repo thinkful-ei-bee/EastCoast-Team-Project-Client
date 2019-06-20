@@ -7,7 +7,22 @@
 
 .events-page {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding-left: 10px;
+    padding-top: 5%;
+    padding-left: 10%;;
     padding-right: 10px;
+    border: 1px solid black;
+    background: rgba(25, 25, 25, .7);
+    border-radius: 5px;
+    margin: 5%;
+    color: white;
+}
+
+.events-page p {
+    font-size: 20px;
+}
+
+.events-page h2 {
+    font-size: 30px;
 }

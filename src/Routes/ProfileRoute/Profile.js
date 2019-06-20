@@ -52,9 +52,8 @@ export default class Profile extends React.Component{
 
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
     : events.map((event, i) => 
-      <div key={event.id} className="event">
+      <div key={event.id} className="profile-event">
         <p>{event.event_name}</p>
-        <button type="submit" disabled={this.state.disabledButton === i} onClick={() => this.handleIntriguedButton(event.id, i)}>{!this.state.eventifySent && this.state.disabledButton !== i ? ('Intrigued') : ('Eventify sent!')}</button>
       </div> 
     )
     return (
@@ -67,7 +66,7 @@ export default class Profile extends React.Component{
         </ul>
         <p>Events:</p>
         <div className="profile-events">
-          {userEvents} {' '}
+          {userEvents} 
         </div>
       </div>
     )
