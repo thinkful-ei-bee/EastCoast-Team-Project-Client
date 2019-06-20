@@ -25,11 +25,11 @@ form{
     background-color: transparent;
     /* border: 40px solid #f0e68c; */
     /* border: 10px solid #000080; */
-    
-    padding: 40px;
+    width:50%;
+   
     margin: auto;
     margin-bottom: 20px;
-    margin-top: 20px;
+    
     height: auto;
     padding: auto;
     /* color: white;
@@ -95,5 +95,13 @@ input {
 @media(max-width:600px){
   input{
    margin:0 auto;
+  }
+  .registration-form{
+    width:auto;
+    margin-bottom: 20px;
+  }
+  .btn{
+    
+    margin:30px auto;
   }
  }

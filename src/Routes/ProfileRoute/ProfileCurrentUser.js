@@ -114,11 +114,26 @@ export default class Profile extends React.Component{
     ) 
   }
 
+  showWidget =(widget)=>{
+    widget.open()
+  }
+
   render() {
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
+    let widget = window.cloudinary.createUplloadWidget({
+      cloudName:"dz0rrktfs",
+      uploadPreset:"u7kv0fwe"},
+      (error,result)=>{
 
+      }
+    )
     return(
       <div className="profile">
+        <div id='photo-form-container'>
+          <button onClick={this.showWidget}>
+            Upload Photo
+          </button>
+        </div>
         {renderForm}
       </div>
     )
