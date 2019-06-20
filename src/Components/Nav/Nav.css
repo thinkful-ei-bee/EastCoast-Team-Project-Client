@@ -56,7 +56,7 @@
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
-  font-size:20px;
+  font-size:18px;
   font-weight:300;
   color: white;
   background-color:transparent;
@@ -90,7 +90,7 @@ header a{
     color:white;
 }
 
-@media (max-width:600px){
+@media (max-width:750px){
     header{
         flex-direction: column;
         padding: 1%;
@@ -105,5 +105,6 @@ header a{
     }
     .nav_link_Logged_in{
         flex-direction: column;
+        justify-content: center;
     }
 }
