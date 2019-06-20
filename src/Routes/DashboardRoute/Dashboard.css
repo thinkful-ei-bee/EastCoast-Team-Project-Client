@@ -21,14 +21,17 @@
 }
 
 .picture-carousel {
-    
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
     margin: auto;
+    overflow: hidden;
     /* background-color: #b47eb3; */
 }
 
 .picture-carousel img {
-    
-    width: 250px;
+    width:  250px;
+    height: 250px;
 }
 
 .picture-carousel h3{
@@ -120,6 +123,8 @@
     display:flex;
     justify-content: center;
 }
+
+.eventify-message { color: white; }
 
 @media(max-width:600px){
     

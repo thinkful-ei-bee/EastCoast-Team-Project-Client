@@ -2,6 +2,7 @@ import React from 'react'
 import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
 import Button from '../../Components/Button/Button'
+import Select from 'react-select'
 import './EventifyForm.css'
 import EventifyService from '../../Services/eventify-service';
 
@@ -29,6 +30,7 @@ export default class EventifyForm extends React.Component{
 
   handleMenuChange = (selectedValue) => {
     this.setState({ selectedValue })
+    console.log(selectedValue)
   }
 
   handleChooseEvent = (e) => {
@@ -41,30 +43,36 @@ export default class EventifyForm extends React.Component{
       recipient_id: userId,
       event: event.value,
     })
-      .then( event.value = '' )
-    this.props.history.push({
-      pathname: '/notificationSent',
-      state: { userGender: userGender}
-    })
+      .then(response => {
+        console.log(response)
+        event.value = '' 
+        this.props.history.push({
+          pathname: '/notificationSent',
+          state: { userGender: userGender}
+        })
+      })
   }
 
   render() {
-    const events = (!this.state.events) ? [] : this.state.events.map(event => 
-      <option key={event.id} value={event.id} id='event'>{event.event_name}</option>
+    const events = (!this.state.events) ? [] : this.state.events.map(event => {
+      let options;
+      return(
+        options = { value: event.id, label: event.event_name }
       )
-     
+    })
+
     return(
       <div className="eventify-form">
         <fieldset>
           <form onSubmit={this.handleChooseEvent}>
             <h2>Choose one of your events to invite this person:</h2>
-            <select  
-              name="event" 
-              onChange={e => this.handleMenuChange(e.target.value)} >
-              {events}
-            </select><br></br>
-            <Button className="choose-event-btn">Choose event</Button><br></br>
-            <Button type="click" onClick={() => this.props.history.push('/')} className="cancel-btn">Cancel</Button>    
+            <Select  
+              name="event"
+              value = {this.state.selectedValue} 
+              onChange={this.handleMenuChange}
+              options = {events} /><br></br>
+            <Button>Choose event</Button><br></br>
+            <Button type="click" onClick={() => this.props.history.push('/')}>Cancel</Button>    
           </form>
         </fieldset>
       </div>

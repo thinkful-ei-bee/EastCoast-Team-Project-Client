@@ -13,10 +13,12 @@ export default class Notifications extends React.Component {
     recievedEventInfo: [],
     sentEvents: [],
     allProfiles: [],
+    is_accept: false,
+    acceptButton: -1,
   }
 
   static contextType = UserContext
-
+  
   componentDidMount() {
     ProfileService.getProfile()
       .then(profile => {
@@ -29,7 +31,6 @@ export default class Notifications extends React.Component {
       
     EventifyService.getEventify()
       .then(eventify => {
-        console.log(eventify)
         const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
         console.log(filteredRecievedEvents)
         const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
@@ -59,13 +60,36 @@ export default class Notifications extends React.Component {
     this.props.history.push(`/`)
   }
 
+  handleAcceptButton = (id, index) => {
+    console.log(index)
+    const eventifyId = id;
+    const recipientId = this.state.recievedEvents.filter(event => event.id === eventifyId)
+    const recipientIdNum = parseInt(recipientId.map(recipient => recipient.recipient_id))
+    const eventId = parseInt(recipientId.map(event => event.event))
+
+    EventifyService.editEventify(eventifyId, {
+      event: eventId,
+      recipient_id: recipientIdNum,
+      is_accept: true
+    })
+    .then(response => {
+      this.setState({
+        recievedEvents: this.state.recievedEvents
+      })
+      console.log(this.state.recievedEvents)
+    })
+  }
+
   renderSentNotifications() {
+    let sentProfiles = this.state.allProfiles.filter(o1 => this.state.sentEvents.some(o2 => o1.user_id === o2.recipient_id));
+
     return (this.state.sentEvents.map(event =>
       <div className="sent-notification" key={event.id}>
         <div className="sent-from">
-          <h3>Sent</h3>
+          <h3>Sent an invitation for {event.event_name} to {sentProfiles.filter(user => user.user_id === event.recipient_id).map(user => user.full_name)}</h3>
+          <img src={sentProfiles.filter(user => user.user_id === event.recipient_id).map(user => user.profile_picture)} alt=''/>
           <img src={event.profile_picture} alt=''/>
-          <h4>From: {event.full_name}</h4>
+          <h4>Status: {!event.is_accept ? ('Waiting for event to be accepted') : ('Accepted!')} </h4>
         </div>
         <div className="sent-to">
         </div>
@@ -74,24 +98,22 @@ export default class Notifications extends React.Component {
   }
 
   renderRecievedNotifications() {
-    // const eventInfo = (!this.state.recievedEventInfo)? '' : this.state.recievedEventInfo.map(info => 
-    //   // <div className="event-info">
-    //     <p>Check out more info <Link to={`/events/${info.id}`}>here</Link></p>
-    //   // </div>
-    // )
-
-    const eventify = (!this.state.recievedEvents) ? [] : this.state.recievedEvents.map(event => 
+    const eventify = (!this.state.recievedEvents) ? [] : this.state.recievedEvents.map((event, i) => 
       <div className="recieved-notification" key={event.id}>
         <h3>Recieved</h3>
         <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
         <h4>{event.full_name} is inviting you to {event.event_name}!</h4>
-        <button onClick={() => this.props.history.push(`/profile/${event.sender_id}`)}>Accept</button>
+
+
+        {!event.is_accept && !this.state.is_accept ? (<button type="click" onClick={() => {this.handleAcceptButton(event.id, i)}} >Accept</button>) : (<button type="click" disabled={true}>You've accepted this request!</button>) } 
+        
+
+
         <button type="click" onClick={this.handleDeclineButton}>Decline</button>
         {/* {eventInfo} */}
       </div>
     )
 
-    // console.log(this.state.recievedEventInfo)
     return (
       <div>
         {eventify}

@@ -33,7 +33,6 @@ class LoginForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     const { user_name, password } = ev.target
-    console.log(user_name.value,password.value,'test')
     this.setState({ error: null })
 
     AuthApiService.postLogin({

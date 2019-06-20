@@ -7,30 +7,12 @@
     padding: 20px;
 }
 
-.event-form select {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    display: block;
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    margin-top: 10px;
-    padding: 10px;
-    text-align: left;
-  
-    border-radius: 4px;
+.date_picker{
+    margin-right:15px;
+    color:white;
 }
-.create-event-btn {
-    margin: auto;
-    padding: auto;
-}
-.cancel-btn {
-    margin: auto;
-    padding: auto;
-}
-fieldset {
-    border: 0;
-}
-select {
-    margin: auto;
-    padding: auto;
+
+.date_picker input{
+    margin-top:5px;
+    height:20px;
 }

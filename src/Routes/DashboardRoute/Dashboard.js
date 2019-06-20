@@ -57,7 +57,7 @@ export default class Dashboard extends React.Component{
 
     ProfileService.getProfile()
       .then(profile => {
-        //console.log(profile)
+        console.log(profile)
         const currentUser = profile.filter(user => user.user_id === this.context.user.id)
         this.setState({
           currentUser: currentUser,
@@ -133,11 +133,13 @@ export default class Dashboard extends React.Component{
     const userGender = this.state.currentUser.map(user => user.gender)
     const gender = userGender.toString()
 
-    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].id
-
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
     const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
-    if (gender === "female") {
+    if (this.state.events.length === 0) {
+      return ( <p className="eventify-message">You must first create an event before eventifying this person! </p>)
+    } else {
+      if (gender === "female") {
       return <Link to={{
         pathname: '/eventifyForm',
         state: { userId: userId, userGender: gender }
@@ -148,10 +150,10 @@ export default class Dashboard extends React.Component{
         state: { userId: userId, userGender: gender }
       }}>Eventify {userName}</Link>
     }
+    }
   }
  
   render(){
-    console.log(this.context.user.id)
     const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
     
     const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id

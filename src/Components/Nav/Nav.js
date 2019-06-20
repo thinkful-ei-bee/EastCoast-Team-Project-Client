@@ -3,11 +3,13 @@ import {Link} from 'react-router-dom'
 import './Nav.css'
 import TokenService from '../../Services/token-service';
 import ProfileService from '../../Services/profile-service'
+import EventifyService from '../../Services/eventify-service'
 import UserContext from '../../contexts/UserContext'
 
 export default class Nav extends React.Component{
   state = {
-    currentUserProfileId: []
+    currentUserProfileId: [],
+    recievedEvents: []
   }
   static contextType = UserContext
 
@@ -16,6 +18,14 @@ export default class Nav extends React.Component{
       .then(profile => {
         const id = profile.map(profile => parseInt(profile.user_id))
         this.setState({ currentUserProfileId: id})
+      })
+
+      EventifyService.getEventify()
+      .then(eventify => {
+        const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
+        this.setState({ 
+          recievedEvents: filteredRecievedEvents
+        })
       })
   }  
 
@@ -32,7 +42,7 @@ export default class Nav extends React.Component{
       <nav>
         <div className='nav_link_Logged_in'>
         <Link to='/' >Dashboard</Link><br></br>
-        <Link to='/notifications' >Notifications</Link><br></br>
+        <Link to='/notifications' >Notifications ({this.state.recievedEvents.length})</Link><br></br>
         <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
         <Link to={`/profile`} >Profile</Link>
         </div>

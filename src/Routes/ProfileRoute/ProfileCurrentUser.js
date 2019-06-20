@@ -8,14 +8,17 @@ import './Profile.css'
 export default class Profile extends React.Component{
   state = {
     profile: [],
-    events: []
+    events: [],
+    selectedFile: null,
   }
 
   static contextType = UserContext
 
   componentDidMount() {
+    console.log(this.context.user)
     ProfileService.getCurrentUserProfile()
       .then(profile => {
+        console.log(profile)
         this.setState({ profile: profile[0]})
       })
 
@@ -25,19 +28,25 @@ export default class Profile extends React.Component{
       })  
   }
 
+  // fileSelectedHandler = (event) => {
+  //   this.setState({ selectedFile: event.target.files[0]})
+  // }
+
   handleSubmitButton = (e) => {
     e.preventDefault()
     const userId = this.state.profile.user_id
 
     const { music_like, movie_like, me_intro } = e.target;
+    // const profile_picture = this.state.selectedFile
 
     ProfileService.editProfile(userId, {
-      // profile_picture: profile_picture.value,
+      // profile_picture: profile_picture.name,
       music_like: music_like.value,
       movie_like: movie_like.value,
       me_intro: me_intro.value
     })
     .then(response => {
+      console.log(response)
       // profile_picture.value = ''
       music_like.value = ''
       movie_like.value = ''
@@ -74,7 +83,7 @@ export default class Profile extends React.Component{
     const events = this.state.events
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
     : events.map(event => 
-      <div key={event.id}>
+      <div key={event.id} className="event">
         <p >{event.event_name}</p>
       </div> 
     )
@@ -94,6 +103,9 @@ export default class Profile extends React.Component{
       <div className="edit-profile">
         <fieldset>
           <form onSubmit={this.handleSubmitButton}>
+              {/* <Label htmlFor="prolfile_picture">Profile pic</Label>
+              <Input type="file" id="prolfile_picture" onChange={this.fileSelectedHandler}/> */}
+
               <Label htmlFor="bio">About me</Label>
               <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
@@ -104,8 +116,6 @@ export default class Profile extends React.Component{
               <Label htmlFor="movie">Favorite movie:</Label>
               <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
 
-              {/* <Label htmlFor="bio">Profile pic</Label>
-              <Input type="text" id="profile_picture" name="profile_picture" /> */}
             <button type="submit">Submit</button>
             <button onClick={this.handleCancelButton}>Cancel</button>
           </form>
