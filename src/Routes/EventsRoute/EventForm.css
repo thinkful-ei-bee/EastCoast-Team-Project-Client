@@ -2,11 +2,12 @@
 
 .event-form{
     margin: auto;
+    margin-top: 5%;
+    padding: 3%;
     text-align: center;
     background: rgba(25, 25, 25, .3);
     border-radius: 5px;
     width: 600px;
-    /* font-family:'Roboto',sans-serif; */
 }
 
 .event-form form {
@@ -26,7 +27,7 @@
 
 .event-form h3 {
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     font-family: 'Lato', sans-serif;
 }
 
@@ -42,7 +43,7 @@
     margin-top: 10%;
 }
 
-.event-form .create-event-btn:hover {
+.event-form .create-event-btn:hover, .cancel-btn:hover {
     cursor: pointer;
     transform: scale(1.1);
 }

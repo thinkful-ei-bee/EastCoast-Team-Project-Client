@@ -79,8 +79,9 @@ header {
 }
 .logo {
     text-align: center;
-    padding-left: 1%;
-    font-size: 50px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 60px;
     font-family: 'Marck Script', cursive;
     
 }

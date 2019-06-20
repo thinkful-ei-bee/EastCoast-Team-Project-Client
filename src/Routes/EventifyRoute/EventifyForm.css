@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap" );
+
+
 .eventify-form {
     width: fit-content;
     margin: auto;
@@ -18,4 +21,13 @@
     text-align: left;
   
     border-radius: 4px;
+}
+
+.eventify-form h2 {
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+.eventify-form button {
+    font-family: 'Lato', sans-serif;
 }
