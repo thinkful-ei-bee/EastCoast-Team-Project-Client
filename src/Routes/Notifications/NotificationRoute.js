@@ -53,8 +53,15 @@ export default class Notifications extends React.Component {
     this.setState({ showSent: true})
   }
 
-  handleDeclineButton = () => {
-    this.props.history.push(`/`)
+  handleDeclineButton = (id) => {
+    const eventifyId = id;
+    EventifyService.deleteEventify(eventifyId)
+      .then(response => {
+        const newReceivedEvents = this.state.recievedEvents.filter(event => event.id !== eventifyId)
+        this.setState({ 
+          recievedEvents: newReceivedEvents
+        })
+      })
   }
 
   handleAcceptButton = (id) => {
@@ -108,7 +115,7 @@ export default class Notifications extends React.Component {
           {!event.is_accept ? 
             <div>
               <button type="click" onClick={() => {this.handleAcceptButton(event.id, i)}} >Accept</button>
-              <button type="click" onClick={this.handleDeclineButton}>Decline</button>
+              <button type="click" onClick={() => this.handleDeclineButton(event.id)}>Decline</button>
             </div> : 
             <div className="accepted-message">You've accepted this request!</div>}
         </div>

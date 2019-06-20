@@ -2,13 +2,19 @@
     width: fit-content;
     margin: auto;
     text-align: center;
-    margin-bottom: 50px;
 }
 
-.event-form input{
+.event-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-form input, .event-form select, .event-form label{
     margin: auto;
+    height: 35px;
+    width: 300px;
 }
 
-#event_details {
-    margin-bottom: 20px;
+.event-form input {
+    margin-bottom: 1%;
 }

@@ -86,8 +86,6 @@ export default class EventForm extends React.Component{
               selected = {this.state.startDate}
               onChange = {this.handleDateChange}
             />
-            
-            <br></br>
 
             <Label htmlFor="time">Time</Label>
             <TimePicker 
@@ -97,19 +95,19 @@ export default class EventForm extends React.Component{
             />
             {/* <Input type="text" id="event_time" name="event_time" placeholder="time" required/> <br></br> */}
 
-            <Label htmlFor="is_private">Is this event a private event or a group event?</Label>
+            <Label htmlFor="is_private">Is this event a private event or a group event?</Label><br></br>
             <Select  
               name="is_private"
               id="is_private"
               value = {this.state.selectValue} 
               onChange={this.handleMenuChange}
-              options = {options} /><br></br>
+              options = {options} />
 
-            <Label htmlFor="locatio">Location</Label><br></br>
-            <SelectUSState 
+            <Label htmlFor="locatio">Location</Label>
+            <SelectUSState className="select-state"
               selected = {this.state.state}
               onChange = {this.handleStateChange}
-            /><br></br>
+            />
 
             <Label htmlFor="details">Details</Label>
             <Input type="text" id="event_details" name="event_details" placeholder="Event details" required/> 
