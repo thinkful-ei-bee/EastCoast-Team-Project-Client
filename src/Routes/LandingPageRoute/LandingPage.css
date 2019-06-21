@@ -47,11 +47,17 @@
 .how-it-work{
   margin-top:100px;
   color:white;
-  font-size: 30px;  
+  font-size: 45px;  
   text-align: center; 
   margin-top: 0;
   padding-left: 40px;
   padding-right: 40px;
+}
+.how-it-works-description {
+  color: white;
+  font-size: 20px;
+  margin: 5%;
+  text-align: center;
 }
 
 .how-it-work-demo{

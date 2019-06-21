@@ -9,7 +9,7 @@ export default class LandingPage extends Component{
      
       <div className='LandingPageContent'>
          <div className='landing-hero'>
-           <span id='landing-title'>Eventify a date and build trust amongst each other.</span>
+           <span id='landing-title'>Eventify Your First Date</span>
             <p className='landing-slogan'>Rendezvous is the secret to a successful dating experience.
             </p>
           <div className='explore-rendezvous'>
@@ -20,10 +20,12 @@ export default class LandingPage extends Component{
       </div>
      
      <div className='how-it-work'>
-        {/* HOW IT WORKS */}
-        <p>Here in Rendezvous, we cut out the awkwardness of finding mutual interests for first dates, second dates, or even third dates. See someone you like? Awesome! Create an event you'd be interested in attending with them and once they accept, let the magic happen!</p> 
-        <p>Join us and don't be another failed dating app statistic.</p>         
-  </div>                              
+          HOW IT WORKS        
+  </div> 
+        <div className="how-it-works-description">
+          We cut out the awkwardness of finding mutual interests for first dates, second dates, or even third dates. See someone you like? Create an event you'd be interested in attending with them and once they accept, let the magic happen!
+        </div>  
+
     <ParticleComponent />           
         </div>              
     )

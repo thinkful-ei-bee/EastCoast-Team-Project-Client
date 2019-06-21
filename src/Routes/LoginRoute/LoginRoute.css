@@ -16,5 +16,7 @@
 
 
 @media(max-width:600px){
-
+  .login__container {
+    margin: 40px auto;
+  }
 }
