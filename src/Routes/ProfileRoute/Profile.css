@@ -60,7 +60,6 @@ fieldset {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    /* width: fit-content; */
 }
 
 .profile-events p {
