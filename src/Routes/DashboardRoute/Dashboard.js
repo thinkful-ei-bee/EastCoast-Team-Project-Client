@@ -180,7 +180,7 @@ export default class Dashboard extends React.Component{
           Your upcoming events:
         </div>
         <div className='upcoming-events'>
-        {this.renderEvents()}
+          {this.renderEvents()}
         </div>
       </div>
       </div>
