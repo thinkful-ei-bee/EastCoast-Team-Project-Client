@@ -1,41 +1,61 @@
+.dashboard_container {
+    background: rgba(25, 25, 25, .3);
+    border-radius: 5px;
+    
+    padding: 50px;
+    margin: auto 10px;
+}
+
 
 .dashboard {
     display: flex;
     position: relative;
     flex-direction: row;
     margin-bottom: 20px;
-    padding-bottom: 80px;
-    margin-top: 40px;
+    padding-bottom: 30px;
+    
+  
+    
 }
 
 .dashboard-pic {
     position: relative;
     margin: auto;
-    padding-top: 40px;
+    
 }
 
 .picture-carousel {
-    object-fit: cover;
-    width: 250px;
-    height: 250px;
+    display:flex;
+    justify-content: center;
+    
+   
+   
     margin: auto;
     /* overflow: hidden; */
 }
 
 .picture-carousel img {
-    width:  250px;
-    height: 220px;
-    border: 2px solid white;
+   width:150px;
+   height:120px;
+    padding:20px;
+    
 }
 
-.picture-carousel h3{
+.picture-name{
     color:white;
+    font-size: 40px;
+}
+
+.eventify_link_button{
+    display:flex;
+    justify-content: center;
 }
 
 .eventify_link_button a{
     display:inline-block;
     border:0.1em solid white;
     border-radius:0.12em;
+    padding:10px;
     box-sizing: border-box;
     text-decoration:none;
     font-family:'Roboto',sans-serif;
@@ -48,31 +68,26 @@
     margin-top: 10px;
 }
 
-.btn {
-    color: black;
-    width: fit-content;
-    margin: auto;
-    font-size: 30px;
-    border: none;
-    background: none;
+
+.right_button{
+    margin: auto 0px;
+    
 }
 
-.left-btn {
-    left: -70%;
-    top: 60%;
-}
-.right-btn {
-    right: -15%;
-    bottom: 45%;
+.left_button{
+    margin: auto 0px;
+    
 }
 
 .create_event_container{
-    margin: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto auto;
 }
 
-.create_event {
-    width: 200px;
-    margin: auto;
+.create_event{
+    margin:auto;
 }
 
 .create_event a {
@@ -80,7 +95,7 @@
     color: white;
     border:0.1em solid white;
     width: fit-content;
-    padding: 3%;
+    padding: 10px;
     border-radius:0.12em;
     box-sizing: border-box;
     text-decoration:none;
@@ -101,13 +116,7 @@
     padding: 2%;
 }
 
-.upcoming-events {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: fit-content;
-}
+
 
 .dashboard-events {
     width: 250px;
@@ -137,8 +146,23 @@
     color: white;
 }
 
-.eventify-message { color: white; }
-
+.eventify-message { 
+    color: white; 
+    font-size: 30px;
+}
+.upcoming-events{
+    color:white;
+    font-size: 20px;
+    margin:auto;
+}
 @media(min-width:600px){
-    
+    .dashboard_container {
+        background: rgba(25, 25, 25, .3);
+        border-radius: 5px;
+        
+        padding: 0px;
+        
+    }
+
+ 
 }

@@ -5,6 +5,7 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import TimePicker from 'rc-time-picker';
+import "rc-time-picker/assets/index.css";
 import SelectUSState from 'react-select-us-states'
 import EventService from '../../Services/events-service'
 import './EventForm.css'
@@ -34,21 +35,20 @@ export default class EventForm extends React.Component{
 
   handleStateChange = (state) => {
     this.setState({ state: state })
-    console.log(state)
   }
 
   handleAddEvent = (e) => {
     e.preventDefault()
-    const { event_name, is_private, event_time, event_details } = e.target;
+    const { event_name, is_private, event_details } = e.target;
     
     const date = this.state.startDate
-    const time = this.state.time
+    const time = this.state.time._i
     const state = this.state.state
-
+   
     EventService.postEvents({
       event_name: event_name.value,
       event_date: date,
-      event_time: event_time.value, 
+      event_time: time, 
       is_private: is_private.value,
       event_location: state,
       event_details: event_details.value
@@ -115,7 +115,7 @@ export default class EventForm extends React.Component{
             <Textarea type="text" id="event_details" name="event_details" defaultValue="Enter event details..."></Textarea>
 
             <Button type="submit" className="create-event-btn">Create Event</Button>      
-            <Button type="click" onClick={this.routeChange}>Cancel</Button>    
+            <Button type="click" className="cancel-btn" onClick={this.routeChange}>Cancel</Button>    
           </form>
         </fieldset>
         </div>

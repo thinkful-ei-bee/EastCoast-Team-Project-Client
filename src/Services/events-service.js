@@ -3,7 +3,7 @@ import TokenService from './token-service';
 
 const EventsService = {
   getAllEvents() {
-    return fetch(`${config.API_ENDPOINT}/events/all-event`, {
+    return fetch(`${config.REACT_APP_API_BASE}/events/all-event`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       }
@@ -15,7 +15,7 @@ const EventsService = {
       )
   },
   getEventsForCurrentUser(){
-    return fetch(`${config.API_ENDPOINT}/events`, {
+    return fetch(`${config.REACT_APP_API_BASE}/events`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       }
@@ -27,7 +27,7 @@ const EventsService = {
       )
   },
   postEvents(event_name, event_date, event_time, event_location, event_details, is_private) {
-    return fetch(`${config.API_ENDPOINT}/events`, {
+    return fetch(`${config.REACT_APP_API_BASE}/events`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -42,7 +42,7 @@ const EventsService = {
       )
   },
   getEventById(id) {
-    return fetch(`${config.API_ENDPOINT}/events/${id}`, {
+    return fetch(`${config.REACT_APP_API_BASE}/events/${id}`, {
       headers:{
         'authorization':`bearer ${TokenService.getAuthToken()}`
        }, 
@@ -54,7 +54,7 @@ const EventsService = {
       )
   },
   // deleteEvent(eventId) {
-  //   return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
+  //   return fetch(`${config.REACT_APP_API_BASE}/events/${eventId}`, {
   //       method: "DELETE"
   //     })
   // },

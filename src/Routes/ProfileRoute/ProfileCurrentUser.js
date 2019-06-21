@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Input, Label } from '../../Components/Form/Form'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
@@ -74,7 +75,7 @@ export default class Profile extends React.Component{
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
     : events.map(event => 
       <div key={event.id} className="profile-event">
-        <p >{event.event_name}</p>
+          <Link to={`/events/${event.id}`}>{event.event_name}</Link>
       </div> 
     )
     return (

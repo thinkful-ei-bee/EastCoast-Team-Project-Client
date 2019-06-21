@@ -10,6 +10,7 @@ export default class EventsPage extends React.Component{
   componentDidMount(){
     EventsService.getEventById(this.props.match.params.id)
       .then(event => {
+        console.log(event)
         this.setState({
           events: event
         })
@@ -17,10 +18,16 @@ export default class EventsPage extends React.Component{
   }
 
   render(){
+<<<<<<< HEAD
     const event = this.state.events
     const date = (!event.event_date) ? '' : event.event_date.slice(0, 10)
     const time = (!event.event_time) ? '' : event.event_time.slice(0, 5)
     console.log(time)
+=======
+    const event = this.state.events;
+    const string = (!this.state.event) ? [] : console.log(this.state.event.event_date.splice(0, 10))
+    console.log(string)
+>>>>>>> develop
 
     return(
       <div className="events-page">

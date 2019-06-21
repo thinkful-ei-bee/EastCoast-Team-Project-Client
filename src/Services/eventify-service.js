@@ -3,7 +3,7 @@ import TokenService from './token-service';
 
 const EventifyService = {
   getEventify(){
-    return fetch(`${config.API_ENDPOINT}/eventify`, {
+    return fetch(`${config.REACT_APP_API_BASE}/eventify`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       }
@@ -15,7 +15,7 @@ const EventifyService = {
       )
   },
   postEventify(recipient_id, event) {
-    return fetch(`${config.API_ENDPOINT}/eventify`, {
+    return fetch(`${config.REACT_APP_API_BASE}/eventify`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -30,7 +30,7 @@ const EventifyService = {
       )
   },
   editEventify(  event_id, event, recipient_id, is_accept ) {
-    return fetch(`${config.API_ENDPOINT}/eventify/${event_id}`, {
+    return fetch(`${config.REACT_APP_API_BASE}/eventify/${event_id}`, {
       method: 'PATCH',
       headers:{
         'content-type': 'application/json',
@@ -45,7 +45,7 @@ const EventifyService = {
       )
   },
   deleteEventify(eventify_id) {
-    return fetch(`${config.API_ENDPOINT}/eventify/${eventify_id}`, {
+    return fetch(`${config.REACT_APP_API_BASE}/eventify/${eventify_id}`, {
       method: 'DELETE',
       headers:{
         'content-type': 'application/json',

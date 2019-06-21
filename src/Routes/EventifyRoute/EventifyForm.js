@@ -30,7 +30,6 @@ export default class EventifyForm extends React.Component{
 
   handleMenuChange = (selectedValue) => {
     this.setState({ selectedValue })
-    console.log(selectedValue)
   }
 
   handleChooseEvent = (e) => {
@@ -44,7 +43,6 @@ export default class EventifyForm extends React.Component{
       event: event.value,
     })
       .then(response => {
-        console.log(response)
         event.value = '' 
         this.props.history.push({
           pathname: '/notificationSent',

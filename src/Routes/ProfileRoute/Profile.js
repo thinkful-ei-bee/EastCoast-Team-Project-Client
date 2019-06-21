@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Input, Label } from '../../Components/Form/Form'
+import { Link } from 'react-router-dom'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
 import EventifyService from '../../Services/eventify-service'
@@ -37,8 +37,6 @@ export default class Profile extends React.Component{
       event: id,
     })
     .then( response => {
-        console.log(response)
-   
       this.setState({ 
         disabledButton: index, 
         eventifySent: true
@@ -53,7 +51,7 @@ export default class Profile extends React.Component{
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
     : events.map((event, i) => 
       <div key={event.id} className="profile-event">
-        <p>{event.event_name}</p>
+        <Link to={`/events/${event.id}`}>{event.event_name}</Link>
       </div> 
     )
     return (
