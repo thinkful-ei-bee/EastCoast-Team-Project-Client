@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Label } from '../../Components/Form/Form'
+import { Input, Label, Textarea } from '../../Components/Form/Form'
 import Button from '../../Components/Button/Button'
 import Select from 'react-select'
 import DatePicker from 'react-datepicker'
@@ -111,7 +111,8 @@ export default class EventForm extends React.Component{
             />
 
             <Label htmlFor="details">Details</Label>
-            <Input type="text" id="event_details" name="event_details" placeholder="Event details" required/> 
+            {/* <Input type="text" id="event_details" name="event_details" placeholder="Event details" required/>  */}
+            <Textarea type="text" id="event_details" name="event_details" defaultValue="Enter event details..."></Textarea>
 
             <Button type="submit" className="create-event-btn">Create Event</Button>      
             <Button type="click" className="cancel-btn" onClick={this.routeChange}>Cancel</Button>    
