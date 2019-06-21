@@ -67,3 +67,6 @@ Password: demoPass2019!
 * PostgreSQL
 * Express
 * CSS
+
+#### Kanban board:
+[Kanban Board:](https://github.com/thinkful-ei-bee/rendevous-capstone-3-FDL-team/projects/1)
