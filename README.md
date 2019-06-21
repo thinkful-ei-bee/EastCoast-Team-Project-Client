@@ -44,7 +44,7 @@ You are good to go at this point and simply need to run `npm start` for the clie
 6. Run the migrations down `npm run migrate --0`
 
 ### Screenshots:
-![Landing page](src/screenshots/LandingPage.png)
+![Landing page](/src/screenshots/LandingPage.png)
 ![Signup page](src/screenshots/Signup.png)
 ![Login page](src/screenshots/login.png)
 ![Dashboard](/Users/farahgustafson/Documents/EastCoastTeam/EastCoast-client/src/screenshots/Dashboard.png)
