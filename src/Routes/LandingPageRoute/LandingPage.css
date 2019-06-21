@@ -41,8 +41,7 @@
 .explore-rendezvous:hover{
   margin:0 auto;
   padding:20px;
-  background-color: black;
-  
+  transform: scale(1.1);
 }
 
 .how-it-work{
