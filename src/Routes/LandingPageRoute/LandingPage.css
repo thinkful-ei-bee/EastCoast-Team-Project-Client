@@ -50,6 +50,8 @@
   font-size: 30px;  
   text-align: center; 
   margin-top: 0;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .how-it-work-demo{
@@ -116,7 +118,7 @@
   }
 
   .how-it-work{
-    font-size: 40px;
+    font-size: 25px;
   }
 }
   
