@@ -44,6 +44,13 @@ You are good to go at this point and simply need to run `npm start` for the clie
 6. Run the migrations down `npm run migrate --0`
 
 ### Screenshots:
+![Landing page](src/screenshots/LandingPage.png)
+![Signup page](src/screenshots/Signup.png)
+![Login page](src/screenshots/login.png)
+![Dashboard](src/screenshots/Dashboard.png)
+![Profile page](src/screenshots/profile.png)
+![Received notifications](src/screenshots/notificationReceived.png)
+
 
 ### Authorization:
 You can create your own account or you can use these credentials to test the app:<br>
