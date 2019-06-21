@@ -169,8 +169,9 @@ export default class Dashboard extends React.Component{
           </div>
           
           <div className="dashboard-pic">
+          <div className="picture-name">{userName}</div>
             <div className="picture-carousel">
-              <h3 className="picture-name">{userName}</h3>
+              
               <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
             </div>
             <div className='eventify_link_button'>

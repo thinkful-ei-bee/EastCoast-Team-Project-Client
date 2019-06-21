@@ -25,8 +25,8 @@ form{
     background-color: transparent;
     /* border: 40px solid #f0e68c; */
     /* border: 10px solid #000080; */
-    
-    padding: 40px;
+    width:50%;width:50%;
+  
     margin: auto;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -40,7 +40,7 @@ form{
  display:inline-block;
  padding:0.35em 1.2em;
  border:0.1em solid white;
- margin:0 0.3em 0.3em 0;
+ 
  border-radius:0.12em;
  box-sizing: border-box;
  text-decoration:none;
@@ -95,5 +95,13 @@ input {
 @media(max-width:600px){
   input{
    margin:0 auto;
+  }
+  .registration-form{
+    width:auto;
+    margin-bottom: 20px;
+  }
+  .btn{
+    
+    margin:30px auto;
   }
  }

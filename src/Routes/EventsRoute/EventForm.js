@@ -5,6 +5,7 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import TimePicker from 'rc-time-picker';
+import "rc-time-picker/assets/index.css";
 import SelectUSState from 'react-select-us-states'
 import EventService from '../../Services/events-service'
 import './EventForm.css'
@@ -38,16 +39,16 @@ export default class EventForm extends React.Component{
 
   handleAddEvent = (e) => {
     e.preventDefault()
-    const { event_name, is_private, event_time, event_details } = e.target;
+    const { event_name, is_private, event_details } = e.target;
     
     const date = this.state.startDate
-    const time = this.state.time
+    const time = this.state.time._i
     const state = this.state.state
-
+   
     EventService.postEvents({
       event_name: event_name.value,
       event_date: date,
-      event_time: event_time.value, 
+      event_time: time, 
       is_private: is_private.value,
       event_location: state,
       event_details: event_details.value
@@ -87,12 +88,12 @@ export default class EventForm extends React.Component{
             />
 
             <Label htmlFor="time">Time</Label>
-            {/* <TimePicker 
+            <TimePicker 
               selected = {this.state.time}
               onChange = {this.handleTimeChange}
               required
-            /> */}
-            <Input type="text" id="event_time" name="event_time" placeholder="time" required/> <br></br>
+            />
+            {/* <Input type="text" id="event_time" name="event_time" placeholder="time" required/> <br></br> */}
 
             <Label htmlFor="is_private">Is this event a private event or a group event?</Label><br></br>
             <Select  
