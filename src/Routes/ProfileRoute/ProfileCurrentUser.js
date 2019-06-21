@@ -31,17 +31,15 @@ export default class Profile extends React.Component{
     e.preventDefault()
     const userId = this.state.profile.user_id
 
-    const { music_like, movie_like, me_intro } = e.target;
+    const { music_like, movie_like, me_intro, profile_picture } = e.target;
 
     ProfileService.editProfile(userId, {
       music_like: music_like.value,
       movie_like: movie_like.value,
-      me_intro: me_intro.value
+      me_intro: me_intro.value,
+      profile_picture: profile_picture.value
     })
     .then(response => {
-      music_like.value = ''
-      movie_like.value = ''
-      me_intro.value = ''
       this.setState({ 
         profile: response,
         edit: false 
@@ -96,6 +94,8 @@ export default class Profile extends React.Component{
       <div className="edit-profile">
         <fieldset>
           <form onSubmit={this.handleSubmitButton}>
+              <Label htmlFor="profilePicture">Profile picture</Label>
+              <Input type="text" id="profile_picture" name="profile_picture" defaultValue={user.profile_picture}/>
 
               <Label htmlFor="bio">About me</Label>
               <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
