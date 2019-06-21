@@ -28,7 +28,6 @@ export default class Notifications extends React.Component {
       EventifyService.getEventify()
         .then(eventify => {
           const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
-          console.log(filteredRecievedEvents)
           const filteredSentEvents = eventify.filter(e => e.sender_id === this.context.user.id)
           this.setState({ 
             recievedEvents: filteredRecievedEvents,
@@ -111,7 +110,7 @@ export default class Notifications extends React.Component {
         <div className="recieved-notification" key={i}>
 
           <Link to={`/profile/${event.sender_id}`}><img src={event.profile_picture} alt=''/></Link>
-          <h4>{event.full_name} is inviting you to {event.event_name}!</h4>
+          <h4>{event.full_name} is inviting you to <Link to={`/events/${this.state.recievedEventInfo.filter(info => info.id === event.event).map(info => info.id)}`}>{event.event_name}!</Link></h4>
           
           {!event.is_accept ? 
             <div>

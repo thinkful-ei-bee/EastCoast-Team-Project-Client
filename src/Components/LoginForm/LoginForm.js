@@ -42,8 +42,6 @@ class LoginForm extends Component {
       .then(res => {
         user_name.value = ''
         password.value = ''
-        console.log(res.authToken,'test')
-        console.log(this.context,'test context')
         this.context.processLogin(res.authToken)
         this.props.onLoginSuccess()
       })

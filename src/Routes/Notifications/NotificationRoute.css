@@ -26,7 +26,7 @@
     margin-top: 30px;
 } 
 
-.notifcations button:hover {
+.notifcations button:hover, .recieved-notification a:hover{
     cursor: pointer;
     transform: scale(1.1);
 }
@@ -52,6 +52,11 @@
     float: right;
     width: 150px;
 }
+
+.recieved-notification a {
+    color: white;
+}
+
 
 .sent-notification img {
     width: 150px;

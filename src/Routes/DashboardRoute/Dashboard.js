@@ -27,20 +27,11 @@ export default class Dashboard extends React.Component{
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
       })
-    ProfileService.getCurrentUserProfile()  
-      .then(profile=>
-        {
-          if(!profile){
-            console.log('no')
-          }
-          console.log('yes')
-      }
-      )
+    ProfileService.getCurrentUserProfile() 
 
       ProfileService.getCurrentUserProfile()  
       .then(profile=>
         { 
-          // console.log( profile.isEmpty(),'test profile sendback')
           if(profile.length ===0){
             const newUserProfileMandatory ={
               profile_picture:'https://assets.rebelcircus.com/blog/wp-content/uploads/2016/05/facebook-avatar.jpg',
@@ -50,14 +41,11 @@ export default class Dashboard extends React.Component{
             }
             ProfileService.postProfile(newUserProfileMandatory)
           }
-          else
-          {console.log(profile.user_id,'yes')}
-      }
+        }
       )
 
     ProfileService.getProfile()
       .then(profile => {
-        console.log(profile)
         const currentUser = profile.filter(user => user.user_id === this.context.user.id)
         this.setState({
           currentUser: currentUser,
