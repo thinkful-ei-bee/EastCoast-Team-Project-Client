@@ -41,8 +41,8 @@ export default class Nav extends React.Component{
       </span>
       <nav>
         <div className='nav_link_Logged_in'>
-        <Link to='/' >Dashboard</Link><br></br>
-        <Link to='/notifications' >Notifications ({this.state.recievedEvents.length})</Link><br></br>
+        <Link to='/' >Dashboard</Link>
+        <Link to='/notifications' >Notifications ({this.state.recievedEvents.length})</Link>
         <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
         <Link to={`/profile`} >Profile</Link>
         </div>

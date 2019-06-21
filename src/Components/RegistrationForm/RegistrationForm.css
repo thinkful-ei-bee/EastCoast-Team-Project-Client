@@ -38,7 +38,7 @@ form{
 .btn {
  color:white;
  display:inline-block;
- padding:0.35em 1.2em;
+ /* padding:0.35em 1.2em; */
  border:0.1em solid white;
  
  border-radius:0.12em;
