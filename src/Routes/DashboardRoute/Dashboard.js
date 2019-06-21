@@ -122,7 +122,7 @@ export default class Dashboard extends React.Component{
   renderEvents() {
     const userEvents = (this.state.events.length === 0) ? 'You have no events yet'
     : this.state.events.map((event, i) => 
-      <div key={i}>
+      <div key={i} className="dashboard-events">
         <Link to={`/events/${event.id}`}>{event.event_name}</Link>
       </div>
       )
@@ -162,34 +162,36 @@ export default class Dashboard extends React.Component{
 
     return(
       <div className='dashboard_container'>
-      <div className="dashboard">
-        <div className='left_button'>
-          <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
-        </div>
-        <div className="dashboard-pic">
-          
-          <div className="picture-carousel">
-          <h3 className="picture-name">{userName}</h3>
-          <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
+        <div className="dashboard">
+
+          <div className='left_button'>
+            <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
           </div>
-          <div className='eventify_link_button'>
-        {this.renderEventifyButton()}
-        </div>
           
+          <div className="dashboard-pic">
+          <div className="picture-name">{userName}</div>
+            <div className="picture-carousel">
+              
+              <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
+            </div>
+            <div className='eventify_link_button'>
+              {this.renderEventifyButton()}
+            </div>
+          </div>
+
+          <div className='right_button'>
+            <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
+          </div>
         </div>
-        <div className='right_button'>
-          <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
-        </div>
-        
-      </div>
+
       <div className="create_event_container">
         <div className='create_event'>
-        <Link to='/createEvent'>Create Event</Link>
+          <Link to='/createEvent'>Create Event</Link>
         </div>
-        <div className='upcoming_event_title'>
+        <div className='upcoming-event-title'>
           Your upcoming events:
         </div>
-        <div className='upcoming_events'>
+        <div className='upcoming-events'>
         {this.renderEvents()}
         </div>
       </div>

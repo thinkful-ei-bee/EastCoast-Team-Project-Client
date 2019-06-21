@@ -3,7 +3,7 @@ import TokenService from '../Services/token-service'
 
 const ProfileService = {
   getProfile(){
-    return fetch(`${config.API_ENDPOINT}/user_profile`, {
+    return fetch(`${config.REACT_APP_API_BASE}/user_profile`, {
       headers:{
         'authorization':`bearer ${TokenService.getAuthToken()}`
       }, 
@@ -16,7 +16,7 @@ const ProfileService = {
       )
     },
   getCurrentUserProfile(){
-    return fetch(`${config.API_ENDPOINT}/user_profile/current-user`, {
+    return fetch(`${config.REACT_APP_API_BASE}/user_profile/current-user`, {
       headers:{
         'authorization':`bearer ${TokenService.getAuthToken()}`
        }, 
@@ -28,7 +28,7 @@ const ProfileService = {
       )
     },
   postProfile(profile_picture, music_like, movie_like, me_intro) {
-    return fetch(`${config.API_ENDPOINT}/user_profile`, {
+    return fetch(`${config.REACT_APP_API_BASE}/user_profile`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -43,7 +43,7 @@ const ProfileService = {
       )
   },
   getProfileById(id) {
-    return fetch(`${config.API_ENDPOINT}/user_profile/${id}`, {
+    return fetch(`${config.REACT_APP_API_BASE}/user_profile/${id}`, {
       headers:{
         'authorization':`bearer ${TokenService.getAuthToken()}`
        }, 
@@ -55,7 +55,7 @@ const ProfileService = {
       )
   },
   editProfile(id, profile_picture, music_like, movie_like, me_intro) {
-    return fetch(`${config.API_ENDPOINT}/user_profile/${id}`, {
+    return fetch(`${config.REACT_APP_API_BASE}/user_profile/${id}`, {
       method: 'PATCH',
       headers:{
         'content-type': 'application/json',

@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap" );
+
+
 .eventify-form {
     width: fit-content;
     margin: auto;
+    background: rgba(25, 25, 25, .3);
+    border-radius: 5px;
+    padding: 3%;
     margin-top: 5%;
     background-color: white;
     text-align: center;
@@ -18,11 +24,12 @@
   
     border-radius: 4px;
 }
-.cancel-btn {
-    margin: auto;
-    padding: auto;
+
+.eventify-form h2 {
+    color: white;
+    font-family: 'Lato', sans-serif;
 }
-.choose-event-btn {
-    margin: auto;
-    padding: auto;
+
+.eventify-form button {
+    font-family: 'Lato', sans-serif;
 }

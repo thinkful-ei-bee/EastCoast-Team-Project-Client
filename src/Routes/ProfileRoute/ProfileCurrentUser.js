@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Input, Label } from '../../Components/Form/Form'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
@@ -15,10 +16,8 @@ export default class Profile extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
-    console.log(this.context.user)
     ProfileService.getCurrentUserProfile()
       .then(profile => {
-        console.log(profile)
         this.setState({ profile: profile[0]})
       })
 
@@ -28,26 +27,18 @@ export default class Profile extends React.Component{
       })  
   }
 
-  // fileSelectedHandler = (event) => {
-  //   this.setState({ selectedFile: event.target.files[0]})
-  // }
-
   handleSubmitButton = (e) => {
     e.preventDefault()
     const userId = this.state.profile.user_id
 
     const { music_like, movie_like, me_intro } = e.target;
-    // const profile_picture = this.state.selectedFile
 
     ProfileService.editProfile(userId, {
-      // profile_picture: profile_picture.name,
       music_like: music_like.value,
       movie_like: movie_like.value,
       me_intro: me_intro.value
     })
     .then(response => {
-      console.log(response)
-      // profile_picture.value = ''
       music_like.value = ''
       movie_like.value = ''
       me_intro.value = ''
@@ -69,7 +60,7 @@ export default class Profile extends React.Component{
   renderBioText() {
     const userProfile = this.state.profile
     const profile = (
-    <div>
+    <>
      <img src={userProfile.profile_picture} alt=''/>
        <p>Bio: {userProfile.me_intro}</p>
        <p>Interests:</p>
@@ -77,23 +68,25 @@ export default class Profile extends React.Component{
          <li>Music: {userProfile.music_like}</li>
          <li>Favorite movie: {userProfile.movie_like}</li>
        </ul>
-   </div>
+   </>
     )
 
     const events = this.state.events
     const userEvents = (events.length === 0 ) ? 'I have no events yet' 
     : events.map(event => 
-      <div key={event.id} className="event">
-        <p >{event.event_name}</p>
+      <div key={event.id} className="profile-event">
+          <Link to={`/events/${event.id}`}>{event.event_name}</Link>
       </div> 
     )
     return (
-      <div className="profile">
-        <button type="click" onClick={this.handleEditButton}>Edit</button>
+      <>
+        <button className="edit-button" type="click" onClick={this.handleEditButton}>Edit</button>
         {profile}
         <p>Events:</p>
-        {userEvents}
-      </div>
+        <div className="profile-events">
+          {userEvents}
+        </div>
+      </>
     )
   }
 
@@ -103,13 +96,10 @@ export default class Profile extends React.Component{
       <div className="edit-profile">
         <fieldset>
           <form onSubmit={this.handleSubmitButton}>
-              {/* <Label htmlFor="prolfile_picture">Profile pic</Label>
-              <Input type="file" id="prolfile_picture" onChange={this.fileSelectedHandler}/> */}
 
               <Label htmlFor="bio">About me</Label>
               <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
-              <p>Interests:</p>
               <Label htmlFor="music">Favorite music genre:</Label>
               <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
 
@@ -128,7 +118,7 @@ export default class Profile extends React.Component{
     const renderForm = (!this.state.edit) ? this.renderBioText() : this.renderEditForm()
 
     return(
-      <div>
+      <div className="personal-profile">
         {renderForm}
       </div>
     )
