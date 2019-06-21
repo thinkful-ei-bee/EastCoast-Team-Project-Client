@@ -3,7 +3,7 @@
   display:flex;
   justify-content: center;
   flex-direction: column;
-  
+  background: rgba(25, 25, 25, .3);
 }
 
 .landing-hero{
@@ -17,13 +17,13 @@
 
 #landing-title{
   color:white;
-  font-size: 80px;  
+  font-size: 50px;  
   text-align: center;
 }
 
 #landing-title:hover{
   color:white;
-  font-size: 90px;  
+  /* font-size: 90px;   */
   text-align: center;
 }
 
@@ -31,18 +31,26 @@
   color:white;
   font-size: 30px;  
   text-align: center;
+  
 }
 
 .explore-rendezvous{
   margin:0 auto;
   padding:20px;
 }
+.explore-rendezvous:hover{
+  margin:0 auto;
+  padding:20px;
+  background-color: black;
+  
+}
 
 .how-it-work{
   margin-top:100px;
   color:white;
-  font-size: 80px;  
-  text-align: center;  
+  font-size: 30px;  
+  text-align: center; 
+  margin-top: 0;
 }
 
 .how-it-work-demo{
