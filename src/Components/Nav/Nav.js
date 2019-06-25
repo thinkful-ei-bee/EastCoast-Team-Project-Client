@@ -13,20 +13,23 @@ export default class Nav extends React.Component{
   }
   static contextType = UserContext
 
+  
   componentDidMount() {
-    ProfileService.getCurrentUserProfile()
-      .then(profile => {
-        const id = profile.map(profile => parseInt(profile.user_id))
-        this.setState({ currentUserProfileId: id})
-      })
-
-      EventifyService.getEventify()
-      .then(eventify => {
-        const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
-        this.setState({ 
-          recievedEvents: filteredRecievedEvents
+    if (TokenService.hasAuthToken()) {
+      ProfileService.getCurrentUserProfile()
+        .then(profile => {
+          const id = profile.map(profile => parseInt(profile.user_id))
+          this.setState({ currentUserProfileId: id})
         })
-      })
+
+        EventifyService.getEventify()
+        .then(eventify => {
+          const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
+          this.setState({ 
+            recievedEvents: filteredRecievedEvents
+          })
+        })
+      } else { return null; }
   }  
 
   handleLogoutClick = () => {

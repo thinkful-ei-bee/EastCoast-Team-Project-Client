@@ -27,10 +27,9 @@ export default class Dashboard extends React.Component{
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
       })
-    ProfileService.getCurrentUserProfile() 
 
       ProfileService.getCurrentUserProfile()  
-      .then(profile=>
+      .then(profile =>
         { 
           if(profile.length ===0){
             const newUserProfileMandatory ={

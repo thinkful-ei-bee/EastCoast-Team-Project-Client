@@ -5,10 +5,6 @@ import Button from '../Button/Button'
 
 export default class EventForm extends React.Component{
   render(){
-    const isPrivate = [
-      { label: 'Group', value: false},
-      { label: 'Private', value: true}
-    ]
     return(
       <section>
         <div className="event-form">
@@ -28,8 +24,6 @@ export default class EventForm extends React.Component{
             <Label htmlFor="type">Type</Label>
             <Input type="text" id="event_type" name="event_type" placeholder="Type" required/> 
 
-            {/* <Label>Group or Private</Label> */}
-            {/* <Select id="isPrivate" name="isPrivate" onChange={e => this.props.handleChange(e.target.value)} options={ isPrivate } value={ this.props.selectValue }/> */}
             <select id="is_private" name="is_private" onChange={e => this.props.handleChange(e.target.value)} value={ this.props.selectValue }>
               <option value="false">Group</option>
               <option value="true">Private</option>
