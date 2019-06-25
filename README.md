@@ -47,7 +47,7 @@ You are good to go at this point and simply need to run `npm start` for the clie
 ![Landing page](src/screenshots/LandingPage.png)
 ![Signup page](src/screenshots/Signup.png)
 ![Login page](src/screenshots/login.png)
-![Dashboard](/Users/farahgustafson/Documents/EastCoastTeam/EastCoast-client/src/screenshots/Dashboard.png)
+![Dashboard](/src/screenshots/Dashboard.png)
 ![Profile page](src/screenshots/profile.png)
 ![Received notifications](src/screenshots/notificationReceived.png)
 
