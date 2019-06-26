@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Input, Label } from '../../Components/Form/Form'
+import Button from '../../Components/Button/Button'
 import ProfileService from '../../Services/profile-service'
 import EventService from '../../Services/events-service'
 import UserContext from '../../contexts/UserContext'
@@ -92,22 +93,23 @@ export default class Profile extends React.Component{
     const user = this.state.profile
     return(
       <div className="edit-profile">
+        <h4>Edit profile</h4>
         <fieldset>
           <form onSubmit={this.handleSubmitButton}>
-              <Label htmlFor="profilePicture">Profile picture</Label>
+              <Label className="edit-label" htmlFor="profilePicture">Profile picture</Label>
               <Input type="text" id="profile_picture" name="profile_picture" defaultValue={user.profile_picture}/>
 
-              <Label htmlFor="bio">About me</Label>
+              <Label className="edit-label" htmlFor="bio">About me</Label>
               <Input type="text" id="me_intro" name="me_intro" defaultValue={user.me_intro} />
 
-              <Label htmlFor="music">Favorite music genre:</Label>
+              <Label className="edit-label" htmlFor="music">Favorite music genre:</Label>
               <Input type="text" id="music_like" name="music_like" defaultValue={user.music_like}/>
 
-              <Label htmlFor="movie">Favorite movie:</Label>
+              <Label className="edit-label" htmlFor="movie">Favorite movie:</Label>
               <Input type="text" id="movie_like" name="movie_like" defaultValue={user.movie_like}/>
 
-            <button type="submit">Submit</button>
-            <button onClick={this.handleCancelButton}>Cancel</button>
+            <Button type="submit">Submit</Button>
+            <Button onClick={this.handleCancelButton}>Cancel</Button>
           </form>
         </fieldset>
       </div>

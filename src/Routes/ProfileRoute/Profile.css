@@ -1,4 +1,4 @@
-.profile, .edit-profile, .personal-profile {
+.profile, .personal-profile {
     margin: auto;
     color:white;
     font-size:30px;
@@ -20,6 +20,17 @@
     padding: 5%;
     margin-top: 5%;
     margin-bottom: 5%;
+}
+
+.edit-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form Input {
+    margin-bottom: 20px;
+    margin-top: 5px;
 }
 
 .profile img, .personal-profile img {
