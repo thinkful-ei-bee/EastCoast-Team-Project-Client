@@ -151,37 +151,43 @@ export default class Dashboard extends React.Component{
       <div className='dashboard_container'>
         <div className="dashboard">
 
-          <div className='left_button'>
-            <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
+        <div className="picture-name">{userName}</div>
+          <div className="dashboard-pic-arrows">
+
+            <div className='left_button'>
+              <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
+            </div>
+                
+            <div className="dashboard-pic">
+                <div className="picture-carousel">    
+                  <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
+                </div>
+            </div>
+
+            <div className='right_button'>
+              <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
+            </div>
           </div>
-          
-          <div className="dashboard-pic">
-          <div className="picture-name">{userName}</div>
-            <div className="picture-carousel">
+
+          <div className='eventify_link_button'>
+            {this.renderEventifyButton()}
+          </div>
+        </div>
+
+        <div className="create_event_container">
+          <div className='create_event'>
+              <Link to='/createEvent'>Create Event</Link>
+          </div>
+         
+          <div className='upcoming-event-title'>
+            Your upcoming events:
+          </div>
               
-              <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
-            </div>
-            <div className='eventify_link_button'>
-              {this.renderEventifyButton()}
-            </div>
-          </div>
-
-          <div className='right_button'>
-            <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
+          <div className='upcoming-events'>
+            {this.renderEvents()}
           </div>
         </div>
 
-      <div className="create_event_container">
-        <div className='create_event'>
-          <Link to='/createEvent'>Create Event</Link>
-        </div>
-        <div className='upcoming-event-title'>
-          Your upcoming events:
-        </div>
-        <div className='upcoming-events'>
-          {this.renderEvents()}
-        </div>
-      </div>
       </div>
       
     )

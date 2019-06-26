@@ -1,49 +1,47 @@
 .dashboard_container {
     background: rgba(25, 25, 25, .3);
     border-radius: 5px;
-    
     padding: 50px;
     margin: auto 10px;
 }
 
-
 .dashboard {
-    display: flex;
-    position: relative;
-    flex-direction: row;
     margin-bottom: 20px;
     padding-bottom: 30px;
-    
-  
-    
 }
 
-.dashboard-pic {
-    position: relative;
-    margin: auto;
-    
-}
-
-.picture-carousel {
-    display:flex;
+.dashboard-pic-arrows {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
-    
-   
-   
-    margin: auto;
-    /* overflow: hidden; */
-}
-
-.picture-carousel img {
-   width:420px;
-   height:350px;
-    padding:20px;
-    
 }
 
 .picture-name{
     color:white;
     font-size: 40px;
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.dashboard-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.picture-carousel {
+    min-width:L 0;
+    margin: 5px;
+}
+
+.picture-carousel img {
+   width:300px;
+   max-width: 100%;
+   max-height: 300px;
+   border:0.1em solid white;
 }
 
 .eventify_link_button{
@@ -66,17 +64,6 @@
     text-align:center;
     transition: all 0.2s;
     margin-top: 10px;
-}
-
-
-.right_button{
-    margin: auto 0px;
-    
-}
-
-.left_button{
-    margin: auto 0px;
-    
 }
 
 .create_event_container{
@@ -162,7 +149,6 @@
     margin: 0 auto;
     padding: 5%;
 }
-
 
 @media(min-width:600px){
     .dashboard_container {

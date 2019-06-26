@@ -86,7 +86,7 @@ export default class RegistrationForm extends React.Component{
               id="password" 
               name="password" 
               placeholder="Enter password"
-              autocomplete="password"
+              autoComplete="password"
               required/>
 
             <label htmlFor="email">Gender</label>

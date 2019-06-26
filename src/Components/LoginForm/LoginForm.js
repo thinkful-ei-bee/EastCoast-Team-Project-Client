@@ -84,7 +84,7 @@ class LoginForm extends Component {
             id='login-password-input'
             name='password'
             type='password'
-            autocomplete="password"
+            autoComplete="password"
             required
           />
         </div>
