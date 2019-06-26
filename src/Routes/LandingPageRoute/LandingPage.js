@@ -25,6 +25,11 @@ export default class LandingPage extends Component{
         <div className="how-it-works-description">
           We cut out the awkwardness of finding mutual interests for first dates, second dates, or even third dates. See someone you like? Create an event you'd be interested in attending with them and once they accept, let the magic happen!
         </div>  
+        <div className="demo">
+          Try out a quick demo. Log in with the following credentials: <br></br>
+          Username: demoMale1<br></br>
+          Password: demoPass2019!
+        </div>
 
     <ParticleComponent />           
         </div>              
