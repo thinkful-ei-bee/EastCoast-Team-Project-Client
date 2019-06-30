@@ -64,16 +64,16 @@ export default class EventForm extends React.Component{
           <form onSubmit={this.handleAddEvent}>
             <h3>Create an event:</h3>
 
-            <Label htmlFor="name">Name of event</Label>
+            <Label htmlFor="name" className="event-form-label">Name of event</Label>
             <Input type="text" id="event_name" name="event_name" placeholder="Name of event" required/>
 
-            <Label htmlFor="date">Date</Label>
+            <Label htmlFor="date" className="event-form-label">Date</Label>
             <DatePicker 
               selected = {this.state.startDate}
               onChange = {this.handleDateChange}
             />
 
-            <Label htmlFor="time">Time</Label>
+            <Label htmlFor="time" className="event-form-label">Time</Label>
             <TimePicker 
               placeholder="Click to select time"
               selected = {this.state.time}
@@ -81,13 +81,13 @@ export default class EventForm extends React.Component{
               required
             />
 
-            <Label className="is-private-label" htmlFor="is_private">Is this event a private event or a group event?</Label>
+            <Label className="is-private-label event-form-label" htmlFor="is_private">Is this event a private event or a group event?</Label>
             <select  className="is_private" name="is_private" id="is_private" onChange={this.handleMenuChange}>
               <option value="true">Private</option>
               <option value="false">Group</option>
             </select>
 
-            <Label htmlFor="location">Location</Label>
+            <Label htmlFor="location" className="event-form-label">Location</Label>
             <select name="event_location" id="event_location" onChange = {this.handleStateChange} >
                 <option value="Alabama">Alabama</option>
                 <option value="Alaska">Alaska</option>
@@ -142,7 +142,7 @@ export default class EventForm extends React.Component{
                 <option value="Wyoming">Wyoming</option>
               </select>
 
-            <Label className="event-details" htmlFor="details">Details</Label>
+            <Label className="event-details event-form-label" htmlFor="details">Details</Label>
             <Textarea type="text" id="event_details" name="event_details" placeholder="Enter event details..."></Textarea>
 
             <Button type="submit" className="create-event-btn">Create Event</Button>      

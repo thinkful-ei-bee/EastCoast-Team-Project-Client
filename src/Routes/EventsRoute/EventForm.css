@@ -31,10 +31,12 @@ fieldset {
 Label, Input, select, .rc-time-picker-input {
     font-size: 20px;
     padding: 0;
-    margin: 0;
     width: 13em;
     border-radius: 5px;
     height: 35px;
+}
+.event-form-label {
+    margin: 0;
 }
 .Textarea {
     font-size: 20px;
