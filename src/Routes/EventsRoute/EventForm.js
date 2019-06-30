@@ -1,12 +1,10 @@
 import React from 'react'
 import { Input, Label, Textarea } from '../../Components/Form/Form'
 import Button from '../../Components/Button/Button'
-import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import TimePicker from 'rc-time-picker';
 import "rc-time-picker/assets/index.css";
-import SelectUSState from 'react-select-us-states'
 import EventService from '../../Services/events-service'
 import './EventForm.css'
 
@@ -33,17 +31,12 @@ export default class EventForm extends React.Component{
     this.setState({ time: time })
   }
 
-  handleStateChange = (state) => {
-    this.setState({ state: state })
-  }
-
   handleAddEvent = (e) => {
     e.preventDefault()
     const { event_name, is_private, event_location, event_details } = e.target;
     
     const date = this.state.startDate
     const time = this.state.time._i
-    // const state = this.state.state
    
     EventService.postEvents({
       event_name: event_name.value,
@@ -54,7 +47,6 @@ export default class EventForm extends React.Component{
       event_details: event_details.value
     }) 
       .then(response => {
-        console.log(response)
         this.setState({ events: [...this.state.events, response]})
         this.props.history.push('/');
       }) 
@@ -97,8 +89,7 @@ export default class EventForm extends React.Component{
             </select>
 
             <Label htmlFor="location">Location</Label>
-            <select name="event_location" id="event_location" onChange = {this.handleStateChange}>
-                <option defaultValue="">Select a State</option>
+            <select name="event_location" id="event_location" onChange = {this.handleStateChange} >
                 <option value="Alabama">Alabama</option>
                 <option value="Alaska">Alaska</option>
                 <option value="Arizona">Arizona</option>
