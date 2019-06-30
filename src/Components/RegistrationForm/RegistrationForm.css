@@ -38,9 +38,10 @@ form{
 .btn {
  color:white;
  display:inline-block;
- /* padding:0.35em 1.2em; */
+ padding:0.35em 1.2em;
  border:0.1em solid white;
- 
+ width:50%;
+ margin:auto;
  border-radius:0.12em;
  box-sizing: border-box;
  text-decoration:none;
@@ -71,7 +72,7 @@ form{
     padding: 8px;
     margin-top: 3px;
     margin-bottom: 3px;
-    /* margin: auto; */
+    margin: auto;
 }
 label {
   font-size:20px;
