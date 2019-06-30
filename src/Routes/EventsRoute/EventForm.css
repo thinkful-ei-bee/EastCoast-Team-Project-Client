@@ -24,7 +24,7 @@ fieldset {
     align-items: center;
 }
 
-Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea {
+Label, Input, select, .rc-time-picker-input, .Textarea {
     font-size: 20px;
     padding: 0;
     margin: 0;
@@ -33,7 +33,7 @@ Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea {
     height: 35px;
 }
 
-#event_name, select, .rc-time-picker, .css-yk16xz-control, .react-datepicker-wrapper, .Textarea {
+#event_name, select, .rc-time-picker, .react-datepicker-wrapper, .Textarea {
     margin-bottom: 5%;
 }
 
@@ -93,7 +93,7 @@ Label {
 
 
 @media(min-width: 500px) {
-    Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea  {
+    Label, Input, select, .rc-time-picker-input, .Textarea  {
         width: 15em;
     }
     .event-form button {
@@ -101,7 +101,7 @@ Label {
     }
 }
 @media(min-width: 800px) {
-    Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea  {
+    Label, Input, select, .rc-time-picker-input, .Textarea  {
         width: 16em;
     }
     .event-form button {

@@ -32,3 +32,8 @@
 .eventify-form button {
     font-family: 'Lato', sans-serif;
 }
+
+.eventify-button {
+    width: 100%;
+    margin-top: 15px;
+}
