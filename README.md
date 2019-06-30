@@ -1,69 +1,72 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rendezvous
 
-## Available Scripts
+## Authors:
+* Farah Gustafson
+* Jizong Liang
+* Laurel Butler
 
-In the project directory, you can run:
+### Link to Live App:
+[Rendezvous](https://rendezvous-app.now.sh/)
 
-### `npm start`
+### API used:
+[Server Repo](https://github.com/thinkful-ei-bee/EastCoast-Team-Project-Capstone3-Server)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### App Summary:
+Welcome to Rendezvous, where singles meet their perfect mate by eventifying their dating experience!
+Here in Rendezvous, we cut out the awkwardness of finding mutual interests for first dates, second dates, or even third dates! When matched you can see the events your eventifyee created. When you see something you like, you can click the intrigue button and they will be notified of the event you are interested in attending with them and vice versa.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Setup:
+Clone or fork this repository and [the server repository](https://github.com/thinkful-ei-bee/EastCoast-Team-Project-Capstone3-Server). Run `npm install` on the client side and for the server you want to also run `npm install` in addition to creating the databases named **rendezvous** and **rendezvous-test**.
+You then want to create a .env file with the following information:
+```NODE_ENV=development
+PORT=8000
+TZ='UTC'
+MIGRATION_DB_HOST=127.0.0.1
+MIGRATION_DB_PORT=5432
+MIGRATION_DB_NAME=rendezvous
+MIGRATION_DB_USER=(the username for your new database)
+MIGRATION_DB_PASS=(password for your new database)
+DB_URL="postgresql://(user):(password)@localhost/rendezvous"
+TEST_DB_URL="postgresql://(user):(password)@localhost/rendezvous-test"
+JWT_SECRET="(whatever you want here)"
+```
+Now you will run `npm run migrate` to configure the database and `npm run migrate --NODE_ENV=test` to set up the test database.
+In the config.js file on the client side, you'll change the API_ENDPOINT to point to your local server. It by default is `http://localhost:3000`.
+You are good to go at this point and simply need to run `npm start` for the client and to start the nodemon, it's `npm run dev`.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Scripts:
+1. Install the packages for the application `npm install`
+2. Start the application `npm start`
+3. Start the nodemon for the application `npm run dev`
+4. Run the migrations up `npm run migrate`
+5. Seed the database
+6. Run the migrations down `npm run migrate --0`
 
-### `npm run build`
+### Screenshots:
+![Landing page](src/screenshots/LandingPage.png)
+![Signup page](src/screenshots/Signup.png)
+![Login page](src/screenshots/login.png)
+![Dashboard](/src/screenshots/Dashboard.png)
+![Profile page](src/screenshots/profile.png)
+![Received notifications](src/screenshots/notificationReceived.png)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Authorization:
+You can create your own account or you can use these credentials to test the app:<br>
+#### Male Account:
+Username: demoMale1<br>
+Password: demoPass2019!
+#### Female Account:
+Username: demoFemale1<br>
+Password: demoPass2019!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technical Stack:
+* React
+* Node.JS
+* PostgreSQL
+* Express
+* CSS
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# EastCoast-Team-Project-Client
+#### Kanban board:
+[Kanban Board:](https://github.com/thinkful-ei-bee/rendevous-capstone-3-FDL-team/projects/1)

@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.footer{
+  width: auto;
+  background-color: black;
+  padding: auto;
+}
+
+#author {
+  margin-top:20px;
+  color:gray;
+  text-align: center;
+}
+
+.copyright-text{
+  color:gray;
+  width: auto;
+  margin: auto;
+  text-align: center;
+  font-size: 10px;
+  padding:15px;
+}
+
+.social_icon{
+
+  
+  width:30px !important;
+  height:30px;
+  color:gray;
+ 
+  margin-top:20px;
+  border-radius:100%;  
+  text-align:center;  
+  list-style:none;
+}
+
+.social_icon_container{
+  margin:0 auto;
+}

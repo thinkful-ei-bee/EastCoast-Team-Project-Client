@@ -1,27 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap" );
+
 .event-form{
-    width: fit-content;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 50px;
+    background: rgba(25, 25, 25, .3);
+    border-radius: 5px;
+    padding: 5%;
+    margin: 5%;
 }
 
-.event-form input{
+fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+.event-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    width: 13em;
+    border-radius: 5px;
+    height: 35px;
+}
+
+#event_name, select, .rc-time-picker, .css-yk16xz-control, .react-datepicker-wrapper, .Textarea {
+    margin-bottom: 5%;
+}
+
+.select-state, select {
+    background: white;
+}
+
+Label {
+    margin-bottom: 1%;
+}
+.is-private-label {
+    margin-bottom: 8%;
+}
+ 
+.event-form input {
+    margin-bottom: 1%;
+}
+
+.Textarea {
+    height: 100px;
+}
+
+.event-form h3 {
+    color: white;
+    font-size: 35px;
+    font-family: 'Lato', sans-serif;
+}
+
+.event-form button {
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    border-radius: 5px;
     margin: auto;
+    margin-bottom: 5%;
+    width: 10.5em;
 }
 
-#event_details {
-    margin-bottom: 20px;
+.event-form .create-event-btn {
+    margin-top: 10%;
 }
 
-.event-form select {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    display: block;
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    margin-top: 10px;
-    padding: 10px;
-    text-align: left;
-  
-    border-radius: 4px;
+.event-form .create-event-btn:hover, .cancel-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.date_picker{
+    margin-right:15px;
+    color:white;
+}
+
+.date_picker input{
+    margin-top:5px;
+    height:20px;
+}
+
+
+
+@media(min-width: 500px) {
+    Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea  {
+        width: 15em;
+    }
+    .event-form button {
+        width: 12em
+    }
+}
+@media(min-width: 800px) {
+    Label, Input, select, .rc-time-picker-input, .css-yk16xz-control, .Textarea  {
+        width: 16em;
+    }
+    .event-form button {
+        width: 13em
+    }
+    .event-form {
+        margin: 10%;
+    }
+    Label {
+        font-size: 25px;
+    }
 }

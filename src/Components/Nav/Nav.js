@@ -2,10 +2,35 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import './Nav.css'
 import TokenService from '../../Services/token-service';
+import ProfileService from '../../Services/profile-service'
+import EventifyService from '../../Services/eventify-service'
 import UserContext from '../../contexts/UserContext'
 
 export default class Nav extends React.Component{
+  state = {
+    currentUserProfileId: [],
+    recievedEvents: []
+  }
   static contextType = UserContext
+
+  
+  componentDidMount() {
+    if (TokenService.hasAuthToken()) {
+      ProfileService.getCurrentUserProfile()
+        .then(profile => {
+          const id = profile.map(profile => parseInt(profile.user_id))
+          this.setState({ currentUserProfileId: id})
+        })
+
+        EventifyService.getEventify()
+        .then(eventify => {
+          const filteredRecievedEvents = eventify.filter(e => e.recipient_id === parseInt(this.context.user.id))
+          this.setState({ 
+            recievedEvents: filteredRecievedEvents
+          })
+        })
+      } else { return null; }
+  }  
 
   handleLogoutClick = () => {
     this.context.processLogout()
@@ -18,34 +43,36 @@ export default class Nav extends React.Component{
         {this.context.user.name}
       </span>
       <nav>
-        <Link to='/'>Dashboard</Link><br></br>
-        <Link to='/notifications'>Notifications</Link><br></br>
+        <div className='nav_link_Logged_in'>
+        <Link to='/' >Dashboard</Link>
+        <Link to='/notifications' >Notifications ({this.state.recievedEvents.length})</Link>
         <Link onClick={this.handleLogoutClick} to='/login'>Logout</Link>
+        <Link to={`/profile`} >Profile</Link>
+        </div>
       </nav>
     </div>
-  )
-  }
+  )}
 
   renderLoginLink() {
     return (
       <nav>
         <div className='nav_link'>
+        <Link to='/landingPage'>Home</Link>
         <Link to='/login'>Login</Link>
         {' '}
         <Link to='/signup'>Sign up</Link>
         </div>
       </nav>
-    )
-  }
+    )}
   
   render() {
     return(
       <header>
-      <h1>
+      <div className='logo'>
         <Link to='/'>
           Rendezvous
         </Link>
-      </h1>
+      </div>
       {TokenService.hasAuthToken()
         ? this.renderLogoutLink()
         : this.renderLoginLink()}

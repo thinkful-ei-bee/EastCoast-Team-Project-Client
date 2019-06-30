@@ -2,8 +2,8 @@ import config from '../config'
 import TokenService from './token-service';
 
 const EventsService = {
-  getEvents(){
-    return fetch(`${config.API_ENDPOINT}/events`, {
+  getAllEvents() {
+    return fetch(`${config.REACT_APP_API_BASE}/events/all-event`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       }
@@ -14,14 +14,26 @@ const EventsService = {
           : res.json()
       )
   },
-  postEvents(eventName, eventDate, eventTime, eventLocation, eventDetails, isPrivate) {
-    return fetch(`${config.API_ENDPOINT}/events`, {
+  getEventsForCurrentUser(){
+    return fetch(`${config.REACT_APP_API_BASE}/events`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      }
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+  postEvents(event_name, event_date, event_time, event_location, event_details, is_private) {
+    return fetch(`${config.REACT_APP_API_BASE}/events`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(eventName, eventDate, eventTime, eventLocation, eventDetails, isPrivate),
+      body: JSON.stringify(event_name, event_date, event_time, event_location, event_details, is_private),
     })
       .then(res =>
         (!res.ok)
@@ -30,7 +42,7 @@ const EventsService = {
       )
   },
   getEventById(id) {
-    return fetch(`${config.API_ENDPOINT}/events/${id}`, {
+    return fetch(`${config.REACT_APP_API_BASE}/events/${id}`, {
       headers:{
         'authorization':`bearer ${TokenService.getAuthToken()}`
        }, 
@@ -42,7 +54,7 @@ const EventsService = {
       )
   },
   // deleteEvent(eventId) {
-  //   return fetch(`${config.API_ENDPOINT}/events/${eventId}`, {
+  //   return fetch(`${config.REACT_APP_API_BASE}/events/${eventId}`, {
   //       method: "DELETE"
   //     })
   // },

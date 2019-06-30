@@ -1,8 +1,12 @@
 .notification-sent {
-    border: 1px solid grey;
-    padding: 20px;
+    
+    background: rgba(25, 25, 25, .3);
+    padding: 140px;
+    color:white;
     margin: auto;
-    width: fit-content;
+    font-size: 25px;
+
     margin-top: 80px;
     text-align: center;
 }
+

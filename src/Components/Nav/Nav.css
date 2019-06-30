@@ -1,4 +1,111 @@
-.nav{
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
+
+/* .nav{
     height: 60px;
     border-bottom: 1px solid black;
+} */
+.logout {
+    margin: 20px;
+    padding: 20px;
+}
+.nav-link {
+    position: fixed;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: inline-block;
+}
+
+.nav_link a{
+    display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid white;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-size:20px;
+  font-weight:300;
+  color: white;
+  background-color:transparent;
+  text-align:center;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.nav_link_Logged_in {
+    display:flex;
+    flex-direction: row;    
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+   
+}
+
+.nav_link_Logged_in a{
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid white;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-size:18px;
+  font-weight:300;
+  color: white;
+  background-color:transparent;
+  text-align:center;
+  transition: all 0.2s;
+
+  margin-top: 10px;
+}
+
+
+
+body {
+    background-color: white;
+}
+header {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;  
+    padding: auto;
+}
+.logo {
+    text-align: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 60px;
+    font-family: 'Marck Script', cursive;
+    
+}
+
+header a{
+    text-decoration: none;
+    color:white;
+}
+
+@media (max-width:750px){
+    header{
+        flex-direction: column;
+        padding: 1%;
+    }
+    .nav_link{
+        margin-top: 30px;
+        display:flex;
+        flex-direction: column;
+    }
+    .nav_link a{
+        margin:10px 20px;
+    }
+    .nav_link_Logged_in{
+        flex-direction: column;
+        justify-content: center;
+    }
 }

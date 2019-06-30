@@ -1,7 +1,8 @@
 .login__container{
+  margin:auto auto;
   display: flex; 
   flex-direction: column;
-  margin:50px;
+  
   
 }
 
@@ -14,3 +15,8 @@
 }
 
 
+@media(max-width:600px){
+  .login__container {
+    margin: 40px auto;
+  }
+}

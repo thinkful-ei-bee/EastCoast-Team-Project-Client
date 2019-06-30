@@ -1,14 +1,106 @@
+body {
+    background-image: url("steve-halama-1401211-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+form{
+  margin:0 auto;
+}
+.registration-form-container {
+    /* background-color: #b47eb3; */
+    /* border-radius: 50%; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+
 .registration-form {
     display: flex;
     flex-direction: column;
-    width:320px;
    
-    font-size: 18px;
-    text-align: left;
-    padding: 15px;
-    
-    border-radius: 5px;
-    background: #fcfcfc;
-    margin: 10px auto 20px;
+    /* background-color: #ffd5ff; */
+    /* background-color: #cff0cc; */
+    /* background-color: #ffcba4; */
+    background-color: transparent;
+    /* border: 40px solid #f0e68c; */
+    /* border: 10px solid #000080; */
+    width:50%;width:50%;
+  
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: auto;
+    padding: auto;
+    /* color: white;
+    font-size: 20px; */
+}
+.btn {
+ color:white;
+ display:inline-block;
+ /* padding:0.35em 1.2em; */
+ border:0.1em solid white;
+ 
+ border-radius:0.12em;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-size:20px;
+ font-weight:300;
+ color: white;
+ background-color:transparent;
+ /* background-color: #b47eb3; */
+ /* background-color: #f0e68c; */
+ text-align:center;
+ transition: all 0.2s;
+ margin-top: 50px;
 }
 
+.account-created a{
+  color:white;
+}
+.account-created {
+    margin: auto;
+    /* margin-top: 12px; */
+   color:white;
+    text-decoration: none;
+    width: fit-content;
+    height: auto;
+}
+.registration-input {
+    padding: 8px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    /* margin: auto; */
+}
+label {
+  font-size:20px;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  padding:5px;
+  margin:0 auto;
+  color: white;
+}
+input {
+  border: 1px solid #ddd;
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: left;
+  border-radius: 4px;
+}
+@media(max-width:600px){
+  input{
+   margin:0 auto;
+  }
+  .registration-form{
+    width:auto;
+    margin-bottom: 20px;
+  }
+  .btn{
+    
+    margin:30px auto;
+  }
+ }

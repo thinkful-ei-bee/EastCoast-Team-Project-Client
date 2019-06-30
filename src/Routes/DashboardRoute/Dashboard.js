@@ -12,7 +12,9 @@ export default class Dashboard extends React.Component{
     allProfileInfo: [],
     filteredProfileInfo: [],
     events: [],
+    currentImage: [],
     currentImageIndex: 0,
+    currentImageId: [],
     showEventifyForm: false,
     selectValue: false
   }
@@ -20,32 +22,50 @@ export default class Dashboard extends React.Component{
   static contextType = UserContext
 
   componentDidMount() {
-    EventService.getEvents()
+    EventService.getEventsForCurrentUser()
       .then(events => {
         const filteredEvents = events.filter(e => e.event_owner_id === this.context.user.id) 
         this.setState({ events: filteredEvents })
       })
 
+      ProfileService.getCurrentUserProfile()  
+      .then(profile =>
+        { 
+          if(profile.length ===0){
+            const newUserProfileMandatory ={
+              profile_picture:'https://assets.rebelcircus.com/blog/wp-content/uploads/2016/05/facebook-avatar.jpg',
+              music_like:'unknown',
+              movie_like:'unknown',
+              me_intro:'User is lazy, did not leave any bio',
+            }
+            ProfileService.postProfile(newUserProfileMandatory)
+          }
+        }
+      )
+
     ProfileService.getProfile()
       .then(profile => {
-        const currentUser = profile.filter(user => user.id === this.context.user.id)
+        const currentUser = profile.filter(user => user.user_id === this.context.user.id)
         this.setState({
           currentUser: currentUser,
           allUsers: profile
         })
         
-        const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
-        const loggedinUser = this.state.currentUser
+      const allUsers = (!this.state.allUsers) ? [] : this.state.allUsers
+      const loggedinUser = this.state.currentUser
 
-        // get gender of logged in user from id
-        const loggedinUserGender = loggedinUser.map(user => user.gender)
+      // get gender of logged in user from id
+      const loggedinUserGender = loggedinUser.map(user => user.gender)
 
-        // filter users whose gender does not match the logged in user gender
-        const filteredUsers = allUsers.filter(user => user.gender !== loggedinUserGender.toString())
+      // filter users whose gender does not match the logged in user gender
+      const filteredUsers = allUsers.filter(user => user.gender !== loggedinUserGender.toString())
 
-        this.setState({
-          filteredProfileInfo: filteredUsers
-        })
+      this.setState({
+        filteredProfileInfo: filteredUsers
+      })
+      this.setState({
+        currentImageId: this.state.filteredProfileInfo[this.state.currentImageIndex].id
+      })
     })
   }
 
@@ -53,9 +73,12 @@ export default class Dashboard extends React.Component{
     // find index of last image in the array
     const lastIndex = this.state.filteredProfileInfo.length - 1;
 
+    const { currentImageIndex } = this.state;
+
     //check if we need to start over from the last index
-    const resetIndex = this.state.currentImageIndex === 0;
-    const index = resetIndex ? lastIndex : this.state.currentImageIndex - 1;
+    const resetIndex = currentImageIndex === 0;
+
+    const index = resetIndex ? lastIndex : currentImageIndex - 1;
 
     //assign the logical index to currentImageIndex that will use in render method
     this.setState({
@@ -67,9 +90,11 @@ export default class Dashboard extends React.Component{
     //find index of the last image in array
     const lastIndex = this.state.filteredProfileInfo.length - 1;
 
+    const { currentImageIndex } = this.state;
+
     //check if we need to start over from the last index
-    const resetIndex = this.state.currentImageIndex === lastIndex;
-    const index = resetIndex ? 0 : this.state.currentImageIndex + 1;
+    const resetIndex = currentImageIndex === lastIndex;
+    const index = resetIndex ? 0 : currentImageIndex + 1;
 
     //assign the logical index to currentImageIndex that will use in render method
     this.setState({
@@ -84,44 +109,87 @@ export default class Dashboard extends React.Component{
   renderEvents() {
     const userEvents = (this.state.events.length === 0) ? 'You have no events yet'
     : this.state.events.map((event, i) => 
-      <div key={i}>
+      <div key={i} className="dashboard-events">
         <Link to={`/events/${event.id}`}>{event.event_name}</Link>
       </div>
       )
     return userEvents;
   }
 
-  render(){
-    // get current image index
-    const index = this.state.currentImageIndex;
+  renderEventifyButton() {
+    const userGender = this.state.currentUser.map(user => user.gender)
+    const gender = userGender.toString()
 
-    // create new array with 1 image with the source images
-    let firstImage = this.state.filteredProfileInfo.slice(index, index + 1);
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
+    const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
-    //check length of new array 
-    if (firstImage.length < 1) {
-      firstImage = firstImage.concat(this.state.filteredProfileInfo.slice(0, 1-firstImage.length))
+    if (this.state.events.length === 0) {
+      return ( <p className="eventify-message">You must first create an event before eventifying this person! </p>)
+    } else {
+      if (gender === "female") {
+      return <Link to={{
+        pathname: '/eventifyForm',
+        state: { userId: userId, userGender: gender }
+      }}>Eventify {userName}</Link>
+    } else { 
+      return <Link to={{
+        pathname: '/eventifyForm',
+        state: { userId: userId, userGender: gender }
+      }}>Eventify {userName}</Link>
     }
+    }
+  }
+ 
+  render(){
+    const userPic = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].profile_picture
+    
+    const userId = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].user_id
 
+    const userName = (!this.state.filteredProfileInfo[this.state.currentImageIndex]) ? [] : this.state.filteredProfileInfo[this.state.currentImageIndex].full_name
 
     return(
-      <div className="dashboard">
-        <div className="dashboard-pic">
-          <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
-          <div className="picture-carousel">
-          {firstImage.map((pic, index) => 
-            <Link to={`/profile/${pic.id}`} key={index}><img src={pic.profile_picture} alt=''/></Link>
-            )}
-          </div>
-          <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
-        </div>
-      
-        <Link to="/eventifyForm">Eventify Her</Link>
-        <Link to="/createEvent">Create Event</Link>
+      <div className='dashboard_container'>
+        <div className="dashboard">
 
-        <h3>Your upcoming events:</h3>
-        {this.renderEvents()}
+        <div className="picture-name">{userName}</div>
+          <div className="dashboard-pic-arrows">
+
+            <div className='left_button'>
+              <button className="left-btn btn" onClick={this.prevPicture}>{'<'}</button>
+            </div>
+                
+            <div className="dashboard-pic">
+                <div className="picture-carousel">    
+                  <Link to={`/profile/${userId}`}><img src={userPic} alt=''/></Link>
+                </div>
+            </div>
+
+            <div className='right_button'>
+              <button className="right-btn btn" onClick={this.nextPicture}>{'>'}</button>
+            </div>
+          </div>
+
+          <div className='eventify_link_button'>
+            {this.renderEventifyButton()}
+          </div>
+        </div>
+
+        <div className="create_event_container">
+          <div className='create_event'>
+              <Link to='/createEvent'>Create Event</Link>
+          </div>
+         
+          <div className='upcoming-event-title'>
+            Your upcoming events:
+          </div>
+              
+          <div className='upcoming-events'>
+            {this.renderEvents()}
+          </div>
+        </div>
+
       </div>
+      
     )
   }
 }

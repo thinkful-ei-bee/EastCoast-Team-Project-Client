@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap" );
+
+
 .eventify-form {
     width: fit-content;
     margin: auto;
+    background: rgba(25, 25, 25, .3);
+    border-radius: 5px;
+    padding: 3%;
     margin-top: 5%;
+    text-align: center;
 }
 
 .eventify-form select {
@@ -15,4 +22,13 @@
     text-align: left;
   
     border-radius: 4px;
+}
+
+.eventify-form h2 {
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+.eventify-form button {
+    font-family: 'Lato', sans-serif;
 }

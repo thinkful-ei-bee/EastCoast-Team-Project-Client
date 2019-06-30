@@ -33,7 +33,6 @@ class LoginForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     const { user_name, password } = ev.target
-    console.log(user_name.value,password.value,'test')
     this.setState({ error: null })
 
     AuthApiService.postLogin({
@@ -43,8 +42,6 @@ class LoginForm extends Component {
       .then(res => {
         user_name.value = ''
         password.value = ''
-        console.log(res.authToken,'test')
-        console.log(this.context,'test context')
         this.context.processLogin(res.authToken)
         this.props.onLoginSuccess()
       })
@@ -60,6 +57,7 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state
     return (
+      <div className="login-form-container">
       <form
         className='LoginForm'
         onSubmit={this.handleSubmit}
@@ -86,13 +84,15 @@ class LoginForm extends Component {
             id='login-password-input'
             name='password'
             type='password'
+            autoComplete="password"
             required
           />
         </div>
-        <Button type='submit'>
+        <Button type='submit' id="login-button">
           Login
         </Button>
       </form>
+      </div>
     )
   }
 }
