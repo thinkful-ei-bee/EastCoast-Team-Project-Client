@@ -36,7 +36,7 @@ export default class Dashboard extends React.Component{
               profile_picture:'https://assets.rebelcircus.com/blog/wp-content/uploads/2016/05/facebook-avatar.jpg',
               music_like:'unknown',
               movie_like:'unknown',
-              me_intro:'User is lazy, did not leave any bio',
+              me_intro:`User has not entered any bio yet.`,
             }
             ProfileService.postProfile(newUserProfileMandatory)
           }
