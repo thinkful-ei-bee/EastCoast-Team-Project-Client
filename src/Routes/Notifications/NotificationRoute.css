@@ -28,7 +28,6 @@
 
 .notifcations button:hover, .recieved-notification a:hover{
     cursor: pointer;
-    transform: scale(1.1);
 }
 
 .recieved-notification img, .sent-notification img{

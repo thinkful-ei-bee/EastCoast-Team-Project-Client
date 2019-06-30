@@ -32,6 +32,10 @@ form Input {
     margin-bottom: 20px;
     margin-top: 5px;
 }
+form input {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 .profile img, .personal-profile img {
     width: 250px;
@@ -106,6 +110,7 @@ fieldset {
     color: white;
 }
 
-.event button:hover{
+.edit-button:hover, .event button:hover{
     cursor: pointer;
 }
+

@@ -16,6 +16,9 @@
     align-items: center;
     justify-content: center;
 }
+.dashboard-pic-arrows button:hover {
+    cursor: pointer;
+}
 
 .picture-name{
     color:white;
@@ -125,6 +128,7 @@
 }
 
 .dashboard-events:hover {
+    cursor: pointer;
     opacity: 0.5;
 }
 

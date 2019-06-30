@@ -20,8 +20,11 @@
     margin-top: 10px;
     padding: 10px;
     text-align: left;
-  
     border-radius: 4px;
+}
+
+.css-yk16xz-control:hover {
+    cursor: pointer;
 }
 
 .eventify-form h2 {
