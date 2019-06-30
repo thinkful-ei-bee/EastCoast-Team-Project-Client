@@ -52,6 +52,10 @@
     justify-content: center;
 }
 
+.eventify_link_button a, .create_event a {
+    width: 300px;
+}
+
 .eventify_link_button a{
     display:inline-block;
     border:0.1em solid white;
@@ -84,7 +88,6 @@
     text-align: center;
     color: white;
     border:0.1em solid white;
-    width: fit-content;
     padding: 10px;
     border-radius:0.12em;
     box-sizing: border-box;
@@ -162,6 +165,5 @@
         padding: 0px;
         
     }
-
  
 }
