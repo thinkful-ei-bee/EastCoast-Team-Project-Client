@@ -76,7 +76,6 @@ export default class EventForm extends React.Component{
             <Input type="text" id="event_name" name="event_name" placeholder="Name of event" required/>
 
             <Label htmlFor="date">Date</Label>
-            
             <DatePicker 
               selected = {this.state.startDate}
               onChange = {this.handleDateChange}
@@ -84,6 +83,7 @@ export default class EventForm extends React.Component{
 
             <Label htmlFor="time">Time</Label>
             <TimePicker 
+              placeholder="Click to select time"
               selected = {this.state.time}
               onChange = {this.handleTimeChange}
               required
@@ -102,7 +102,7 @@ export default class EventForm extends React.Component{
             />
 
             <Label className="event-details" htmlFor="details">Details</Label>
-            <Textarea type="text" id="event_details" name="event_details" defaultValue="Enter event details..."></Textarea>
+            <Textarea type="text" id="event_details" name="event_details" placeholder="Enter event details..."></Textarea>
 
             <Button type="submit" className="create-event-btn">Create Event</Button>      
             <Button type="click" className="cancel-btn" onClick={this.routeChange}>Cancel</Button>    
