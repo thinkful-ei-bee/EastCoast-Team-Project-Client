@@ -97,7 +97,7 @@ export default class RegistrationForm extends React.Component{
               name="gender" 
               placeholder="Enter gender"
               required/> 
-              <button type="submit" className="btn">Sign Up!</button> 
+              <button type="submit" className="sign-up-button btn">Sign Up!</button> 
               <Link to='/login' className="account-created">Already have an account?</Link>
             {' '}<br></br>
           </form>
